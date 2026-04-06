@@ -104,8 +104,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex flex-wrap items-center gap-6">
-            {["Fb", "Ig", "Li"].map((s) => <a key={s} href="#" className="text-[14px] font-medium text-white/30 hover:text-white/50 transition-colors">{s}</a>)}
-            <span className="text-[14px] font-medium text-white/30">tphho@tphorient.com</span>
+            <a href="https://www.facebook.com/orientprintingandpackaging/" target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium text-white/30 hover:text-white/50 transition-colors">Fb</a>
+            <a href="https://www.instagram.com/orientprintingandpackaging" target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium text-white/30 hover:text-white/50 transition-colors">Ig</a>
+            <a href="https://www.linkedin.com/company/orientprintingandpackaging" target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium text-white/30 hover:text-white/50 transition-colors">Li</a>
+            <a href="mailto:tphho@tphorient.com" className="text-[14px] font-medium text-white/30 hover:text-white/50 transition-colors">tphho@tphorient.com</a>
           </div>
           <div className="flex flex-col items-start md:items-end gap-1">
             <span className="text-[14px] font-medium text-white/30">&copy; {new Date().getFullYear()} Orient — The Printers House</span>
