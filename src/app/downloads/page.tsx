@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import PageShell from "@/components/PageShell";
 
 const catalogs = [
@@ -16,22 +19,63 @@ const catalogs = [
   { label: "Group Company Profile", file: "Orient-print-&-pack-profile28-1-25.pdf" },
 ];
 
+const BASE = "https://www.tphorient.com/assets/pdf";
+
+function previewUrl(file: string) {
+  const raw = `${BASE}/${encodeURIComponent(file)}`;
+  return `https://docs.google.com/gview?url=${encodeURIComponent(raw)}&embedded=true`;
+}
+
 export default function DownloadsPage() {
+  const [active, setActive] = useState(0);
+
   return (
     <PageShell title="Downloads" subtitle="Product catalogs, brochures, and technical documentation.">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {catalogs.map((c) => (
-          <a key={c.label} href={`/api/download?file=${encodeURIComponent(c.file)}`} download={c.file} className="flex items-center justify-between p-5 bg-black/[0.03] rounded-[6px] group hover:bg-black/[0.06] transition-colors">
-            <div className="flex items-center gap-3">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 text-near-black/20">
-                <path d="M4 17V3h8l4 4v10H4z" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M12 3v4h4" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-              <span className="text-[15px] font-medium text-near-black/60">{c.label}</span>
-            </div>
-            <span className="text-[13px] font-medium text-near-black/20 group-hover:text-orient-red transition-colors">PDF ↓</span>
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Sidebar list */}
+        <div className="lg:w-[280px] shrink-0 space-y-1">
+          {catalogs.map((c, i) => (
+            <button
+              key={c.label}
+              onClick={() => setActive(i)}
+              className={`flex items-center justify-between w-full text-left p-3.5 rounded-lg transition-colors ${active === i ? "bg-black/[0.06] text-near-black" : "text-near-black/50 hover:bg-black/[0.03]"}`}
+            >
+              <div className="flex items-center gap-2.5">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" className="shrink-0 text-near-black/20">
+                  <path d="M4 17V3h8l4 4v10H4z" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M12 3v4h4" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                <span className="text-[14px] font-medium">{c.label}</span>
+              </div>
+            </button>
+          ))}
+
+          {/* Download button */}
+          <a
+            href={`/api/download?file=${encodeURIComponent(catalogs[active].file)}`}
+            download={catalogs[active].file}
+            className="flex items-center justify-center gap-2 w-full mt-3 p-3 rounded-lg bg-near-black text-white text-[14px] font-medium hover:bg-near-black/80 transition-colors"
+          >
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2v9M8 11L4.5 7.5M8 11l3.5-3.5M3 14h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Download PDF
           </a>
-        ))}
+        </div>
+
+        {/* PDF preview */}
+        <div className="flex-1 min-w-0">
+          <div className="bg-[#f5f5f4] rounded-xl overflow-hidden border border-black/[0.06]" style={{ height: "calc(100vh - 260px)", minHeight: 500 }}>
+            <iframe
+              key={catalogs[active].file}
+              src={previewUrl(catalogs[active].file)}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              title={`Preview: ${catalogs[active].label}`}
+            />
+          </div>
+        </div>
       </div>
     </PageShell>
   );
