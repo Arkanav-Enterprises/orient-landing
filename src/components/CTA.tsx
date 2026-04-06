@@ -26,8 +26,8 @@ export default function CTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="rounded-xl overflow-hidden relative flex-1"
-            style={{ height: 500, maxWidth: 600, marginLeft: "auto" }}
+            className="rounded-xl overflow-hidden relative flex-1 w-full"
+            style={{ height: "clamp(280px, 50vw, 500px)", maxWidth: 600, marginLeft: "auto" }}
           >
             <Image
               src="/images/team-photo.jpg"

@@ -17,7 +17,7 @@ export default function Products() {
   return (
     <section id="catalog" ref={ref} style={{ marginBottom: 10 }}>
       <div className="container-site">
-        <div className="rounded-xl bg-[#f5f5f4]" style={{ padding: "76px 76px 100px" }}>
+        <div className="rounded-xl bg-[#f5f5f4] px-5 py-12 md:px-[76px] md:py-[76px] md:pb-[100px]">
           {/* Top row */}
           <div className="flex items-center justify-between mb-16">
             <span className="text-[16px] font-medium text-near-black/30">Since 1946</span>

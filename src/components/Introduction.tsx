@@ -8,7 +8,7 @@ export default function Introduction() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="introduction" ref={ref} style={{ marginTop: 160, marginBottom: 200 }}>
+    <section id="introduction" ref={ref} className="mt-20 mb-24 md:mt-[160px] md:mb-[200px]">
       <div className="container-site">
         <div className="flex flex-col md:flex-row md:justify-between gap-12">
           {/* Left — body text + CTA (fixed width like Hajster's 370px) */}

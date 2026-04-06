@@ -35,7 +35,7 @@ export default function Offer() {
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
               className="cursor-pointer group"
             >
-              <div className="relative bg-[#dddddc] rounded-xl overflow-hidden flex items-end p-6" style={{ height: 403 }}>
+              <div className="relative bg-[#dddddc] rounded-xl overflow-hidden flex items-end p-6 h-[280px] md:h-[403px]">
                 <Image src={offer.img} alt={offer.title} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <p className="relative z-10 text-[30px] font-medium leading-[1.3] text-white">{offer.title}</p>

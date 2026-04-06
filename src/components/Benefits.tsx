@@ -77,11 +77,11 @@ export default function Benefits() {
 
         {/* Content layout: title left, card right */}
         <div
-          className="container-site relative z-10 flex items-center"
-          style={{ height: "100%" }}
+          className="container-site relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8"
+          style={{ height: "100%", justifyContent: "center" }}
         >
           {/* Left title — white text on dark bg */}
-          <div style={{ width: "40%", paddingRight: 60, flexShrink: 0 }}>
+          <div className="md:w-[40%] md:pr-[60px] shrink-0 pt-24 md:pt-0">
             <h2
               className="font-medium leading-[1.3] text-white"
               style={{ fontSize: "clamp(24px, 2.5vw, 50px)" }}
@@ -92,7 +92,7 @@ export default function Benefits() {
 
           {/* Right card area — white card like Hajster */}
           <div
-            className="flex-1 flex justify-end"
+            className="flex-1 w-full flex md:justify-end"
             style={{ position: "relative" }}
           >
             <div style={{ width: "100%", maxWidth: 560 }}>
@@ -104,7 +104,7 @@ export default function Benefits() {
                   exit={{ opacity: 0, y: -40 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
-                  <div className="bg-white rounded-2xl" style={{ padding: 40 }}>
+                  <div className="bg-white rounded-2xl p-6 md:p-10">
                     <h3 className="text-[28px] font-medium leading-[1.3] text-near-black mb-5">
                       {benefits[activeIndex].title}
                     </h3>

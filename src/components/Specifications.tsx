@@ -41,7 +41,9 @@ export default function Specifications() {
   const [activeMachine, setActiveMachine] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [sidebarDropdownOpen, setSidebarDropdownOpen] = useState(false);
-  const [isChatMode, setIsChatMode] = useState(false);
+  const [isChatMode, setIsChatMode] = useState(
+    typeof window !== "undefined" && window.innerWidth < 768
+  );
 
   // Chat state
   const [chatInput, setChatInput] = useState("");
@@ -157,7 +159,7 @@ export default function Specifications() {
             <div className="flex-1" />
 
             {/* Action buttons — Chat tab sits right above Download Catalog */}
-            <div className="hidden lg:flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               <button
                 onClick={() => setIsChatMode(!isChatMode)}
                 className="relative btn text-sm h-[42px] w-full justify-center rounded-xl overflow-hidden text-white"
@@ -174,14 +176,14 @@ export default function Specifications() {
           </div>
 
           {/* Right — fixed height container for specs or chat */}
-          <div className="flex-1 min-w-0" style={{ height: 560 }}>
+          <div className="flex-1 min-w-0 min-h-[400px] lg:h-[560px]">
             {!isChatMode ? (
               /* Specs: table + image */
               <div className="flex gap-6 h-full">
                 <div className="flex-1 min-w-0 overflow-hidden">
                   {specs.map((row, i) => (
                     <div key={row.label} className={`flex ${i % 2 === 0 ? "bg-black/[0.02]" : ""}`}>
-                      <div className="w-[200px] shrink-0 px-5 py-4 border-r border-black/[0.06]">
+                      <div className="w-[120px] md:w-[200px] shrink-0 px-3 md:px-5 py-4 border-r border-black/[0.06]">
                         <span className="text-[13px] text-near-black/40">{row.label}</span>
                       </div>
                       <div className="flex-1 px-5 py-4">

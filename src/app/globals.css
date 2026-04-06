@@ -43,7 +43,8 @@ h1, h2, h3, h4, h5, h6 {
   .container-site { padding-left: 40px; padding-right: 40px; }
 }
 @media (max-width: 768px) {
-  .container-site { padding-left: 24px; padding-right: 24px; }
+  .container-site { padding-left: 20px; padding-right: 20px; }
+  section { margin-top: clamp(60px, 10vw, 160px) !important; margin-bottom: clamp(60px, 10vw, 160px) !important; }
 }
 
 /* ── Buttons ── */
