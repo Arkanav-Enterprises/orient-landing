@@ -2,22 +2,26 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const benefits = [
   {
     title: "Global Reach",
     stat: "60+ Countries",
     description: "With 20,000+ units installed worldwide and dedicated agents in over 60 countries, Orient delivers and services wherever you operate.",
+    img: "/images/benefit-global.jpg",
   },
   {
     title: "Proven Track Record",
     stat: "20,000+ Units",
     description: "Nearly eight decades of continuous manufacturing have made Orient the world's most prolific supplier in its field.",
+    img: "/images/benefit-track-record.jpg",
   },
   {
     title: "Complete Support",
     stat: "79 Years",
     description: "From spare parts and AMC servicing to financial support — Orient is with you at every step of your production journey.",
+    img: "/images/benefit-support.jpg",
   },
 ];
 
@@ -42,36 +46,51 @@ export default function Benefits() {
     <section
       ref={containerRef}
       className="relative"
-      style={{ height: `${benefits.length * 100 + 50}vh`, marginBottom: 10 }}
+      style={{ height: `${benefits.length * 150}vh`, marginBottom: 10 }}
     >
       {/* Sticky viewport */}
       <div
         className="sticky top-0 w-full overflow-hidden"
         style={{ height: "100vh" }}
       >
-        {/* Background */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{ backgroundColor: `hsl(0, 0%, ${97 - activeIndex * 3}%)` }}
-          transition={{ duration: 0.5 }}
-        />
+        {/* Full-bleed background image */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Image
+              src={benefits[activeIndex].img}
+              alt={benefits[activeIndex].title}
+              fill
+              className="object-cover"
+              priority={activeIndex === 0}
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/40" />
+          </motion.div>
+        </AnimatePresence>
 
         {/* Content layout: title left, card right */}
         <div
           className="container-site relative z-10 flex items-center"
           style={{ height: "100%" }}
         >
-          {/* Left title — always visible */}
+          {/* Left title — white text on dark bg */}
           <div style={{ width: "40%", paddingRight: 60, flexShrink: 0 }}>
             <h2
-              className="font-medium leading-[1.3] text-near-black"
+              className="font-medium leading-[1.3] text-white"
               style={{ fontSize: "clamp(24px, 2.5vw, 50px)" }}
             >
               Even More Reasons to Choose Orient for Your Production
             </h2>
           </div>
 
-          {/* Right card area — fixed size container, cards swap inside */}
+          {/* Right card area — white card like Hajster */}
           <div
             className="flex-1 flex justify-end"
             style={{ position: "relative" }}
@@ -85,7 +104,7 @@ export default function Benefits() {
                   exit={{ opacity: 0, y: -40 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
-                  <div className="bg-[#dddddc] rounded-xl" style={{ padding: 40 }}>
+                  <div className="bg-white rounded-2xl" style={{ padding: 40 }}>
                     <h3 className="text-[28px] font-medium leading-[1.3] text-near-black mb-5">
                       {benefits[activeIndex].title}
                     </h3>

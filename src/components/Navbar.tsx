@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const aboutLinks = [
   { label: "About Us", href: "/about" },
@@ -80,9 +81,8 @@ export default function Navbar() {
         style={{ height: 80 }}
       >
         <div className="container-site h-full flex items-center">
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 rounded-sm bg-orient-red flex items-center justify-center text-white font-semibold text-[15px]">O</div>
-            <span className="text-[15px] font-medium text-near-black">Orient</span>
+          <Link href="/" className="flex items-center shrink-0">
+            <Image src="/images/orient-logo.png" alt="Orient" width={120} height={38} className="object-contain" priority />
           </Link>
 
           {/* Desktop nav */}

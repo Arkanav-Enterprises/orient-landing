@@ -40,6 +40,7 @@ export default function Specifications() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [activeMachine, setActiveMachine] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [sidebarDropdownOpen, setSidebarDropdownOpen] = useState(false);
   const [isChatMode, setIsChatMode] = useState(false);
 
   // Chat state
@@ -125,8 +126,33 @@ export default function Specifications() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Left sidebar — action buttons */}
+          {/* Left sidebar — dropdown + action buttons */}
           <div className="lg:w-[240px] shrink-0 flex flex-col">
+            {/* Machine dropdown — duplicated at top of sidebar */}
+            <div className="hidden lg:block relative mb-4">
+              <button
+                onClick={() => setSidebarDropdownOpen(!sidebarDropdownOpen)}
+                className="flex flex-col gap-0.5 w-full px-4 py-3 bg-black/[0.04] border border-black/[0.12] rounded-xl text-left hover:bg-black/[0.08] hover:border-black/[0.2] transition-colors"
+              >
+                <span className="text-sm font-medium text-near-black">{machines[activeMachine].label}</span>
+                <span className="text-xs text-near-black/40">{machines[activeMachine].subtitle}</span>
+              </button>
+              {sidebarDropdownOpen && (
+                <div className="absolute left-0 right-0 top-full mt-2 bg-[#f5f5f4] border border-black/[0.08] rounded-xl overflow-hidden z-20">
+                  {machines.map((m, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setActiveMachine(i); setSidebarDropdownOpen(false); }}
+                      className={`w-full text-left px-4 py-3 transition-colors ${activeMachine === i ? "bg-black/[0.06] text-near-black" : "text-near-black/50 hover:bg-black/[0.03]"}`}
+                    >
+                      <span className="text-sm block">{m.label}</span>
+                      <span className="text-xs text-near-black/40">{m.subtitle}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* Spacer pushes buttons to bottom */}
             <div className="flex-1" />
 

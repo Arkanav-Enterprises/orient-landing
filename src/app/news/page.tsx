@@ -4,17 +4,65 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 const allNews = [
-  { slug: "welcome-ceo-pradeep-unny", date: "January 2025", category: "Leadership", title: "Welcome CEO Mr. Pradeep A. Unny" },
-  { slug: "printpack-2025", date: "February 2025", category: "Trade Shows", title: "Make-in-India: TPH Orient at PrintPack 2025" },
-  { slug: "labelexpo-2024", date: "November 2024", category: "Trade Shows", title: "Labelexpo 2024: Technology Prowess on Display" },
-  { slug: "10-colour-flexo-labelexpo", date: "November 2024", category: "Product Launch", title: "10-Colour Flexo Press at Labelexpo India" },
-  { slug: "pamex-2023", date: "December 2023", category: "Trade Shows", title: "New Presses and Converting Machines at Pamex 2023" },
-  { slug: "indigenous-inkjet-press", date: "September 2023", category: "Product Launch", title: "Indigenous Inkjet Press and Ink Delivery System Launched" },
-  { slug: "multipurpose-flexo-machines", date: "March 2022", category: "Product Launch", title: "India's First Multipurpose Flexo Machines — X-PRESS Flex" },
-  { slug: "solar-energy-adm", date: "January 2022", category: "Expansion", title: "Orient Enters Solar Energy via ADM Orient" },
-  { slug: "highest-revenue-2025", date: "March 2025", category: "Milestone", title: "Orient Achieves Highest Historical Revenue and Profits" },
+  {
+    date: "January 2025",
+    category: "Leadership",
+    title: "Welcome CEO Mr. Pradeep A. Unny",
+    href: "https://www.labelsandlabeling.com/news/conventional-printing/printers-house-appoints-new-ceo",
+    img: "/images/news-ceo.png",
+  },
+  {
+    date: "February 2025",
+    category: "Trade Shows",
+    title: "Make-in-India: TPH Orient at PrintPack 2025",
+    href: "https://publuu.com/flip-book/723396/1723059/page/36",
+    img: "/images/news-printpack.png",
+  },
+  {
+    date: "November 2024",
+    category: "Trade Shows",
+    title: "Labelexpo 2024: Technology Prowess on Display",
+    href: "https://www.printweek.in/news/labelexpo-2024-tph-orient-showcases-its-technology-prowess-59626",
+    img: "/images/news-labelexpo.png",
+  },
+  {
+    date: "November 2024",
+    category: "Product Launch",
+    title: "10-Colour Flexo Press at Labelexpo India",
+    href: "https://pressideas.com/orient-group-presents-10-colour-flexo-press-asr-x-press-flex-at-labelexpo-india/",
+    img: "/images/news-flexo.png",
+  },
+  {
+    date: "September 2024",
+    category: "Industry",
+    title: "Teachers' Day: Industry Leaders' Tribute",
+    href: "https://mediabrief.com/exclusive-teachers-day-2024-industry-leaders/",
+    img: "/images/news-teachers.png",
+  },
+  {
+    date: "December 2023",
+    category: "Trade Shows",
+    title: "New Presses and Converting Machines at Pamex 2023",
+    href: "https://packagingsouthasia.com/events/pamex-2023/tph-orient-machines/",
+    img: "/images/news-pamex.jpg",
+  },
+  {
+    date: "2025",
+    category: "Company",
+    title: "Orient Printing and Packaging — Latest Update",
+    href: "https://www.linkedin.com/feed/update/urn:li:activity:7296512920941707265/",
+    img: "/images/news-linkedin1.png",
+  },
+  {
+    date: "2024",
+    category: "Company",
+    title: "Orient Printing and Packaging — Company Update",
+    href: "https://www.linkedin.com/feed/update/urn:li:activity:7209110825024835585/",
+    img: "/images/news-linkedin2.png",
+  },
 ];
 
 const categories = ["All", ...Array.from(new Set(allNews.map((n) => n.category)))];
@@ -78,12 +126,14 @@ export default function NewsPage() {
             ))}
           </div>
 
-          {/* Card grid — Hajster blog style with more personality */}
+          {/* Card grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 24 }}>
             {filtered.map((item) => (
-              <Link
-                key={item.slug}
-                href="/news"
+              <a
+                key={item.title}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group overflow-hidden transition-all hover:translate-y-[-2px]"
                 style={{
                   background: "#ffffff",
@@ -91,13 +141,18 @@ export default function NewsPage() {
                   borderRadius: 16,
                 }}
               >
-                {/* Image area — padded inside card like Hajster */}
+                {/* Image area */}
                 <div style={{ padding: "16px 16px 0" }}>
                   <div
-                    className="bg-[#dddddc] flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden"
+                    className="bg-[#dddddc] relative group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden"
                     style={{ height: 260, borderRadius: 12 }}
                   >
-                    <span className="text-near-black/10 text-[12px] font-medium">News Image</span>
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
 
@@ -125,7 +180,7 @@ export default function NewsPage() {
                     <span className="text-[13px] font-medium text-near-black/20">{item.date}</span>
                   </div>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
 

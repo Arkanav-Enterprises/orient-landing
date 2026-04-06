@@ -2,18 +2,65 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
 
 const newsItems = [
-  { date: "2025", category: "Leadership", title: "Welcome CEO Mr. Pradeep A. Unny" },
-  { date: "Feb 2025", category: "Trade Shows", title: "Make-in-India: TPH Orient at PrintPack 2025" },
-  { date: "Nov 2024", category: "Trade Shows", title: "Labelexpo 2024: Technology Prowess on Display" },
-  { date: "2024", category: "Product Launch", title: "10-Colour Flexo Press at Labelexpo India" },
-  { date: "2023", category: "Trade Shows", title: "New Presses and Converting Machines at Pamex 2023" },
-  { date: "2023", category: "Product Launch", title: "Indigenous Inkjet Press and Ink Delivery System Launched" },
-  { date: "2022", category: "Product Launch", title: "India's First Multipurpose Flexo Machines — X-PRESS Flex" },
-  { date: "2022", category: "Expansion", title: "Orient Enters Solar Energy via ADM Orient" },
-  { date: "2025", category: "Milestone", title: "Orient Achieves Highest Historical Revenue and Profits" },
+  {
+    date: "2025",
+    category: "Leadership",
+    title: "Welcome CEO Mr. Pradeep A. Unny",
+    href: "https://www.labelsandlabeling.com/news/conventional-printing/printers-house-appoints-new-ceo",
+    img: "/images/news-ceo.png",
+  },
+  {
+    date: "Feb 2025",
+    category: "Trade Shows",
+    title: "Make-in-India: TPH Orient at PrintPack 2025",
+    href: "https://publuu.com/flip-book/723396/1723059/page/36",
+    img: "/images/news-printpack.png",
+  },
+  {
+    date: "Nov 2024",
+    category: "Trade Shows",
+    title: "Labelexpo 2024: Technology Prowess on Display",
+    href: "https://www.printweek.in/news/labelexpo-2024-tph-orient-showcases-its-technology-prowess-59626",
+    img: "/images/news-labelexpo.png",
+  },
+  {
+    date: "2024",
+    category: "Product Launch",
+    title: "10-Colour Flexo Press at Labelexpo India",
+    href: "https://pressideas.com/orient-group-presents-10-colour-flexo-press-asr-x-press-flex-at-labelexpo-india/",
+    img: "/images/news-flexo.png",
+  },
+  {
+    date: "2024",
+    category: "Industry",
+    title: "Teachers' Day: Industry Leaders' Tribute",
+    href: "https://mediabrief.com/exclusive-teachers-day-2024-industry-leaders/",
+    img: "/images/news-teachers.png",
+  },
+  {
+    date: "2023",
+    category: "Trade Shows",
+    title: "New Presses and Converting Machines at Pamex 2023",
+    href: "https://packagingsouthasia.com/events/pamex-2023/tph-orient-machines/",
+    img: "/images/news-pamex.jpg",
+  },
+  {
+    date: "2025",
+    category: "Company",
+    title: "Orient Printing and Packaging — Latest Update",
+    href: "https://www.linkedin.com/feed/update/urn:li:activity:7296512920941707265/",
+    img: "/images/news-linkedin1.png",
+  },
+  {
+    date: "2024",
+    category: "Company",
+    title: "Orient Printing and Packaging — Company Update",
+    href: "https://www.linkedin.com/feed/update/urn:li:activity:7209110825024835585/",
+    img: "/images/news-linkedin2.png",
+  },
 ];
 
 export default function News() {
@@ -21,6 +68,7 @@ export default function News() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [query, setQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(6);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   const filtered = newsItems.filter(
     (n) =>
@@ -29,6 +77,9 @@ export default function News() {
   );
 
   const visible = filtered.slice(0, visibleCount);
+
+  // Show hovered item's image, or the first visible item's image
+  const featuredImg = hoveredIdx !== null ? newsItems[hoveredIdx]?.img : visible[0]?.img;
 
   return (
     <section ref={ref} style={{ marginTop: 160, marginBottom: 160 }}>
@@ -72,7 +123,7 @@ export default function News() {
           </div>
         </div>
 
-        {/* List layout — Anthropic style */}
+        {/* List layout */}
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Main list */}
           <div className="flex-1">
@@ -91,35 +142,42 @@ export default function News() {
 
             {/* News rows */}
             <ul>
-              {visible.map((item, i) => (
-                <motion.li
-                  key={item.title}
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.1 + i * 0.05 }}
-                >
-                  <Link
-                    href="/news"
-                    className="flex items-start gap-6 py-5 border-b border-black/[0.04] group hover:bg-black/[0.02] -mx-4 px-4 transition-colors"
+              {visible.map((item, i) => {
+                const globalIdx = newsItems.indexOf(item);
+                return (
+                  <motion.li
+                    key={item.title}
+                    initial={{ opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : {}}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                    onMouseEnter={() => setHoveredIdx(globalIdx)}
+                    onMouseLeave={() => setHoveredIdx(null)}
                   >
-                    <time
-                      className="text-[15px] font-medium text-near-black/40 shrink-0 pt-0.5"
-                      style={{ width: 120 }}
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-6 py-5 border-b border-black/[0.04] group hover:bg-black/[0.02] -mx-4 px-4 transition-colors"
                     >
-                      {item.date}
-                    </time>
-                    <span
-                      className="text-[15px] font-medium text-near-black/40 shrink-0 pt-0.5"
-                      style={{ width: 140 }}
-                    >
-                      {item.category}
-                    </span>
-                    <span className="text-[16px] font-medium text-near-black/70 group-hover:text-near-black transition-colors flex-1 leading-[1.4]">
-                      {item.title}
-                    </span>
-                  </Link>
-                </motion.li>
-              ))}
+                      <time
+                        className="text-[15px] font-medium text-near-black/40 shrink-0 pt-0.5"
+                        style={{ width: 120 }}
+                      >
+                        {item.date}
+                      </time>
+                      <span
+                        className="text-[15px] font-medium text-near-black/40 shrink-0 pt-0.5"
+                        style={{ width: 140 }}
+                      >
+                        {item.category}
+                      </span>
+                      <span className="text-[16px] font-medium text-near-black/70 group-hover:text-near-black transition-colors flex-1 leading-[1.4]">
+                        {item.title}
+                      </span>
+                    </a>
+                  </motion.li>
+                );
+              })}
             </ul>
 
             {/* See more button */}
@@ -145,13 +203,21 @@ export default function News() {
             )}
           </div>
 
-          {/* Aside — featured image placeholder (like Anthropic's illustration) */}
+          {/* Aside — featured image that changes on hover */}
           <aside className="hidden lg:block shrink-0" style={{ width: 320 }}>
             <div
-              className="bg-[#f5f5f4] rounded-[6px] flex items-center justify-center sticky top-[140px]"
+              className="bg-[#f5f5f4] rounded-[6px] overflow-hidden sticky top-[140px] relative"
               style={{ width: 320, height: 320 }}
             >
-              <span className="text-near-black/10 text-[12px] font-medium">Featured Image</span>
+              {featuredImg && (
+                <Image
+                  key={featuredImg}
+                  src={featuredImg}
+                  alt="Featured news"
+                  fill
+                  className="object-cover transition-opacity duration-300"
+                />
+              )}
             </div>
           </aside>
         </div>

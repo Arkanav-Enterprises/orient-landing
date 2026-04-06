@@ -30,7 +30,7 @@ export default function Features() {
           className="rounded-xl flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16"
           style={{
             padding: "160px 76px",
-            background: "linear-gradient(135deg, #b91c1c 0%, #dc2626 20%, #ef4444 45%, #d4d4d8 92%, #a1a1aa 100%)",
+            background: "linear-gradient(135deg, #5c0a0a 0%, #8b1a1a 18%, #a11d1d 35%, #c62828 55%, #b06060 78%, #c4b0b0 95%)",
           }}
         >
           <motion.h2

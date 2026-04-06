@@ -2,11 +2,12 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 const products = [
-  { category: "Web Offset Printing", name: "Orient Offset Series" },
-  { category: "Flexographic Printing", name: "Orient X-Press Flex" },
-  { category: "Digital Inkjet Printing", name: "Orient Jet Series" },
+  { category: "Web Offset Printing", name: "Orient Offset Series", img: "/images/product-offset-series.png", light: false },
+  { category: "Flexographic Printing", name: "Orient X-Press Flex", img: "/images/product-xpress-flex.jpg", light: true },
+  { category: "Digital Inkjet Printing", name: "Orient Jet Series", img: "/images/product-jet-series.jpg", light: false },
 ];
 
 export default function Products() {
@@ -34,12 +35,15 @@ export default function Products() {
               >
                 {/* Image card */}
                 <div className="relative bg-[#dddddc] rounded-xl overflow-hidden flex items-end p-6" style={{ height: 403 }}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-near-black/10 text-[14px] font-medium">Product Image</span>
-                  </div>
+                  <Image
+                    src={product.img}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                  />
                   <div className="relative z-10">
-                    <p className="text-[14px] font-medium text-near-black/50 mb-1">{product.category}</p>
-                    <p className="text-[28px] font-medium leading-[1.2] text-near-black">{product.name}</p>
+                    <p className={`text-[14px] font-medium mb-1 ${product.light ? "text-white/60" : "text-near-black/50"}`}>{product.category}</p>
+                    <p className={`text-[28px] font-medium leading-[1.2] ${product.light ? "text-white" : "text-near-black"}`}>{product.name}</p>
                   </div>
                 </div>
 

@@ -14,7 +14,6 @@ import About from "@/components/About";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
-import Legacy from "@/components/Legacy";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -36,7 +35,6 @@ export default function Home() {
       <CTA />
       <FAQ />
       <Contact />
-      <Legacy />
       <Footer />
     </main>
   );

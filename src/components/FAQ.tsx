@@ -47,17 +47,6 @@ export default function FAQ() {
       className="relative overflow-hidden"
       style={{ marginTop: 160, marginBottom: 160 }}
     >
-      {/* Blueprint background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "url(/press-blueprint.svg)",
-          backgroundSize: "1200px auto",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.04,
-        }}
-      />
       <div className="container-site relative">
         <div className="mx-auto" style={{ maxWidth: 720 }}>
           <motion.h2

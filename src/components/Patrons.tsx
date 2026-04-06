@@ -91,19 +91,25 @@ export default function Patrons() {
           </motion.p>
         </div>
 
-        {/* Globe + Country Cloud side by side */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 my-12">
-          <div style={{ width: "min(90vw, 560px)", height: "min(90vw, 560px)" }}>
-            <Globe className="w-full h-full" />
+        {/* Country strip + Globe */}
+        <div className="my-12">
+          {/* Scrolling country names strip */}
+          <div className="overflow-hidden mb-8">
+            <div className="flex gap-3 animate-scroll-left">
+              {[...countries, ...countries].map((c, i) => (
+                <span key={i} className="shrink-0 text-[13px] font-medium text-near-black/35 px-4 py-2 border border-black/[0.06] rounded-full whitespace-nowrap">
+                  {c}
+                </span>
+              ))}
+            </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
-            className="flex items-center justify-center"
-          >
-            <CountryCloud />
-          </motion.div>
+
+          {/* Globe centered */}
+          <div className="flex justify-center">
+            <div style={{ width: "min(90vw, 560px)", height: "min(90vw, 560px)" }}>
+              <Globe className="w-full h-full" />
+            </div>
+          </div>
         </div>
 
         {/* Scrolling client logos */}

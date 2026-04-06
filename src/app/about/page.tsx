@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -155,23 +156,8 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Our Legacy */}
-          <section id="legacy" className="border-t border-black/[0.06]" style={{ padding: "120px 0" }}>
-            <h2 className="font-medium leading-[1.05] text-near-black mb-4" style={{ fontSize: "clamp(28px, 2.5vw, 42px)" }}>
-              Our Legacy
-            </h2>
-            <p className="text-[18px] font-medium text-near-black/50 leading-[1.4] mb-16" style={{ maxWidth: 600 }}>
-              From a single workshop to the world's most prolific supplier of printing machinery.
-            </p>
-            <div>
-              {timeline.map((t) => (
-                <div key={t.year} className="flex gap-8 md:gap-16 border-b border-black/[0.06]" style={{ padding: "36px 0" }}>
-                  <span className="text-[40px] font-medium text-near-black/20 shrink-0" style={{ width: 110 }}>{t.year}</span>
-                  <p className="text-[17px] font-medium text-near-black/60 leading-[1.5] pt-2">{t.event}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          {/* Our Legacy — scroll reveal */}
+          <LegacySection timeline={timeline} />
 
           {/* Infrastructure */}
           <section id="infrastructure" className="border-t border-black/[0.06]" style={{ padding: "120px 0" }}>
@@ -278,5 +264,92 @@ export default function AboutPage() {
       </div>
       <Footer />
     </main>
+  );
+}
+
+/* ── Legacy scroll-reveal section ── */
+
+function LegacySection({ timeline }: { timeline: { year: string; event: string }[] }) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <section id="legacy" ref={sectionRef} className="border-t border-black/[0.06]" style={{ padding: "120px 0" }}>
+      <h2 className="font-medium leading-[1.05] text-near-black mb-4" style={{ fontSize: "clamp(28px, 2.5vw, 42px)" }}>
+        Our Legacy
+      </h2>
+      <p className="text-[18px] font-medium text-near-black/50 leading-[1.4] mb-16" style={{ maxWidth: 600 }}>
+        From a single workshop to the world&apos;s most prolific supplier of printing machinery.
+      </p>
+
+      <div className="relative">
+        <LegacyScrollLine sectionRef={sectionRef} />
+        <div style={{ paddingLeft: 60 }}>
+          {timeline.map((t, i) => (
+            <LegacyRow key={t.year} year={t.year} event={t.event} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LegacyScrollLine({ sectionRef }: { sectionRef: React.RefObject<HTMLDivElement | null> }) {
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 0.8", "end 0.2"],
+  });
+  const revealHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const caretSvg = (color: string) =>
+    `url("data:image/svg+xml,%3Csvg width='14' height='18' viewBox='0 0 14 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 12L1 3H13L7 12Z' fill='${encodeURIComponent(color)}'/%3E%3C/svg%3E")`;
+
+  return (
+    <div className="absolute left-0 top-0 bottom-0" style={{ width: 24 }}>
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: caretSvg("rgba(28,27,29,0.08)"),
+          backgroundSize: "14px 18px",
+          backgroundRepeat: "repeat-y",
+          backgroundPosition: "center top",
+        }}
+      />
+      <motion.div
+        className="absolute left-0 right-0 top-0 overflow-hidden"
+        style={{ height: revealHeight }}
+      >
+        <div
+          className="w-full h-[200%]"
+          style={{
+            backgroundImage: caretSvg("rgba(28,27,29,0.5)"),
+            backgroundSize: "14px 18px",
+            backgroundRepeat: "repeat-y",
+            backgroundPosition: "center top",
+          }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
+function LegacyRow({ year, event }: { year: string; event: string }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: rowRef,
+    offset: ["start 0.85", "start 0.4"],
+  });
+  const overlayY = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+
+  return (
+    <div ref={rowRef} className="relative overflow-hidden" style={{ paddingTop: 36, paddingBottom: 36 }}>
+      <motion.div
+        className="absolute inset-0 bg-white z-10 pointer-events-none"
+        style={{ y: overlayY, opacity: 0.85 }}
+      />
+      <div className="flex gap-8 md:gap-16 items-start">
+        <span className="text-[50px] font-medium text-near-black shrink-0 leading-[1.0]" style={{ width: 140 }}>{year}</span>
+        <p className="text-[17px] font-medium text-near-black leading-[1.5] pt-3">{event}</p>
+      </div>
+    </div>
   );
 }
