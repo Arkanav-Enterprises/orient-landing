@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-/* ── Google Translate hook ── */
+/* ── Google Translate ── */
 declare global {
   interface Window {
     google: { translate: { TranslateElement: new (opts: Record<string, unknown>, id: string) => void } };
@@ -14,16 +14,17 @@ declare global {
 }
 
 function useGoogleTranslate() {
-  const [ready, setReady] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (document.getElementById("google-translate-script")) { setReady(true); return; }
+    if (document.getElementById("google-translate-script")) { setLoaded(true); return; }
     window.googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
         { pageLanguage: "en", layout: 2 /* SIMPLE */ },
         "google_translate_element"
       );
-      setReady(true);
+      setLoaded(true);
     };
     const s = document.createElement("script");
     s.id = "google-translate-script";
@@ -32,12 +33,7 @@ function useGoogleTranslate() {
     document.body.appendChild(s);
   }, []);
 
-  const open = useCallback(() => {
-    const sel = document.querySelector<HTMLSelectElement>("#google_translate_element select");
-    if (sel) { sel.focus(); sel.dispatchEvent(new MouseEvent("mousedown")); }
-  }, []);
-
-  return { ready, open };
+  return { loaded, open, toggle: () => setOpen((v) => !v) };
 }
 
 const aboutLinks = [
@@ -91,7 +87,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const { open: openTranslate } = useGoogleTranslate();
+  const { open: translateOpen, toggle: toggleTranslate } = useGoogleTranslate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -172,7 +168,7 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3 ml-auto">
-            <button onClick={openTranslate} className="w-[40px] h-[40px] flex items-center justify-center rounded-lg text-near-black/40 hover:text-near-black/70 hover:bg-black/[0.04] transition-colors" aria-label="Translate" title="Translate page">
+            <button onClick={toggleTranslate} className="w-[40px] h-[40px] flex items-center justify-center rounded-lg text-near-black/40 hover:text-near-black/70 hover:bg-black/[0.04] transition-colors" aria-label="Translate" title="Translate page">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </button>
             <Link href="/contact" className="btn btn-outline text-[14px] h-[40px] px-5">Request a Quote</Link>
@@ -180,7 +176,7 @@ export default function Navbar() {
 
           {/* Mobile: translate + toggle */}
           <div className="lg:hidden flex items-center gap-1 ml-auto">
-            <button onClick={openTranslate} className="w-[36px] h-[36px] flex items-center justify-center rounded-lg text-near-black/40 hover:text-near-black/70 transition-colors" aria-label="Translate">
+            <button onClick={toggleTranslate} className="w-[36px] h-[36px] flex items-center justify-center rounded-lg text-near-black/40 hover:text-near-black/70 transition-colors" aria-label="Translate">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </button>
             <button onClick={() => setMobileOpen(!mobileOpen)} className="flex flex-col gap-[5px] p-2" aria-label="Menu">
@@ -192,8 +188,11 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Google Translate widget — visually hidden, select is opened programmatically */}
-      <div id="google_translate_element" className="fixed top-[80px] right-4 z-[60] opacity-0 pointer-events-none [&:focus-within]:opacity-100 [&:focus-within]:pointer-events-auto [&>.goog-te-gadget]:font-[inherit] [&_select]:rounded-lg [&_select]:border [&_select]:border-black/10 [&_select]:bg-white [&_select]:px-3 [&_select]:py-2 [&_select]:text-sm [&_select]:text-near-black/70 [&_select]:outline-none [&_.goog-te-gadget>span]:hidden [&_.goog-logo-link]:hidden [&_.goog-te-gadget>div:first-child]:hidden" />
+      {/* Google Translate widget — toggled by globe button */}
+      <div
+        id="google_translate_element"
+        className={`fixed top-[80px] right-4 z-[60] transition-all duration-200 ${translateOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} [&>.goog-te-gadget]:font-[inherit] [&_select]:rounded-lg [&_select]:border [&_select]:border-black/10 [&_select]:bg-white [&_select]:shadow-lg [&_select]:px-3 [&_select]:py-2 [&_select]:text-sm [&_select]:text-near-black/70 [&_select]:outline-none [&_.goog-te-gadget>span]:hidden [&_.goog-logo-link]:hidden [&_.goog-te-gadget>div:first-child]:hidden`}
+      />
 
       {/* Mobile menu */}
       <AnimatePresence>
