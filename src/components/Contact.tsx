@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section id="contacts" ref={ref} style={{ marginBottom: 10 }}>
       <div className="container-site">
-        <div className="rounded-xl bg-[#f5f5f4] px-5 py-10 md:px-[76px] md:py-[80px] md:pb-[100px]">
+        <div className="rounded-xl bg-[#f5f5f4] px-4 py-8 md:px-[76px] md:py-[80px] md:pb-[100px]">
           {/* Centered heading */}
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Left — form */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}>
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div>
                   <label className="text-sm text-near-black/40 mb-2 block">Name</label>
                   <input type="text" placeholder="Your Name" className="input-field" />
