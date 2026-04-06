@@ -27,7 +27,7 @@ export default function Features() {
       <div className="container-site">
         {/* Hajster: bg #78797E, padding 160px 76px */}
         <div
-          className="rounded-xl flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16 px-6 py-16 md:px-[76px] md:py-[160px]"
+          className="rounded-xl flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16 px-6 py-12 md:px-[76px] md:py-[80px]"
           style={{
             background: "linear-gradient(135deg, #5c0a0a 0%, #8b1a1a 18%, #a11d1d 35%, #c62828 55%, #b06060 78%, #c4b0b0 95%)",
           }}
