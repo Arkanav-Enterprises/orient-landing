@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -15,17 +16,17 @@ const sections = [
 ];
 
 const timeline = [
-  { year: "1946", event: "Founded as agency for importing printing equipment by K.D. Kohli" },
-  { year: "1960", event: "Started manufacturing Prima Platen Presses and Mercedes stop cylinder presses" },
-  { year: "1970", event: "Began web offset press production; Goss USA became marketing agent" },
-  { year: "1980", event: "Integrated CNC/CAD-CAM; expanded to USA, Europe, South Asia; launched Orient Super (30,000 cph)" },
-  { year: "1990", event: "Entered Chinese market, installed 130+ presses in 8 years; launched Orient X-Cel (36,000 cph)" },
-  { year: "2002", event: "Developed Orient X-Press (45,000 cph), launched at Drupa 2004" },
-  { year: "2009", event: "KBA Germany marketing partnership established" },
-  { year: "2010", event: "X-Press upgraded to 50,000 cph; auto reel changers, shaftless drives, auto registration" },
-  { year: "2022", event: "Launched India's first multipurpose flexo machines (X-PRESS Flex); entered solar via ADM Orient" },
-  { year: "2023", event: "Introduced indigenous inkjet press and ink delivery system" },
-  { year: "2025", event: "Achieved highest historical revenue and profits" },
+  { year: "1946", event: "Founded as agency for importing printing equipment by K.D. Kohli", img: "/images/timeline-1.jpg" },
+  { year: "1960", event: "Started manufacturing Prima Platen Presses and Mercedes stop cylinder presses", img: "/images/timeline-2.jpg" },
+  { year: "1970", event: "Began web offset press production; Goss USA became marketing agent", img: "/images/timeline-3.jpg" },
+  { year: "1980", event: "Integrated CNC/CAD-CAM; expanded to USA, Europe, South Asia; launched Orient Super (30,000 cph)", img: "/images/timeline-4.jpg" },
+  { year: "1990", event: "Entered Chinese market, installed 130+ presses in 8 years; launched Orient X-Cel (36,000 cph)", img: "/images/timeline-5.jpg" },
+  { year: "2002", event: "Developed Orient X-Press (45,000 cph), launched at Drupa 2004", img: "/images/timeline-6.jpg" },
+  { year: "2009", event: "KBA Germany marketing partnership established", img: "/images/timeline-8.jpg" },
+  { year: "2010", event: "X-Press upgraded to 50,000 cph; auto reel changers, shaftless drives, auto registration", img: "/images/timeline-10.jpg" },
+  { year: "2022", event: "Launched India's first multipurpose flexo machines (X-PRESS Flex); entered solar via ADM Orient", img: "/images/orient-2022.jpg" },
+  { year: "2023", event: "Introduced indigenous inkjet press and ink delivery system", img: "/images/digital-printing.jpg" },
+  { year: "2025", event: "Achieved highest historical revenue and profits", img: "/images/legacy.jpg" },
 ];
 
 const plants = [
@@ -233,9 +234,9 @@ export default function AboutPage() {
               </div>
               <div className="lg:w-[38%] shrink-0">
                 <div className="grid grid-cols-2 gap-3">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="bg-black/[0.03] rounded-[6px] flex items-center justify-center" style={{ height: 80 }}>
-                      <span className="text-near-black/10 text-[11px] font-medium">Supplier Logo</span>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+                    <div key={i} className="bg-white border border-black/[0.06] rounded-[6px] overflow-hidden relative" style={{ height: 80 }}>
+                      <Image src={`/images/supplier-${i}.jpg`} alt={`Supplier partner ${i}`} fill className="object-contain p-2" sizes="160px" />
                     </div>
                   ))}
                 </div>
@@ -269,7 +270,7 @@ export default function AboutPage() {
 
 /* ── Legacy scroll-reveal section ── */
 
-function LegacySection({ timeline }: { timeline: { year: string; event: string }[] }) {
+function LegacySection({ timeline }: { timeline: { year: string; event: string; img?: string }[] }) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -284,8 +285,8 @@ function LegacySection({ timeline }: { timeline: { year: string; event: string }
       <div className="relative">
         <LegacyScrollLine sectionRef={sectionRef} />
         <div style={{ paddingLeft: 60 }}>
-          {timeline.map((t, i) => (
-            <LegacyRow key={t.year} year={t.year} event={t.event} />
+          {timeline.map((t) => (
+            <LegacyRow key={t.year} year={t.year} event={t.event} img={t.img} />
           ))}
         </div>
       </div>
@@ -332,8 +333,9 @@ function LegacyScrollLine({ sectionRef }: { sectionRef: React.RefObject<HTMLDivE
   );
 }
 
-function LegacyRow({ year, event }: { year: string; event: string }) {
+function LegacyRow({ year, event, img }: { year: string; event: string; img?: string }) {
   const rowRef = useRef<HTMLDivElement>(null);
+  const [showImg, setShowImg] = useState(false);
   const { scrollYProgress } = useScroll({
     target: rowRef,
     offset: ["start 0.85", "start 0.4"],
@@ -341,14 +343,30 @@ function LegacyRow({ year, event }: { year: string; event: string }) {
   const overlayY = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
 
   return (
-    <div ref={rowRef} className="relative overflow-hidden" style={{ paddingTop: 36, paddingBottom: 36 }}>
+    <div
+      ref={rowRef}
+      className="relative overflow-hidden cursor-pointer"
+      style={{ paddingTop: 36, paddingBottom: 36 }}
+      onMouseEnter={() => setShowImg(true)}
+      onMouseLeave={() => setShowImg(false)}
+      onClick={() => setShowImg((v) => !v)}
+    >
       <motion.div
         className="absolute inset-0 bg-white z-10 pointer-events-none"
         style={{ y: overlayY, opacity: 0.85 }}
       />
       <div className="flex gap-8 md:gap-16 items-start">
         <span className="text-[50px] font-medium text-near-black shrink-0 leading-[1.0]" style={{ width: 140 }}>{year}</span>
-        <p className="text-[17px] font-medium text-near-black leading-[1.5] pt-3">{event}</p>
+        <div className="flex-1 pt-3">
+          <p className="text-[17px] font-medium text-near-black leading-[1.5]">{event}</p>
+          {img && (
+            <div className={`overflow-hidden transition-all duration-300 ${showImg ? "max-h-[300px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}>
+              <div className="relative w-full h-[200px] sm:h-[260px] rounded-lg overflow-hidden bg-[#f5f5f4]">
+                <Image src={img} alt={`${year} — ${event}`} fill className="object-cover" sizes="600px" />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -107,7 +107,10 @@ export default function Footer() {
             {["Fb", "Ig", "Li"].map((s) => <a key={s} href="#" className="text-[14px] font-medium text-white/30 hover:text-white/50 transition-colors">{s}</a>)}
             <span className="text-[14px] font-medium text-white/30">tphho@tphorient.com</span>
           </div>
-          <span className="text-[14px] font-medium text-white/30">&copy; {new Date().getFullYear()} Orient — The Printers House</span>
+          <div className="flex flex-col items-start md:items-end gap-1">
+            <span className="text-[14px] font-medium text-white/30">&copy; {new Date().getFullYear()} Orient — The Printers House</span>
+            <a href="https://settlewithai.com/" target="_blank" rel="noopener noreferrer" className="text-[12px] font-medium text-white/20 hover:text-white/40 transition-colors">Designed &amp; Developed by Settle</a>
+          </div>
         </div>
       </div>
     </footer>
