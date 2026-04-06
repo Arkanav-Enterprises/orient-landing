@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
+
+export const metadata: Metadata = {
+  title: "Products",
+  description: "Web offset, flexographic, digital inkjet printing presses and packaging & converting machinery by Orient — The Printers House.",
+  alternates: { canonical: "/products" },
+};
 
 /* ── Product catalog ── */
 
