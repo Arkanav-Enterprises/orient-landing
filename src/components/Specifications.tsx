@@ -160,10 +160,9 @@ export default function Specifications() {
             <div className="hidden lg:flex flex-col gap-3">
               <button
                 onClick={() => setIsChatMode(!isChatMode)}
-                className="relative btn btn-outline text-sm h-[42px] w-full justify-center rounded-xl overflow-hidden"
-                style={{ background: isChatMode ? "rgba(0,0,0,0.04)" : "transparent", border: "none" }}
+                className="relative btn text-sm h-[42px] w-full justify-center rounded-xl overflow-hidden text-white"
+                style={{ background: "linear-gradient(135deg, #5c0a0a 0%, #8b1a1a 18%, #a11d1d 35%, #c62828 55%, #b06060 78%, #c4b0b0 95%)", border: "none" }}
               >
-                <span className="absolute inset-0 rounded-xl pointer-events-none" style={{ padding: 1, background: "linear-gradient(135deg, rgba(222,33,39,0.5), rgba(222,33,39,0.12))", WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)", WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
                 <span className="relative z-10">{isChatMode ? "Back to Specs" : "Chat with Orient AI"}</span>
               </button>
               <a href="/contact" className="btn btn-cream text-sm h-[42px] w-full justify-center rounded-xl">Request Quote</a>
