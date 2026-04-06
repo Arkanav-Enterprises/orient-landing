@@ -126,9 +126,9 @@ export default function News() {
         {/* List layout */}
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Main list */}
-          <div className="flex-1">
+          <div className="flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {/* Column headers */}
-            <div className="flex items-center gap-6 pb-4 border-b border-black/[0.06] mb-0">
+            <div className="flex items-center gap-6 pb-4 border-b border-black/[0.06] mb-0 min-w-[540px]">
               <span className="text-[12px] font-medium text-near-black/30 uppercase tracking-wider" style={{ width: 120, flexShrink: 0 }}>
                 Date
               </span>
@@ -141,7 +141,7 @@ export default function News() {
             </div>
 
             {/* News rows */}
-            <ul>
+            <ul className="min-w-[540px]">
               {visible.map((item, i) => {
                 const globalIdx = newsItems.indexOf(item);
                 return (

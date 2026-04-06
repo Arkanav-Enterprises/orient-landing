@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section id="contacts" ref={ref} style={{ marginBottom: 10 }}>
       <div className="container-site">
-        <div className="rounded-xl bg-[#f5f5f4]" style={{ padding: "80px 76px 100px" }}>
+        <div className="rounded-xl bg-[#f5f5f4] px-5 py-10 md:px-[76px] md:py-[80px] md:pb-[100px]">
           {/* Centered heading */}
           <motion.h3
             initial={{ opacity: 0, y: 20 }}

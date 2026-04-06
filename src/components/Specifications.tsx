@@ -103,12 +103,15 @@ export default function Specifications() {
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 px-5 py-3 bg-black/[0.04] border border-black/[0.12] rounded-xl text-sm text-near-black hover:bg-black/[0.08] hover:border-black/[0.2] transition-colors"
+              className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-2 w-full md:w-auto text-left px-5 py-3 bg-black/[0.04] border border-black/[0.12] rounded-xl text-sm text-near-black hover:bg-black/[0.08] hover:border-black/[0.2] transition-colors"
             >
-              <span>{machines[activeMachine].label}</span>
-              <span className="text-near-black/25">·</span>
-              <span className="text-near-black/40">{machines[activeMachine].subtitle}</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-1"><path d="M3 5L6 8L9 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
+              <div className="flex items-center gap-2">
+                <span className="font-medium md:font-normal">{machines[activeMachine].label}</span>
+                <span className="hidden md:inline text-near-black/25">·</span>
+                <span className="hidden md:inline text-near-black/40">{machines[activeMachine].subtitle}</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-auto md:ml-1"><path d="M3 5L6 8L9 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
+              </div>
+              <span className="md:hidden text-xs text-near-black/40">{machines[activeMachine].subtitle}</span>
             </button>
             {dropdownOpen && (
               <div className="absolute right-0 top-full mt-2 bg-[#f5f5f4] border border-black/[0.08] rounded-xl overflow-hidden z-20 min-w-[300px]">
@@ -180,9 +183,9 @@ export default function Specifications() {
             {!isChatMode ? (
               /* Specs: table + image */
               <div className="flex gap-6 h-full">
-                <div className="flex-1 min-w-0 overflow-hidden">
+                <div className="flex-1 min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {specs.map((row, i) => (
-                    <div key={row.label} className={`flex ${i % 2 === 0 ? "bg-black/[0.02]" : ""}`}>
+                    <div key={row.label} className={`flex min-w-[480px] ${i % 2 === 0 ? "bg-black/[0.02]" : ""}`}>
                       <div className="w-[120px] md:w-[200px] shrink-0 px-3 md:px-5 py-4 border-r border-black/[0.06]">
                         <span className="text-[13px] text-near-black/40">{row.label}</span>
                       </div>
