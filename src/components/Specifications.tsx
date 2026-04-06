@@ -2,6 +2,8 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const machines = [
   { label: "Orient Jet C-Series", subtitle: "600 dpi · Duplex Digital Press", img: "/images/spec-jet-c.jpg" },
@@ -233,8 +235,12 @@ export default function Specifications() {
                             ) : (
                               <div className="flex gap-3">
                                 <div className="w-8 h-8 rounded-lg bg-black/[0.06] flex items-center justify-center shrink-0 mt-1"><span className="text-near-black/40 font-semibold text-xs">O</span></div>
-                                <div className="text-lg leading-loose text-near-black/75 flex-1 max-w-2xl">
-                                  {msg.content || (<span className="inline-flex gap-1.5 py-2"><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" /><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" style={{ animationDelay: "150ms" }} /><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" style={{ animationDelay: "300ms" }} /></span>)}
+                                <div className="text-base leading-relaxed text-near-black/75 flex-1 max-w-2xl prose prose-sm prose-neutral [&_table]:w-full [&_table]:text-sm [&_th]:text-left [&_th]:font-medium [&_th]:text-near-black/60 [&_th]:pb-2 [&_th]:border-b [&_th]:border-black/10 [&_td]:py-1.5 [&_td]:pr-4 [&_td]:border-b [&_td]:border-black/[0.04] [&_strong]:text-near-black/80 [&_ul]:space-y-1 [&_ol]:space-y-1 [&_li]:text-near-black/65 [&_p]:mb-3 [&_p:last-child]:mb-0">
+                                  {msg.content ? (
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
+                                  ) : (
+                                    <span className="inline-flex gap-1.5 py-2"><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" /><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" style={{ animationDelay: "150ms" }} /><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" style={{ animationDelay: "300ms" }} /></span>
+                                  )}
                                 </div>
                               </div>
                             )}
