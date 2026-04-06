@@ -28,7 +28,7 @@ export default function Patrons() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="font-medium leading-[1.1] text-white"
+            className="font-medium leading-[1.1] text-near-black"
             style={{ fontSize: "clamp(28px, 3.2vw, 50px)", maxWidth: 500 }}
           >
             Trusted Across 60+ Countries
@@ -37,7 +37,7 @@ export default function Patrons() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-[18px] font-medium text-white/40"
+            className="text-[18px] font-medium text-near-black/40"
             style={{ maxWidth: 380 }}
           >
             Imprinting new standards in printing and packaging machinery across the world.
@@ -55,15 +55,15 @@ export default function Patrons() {
         <div className="space-y-3 mb-16 overflow-hidden">
           <div className="flex gap-3 animate-scroll-left">
             {[...Array(14)].map((_, i) => (
-              <div key={i} className="shrink-0 bg-[#111] rounded-[4px] flex items-center justify-center" style={{ width: 160, height: 80 }}>
-                <span className="text-white/8 text-[11px] font-medium">Client Logo</span>
+              <div key={i} className="shrink-0 bg-[#f5f5f4] rounded-[4px] flex items-center justify-center" style={{ width: 160, height: 80 }}>
+                <span className="text-near-black/10 text-[11px] font-medium">Client Logo</span>
               </div>
             ))}
           </div>
           <div className="flex gap-3 animate-scroll-right">
             {[...Array(14)].map((_, i) => (
-              <div key={i} className="shrink-0 bg-[#111] rounded-[4px] flex items-center justify-center" style={{ width: 160, height: 80 }}>
-                <span className="text-white/8 text-[11px] font-medium">Client Logo</span>
+              <div key={i} className="shrink-0 bg-[#f5f5f4] rounded-[4px] flex items-center justify-center" style={{ width: 160, height: 80 }}>
+                <span className="text-near-black/10 text-[11px] font-medium">Client Logo</span>
               </div>
             ))}
           </div>
@@ -79,7 +79,7 @@ export default function Patrons() {
           {countries.map((country) => (
             <span
               key={country}
-              className="text-[13px] font-medium text-white/30 px-3 py-1.5 border border-white/8 rounded-[4px]"
+              className="text-[13px] font-medium text-near-black/40 px-3 py-1.5 border border-black/8 rounded-[4px]"
             >
               {country}
             </span>

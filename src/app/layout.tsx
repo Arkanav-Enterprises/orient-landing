@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins, Geist } from "next/font/google";
+import { Roboto_Flex } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-const geist = Geist({
-  variable: "--font-geist",
+const robotoFlex = Roboto_Flex({
+  variable: "--font-roboto-flex",
   subsets: ["latin"],
 });
 
@@ -25,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${geist.variable} antialiased`}>
-      <body className="bg-black text-white">{children}</body>
+    <html lang="en" className={`${robotoFlex.variable} antialiased`}>
+      <body className="bg-white text-near-black">{children}</body>
     </html>
   );
 }

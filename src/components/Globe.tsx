@@ -115,8 +115,8 @@ export default function Globe({ className }: { className?: string }) {
 
       projection.rotate(rotation);
 
-      // Clear — dark background
-      ctx.fillStyle = "#000000";
+      // Clear — white background
+      ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, w, h);
 
       // Globe rim glow
@@ -127,20 +127,20 @@ export default function Globe({ className }: { className?: string }) {
         center[0], center[1], radius * 1.15
       );
       grad.addColorStop(0, "rgba(222,33,39,0.06)");
-      grad.addColorStop(1, "rgba(0,0,0,0)");
+      grad.addColorStop(1, "rgba(255,255,255,0)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
 
       // Ocean
       ctx.beginPath();
       path({ type: "Sphere" } as any);
-      ctx.fillStyle = "rgba(20,20,19,1)";
+      ctx.fillStyle = "rgba(221,221,220,1)";
       ctx.fill();
 
       // Graticule
       ctx.beginPath();
       path(graticule);
-      ctx.strokeStyle = "rgba(255,255,255,0.04)";
+      ctx.strokeStyle = "rgba(28,27,29,0.06)";
       ctx.lineWidth = 0.5;
       ctx.stroke();
 
@@ -156,8 +156,8 @@ export default function Globe({ className }: { className?: string }) {
           ctx.fill();
           ctx.stroke();
         } else {
-          ctx.fillStyle = "rgba(255,255,255,0.06)";
-          ctx.strokeStyle = "rgba(255,255,255,0.08)";
+          ctx.fillStyle = "rgba(28,27,29,0.08)";
+          ctx.strokeStyle = "rgba(28,27,29,0.12)";
           ctx.lineWidth = 0.3;
           ctx.fill();
           ctx.stroke();
@@ -192,14 +192,14 @@ export default function Globe({ className }: { className?: string }) {
 
         // Label
         ctx.font = "500 13px Poppins, sans-serif";
-        ctx.fillStyle = "rgba(255,255,255,0.7)";
+        ctx.fillStyle = "rgba(28,27,29,0.7)";
         ctx.fillText(focusCountry.name, px + 10, py + 4);
       }
 
       // Rim border
       ctx.beginPath();
       path({ type: "Sphere" } as any);
-      ctx.strokeStyle = "rgba(255,255,255,0.08)";
+      ctx.strokeStyle = "rgba(28,27,29,0.12)";
       ctx.lineWidth = 1;
       ctx.stroke();
 

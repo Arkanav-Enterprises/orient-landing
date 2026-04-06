@@ -111,10 +111,10 @@ export default function ChatWidget() {
               width: 460,
               maxWidth: "calc(100vw - 2rem)",
               height: "min(640px, calc(100vh - 4rem))",
-              background: "#0a0a0a",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#f5f5f4",
+              border: "1px solid rgba(0,0,0,0.08)",
               borderRadius: 16,
-              boxShadow: "0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
+              boxShadow: "0 24px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.04)",
             }}
           >
             {/* Header */}
@@ -147,20 +147,20 @@ export default function ChatWidget() {
             <div ref={scrollRef} className="flex-1 overflow-y-auto" style={{ padding: 24 }}>
               {messages.length === 0 && (
                 <div className="py-4">
-                  <div className="bg-[#141414] rounded-xl p-6 mb-6" style={{ border: "1px solid rgba(255,255,255,0.04)" }}>
-                    <p className="text-[15px] font-medium text-white/50 leading-[1.5] mb-1">
+                  <div className="bg-[#dddddc] rounded-xl p-6 mb-6" style={{ border: "1px solid rgba(0,0,0,0.04)" }}>
+                    <p className="text-[15px] font-medium text-near-black/50 leading-[1.5] mb-1">
                       Hi! I can answer questions about Orient Jet C-Series and L&P Series digital presses — specs, configurations, and more.
                     </p>
                   </div>
 
-                  <p className="text-[12px] font-semibold text-white/20 uppercase tracking-wider mb-3">Try asking</p>
+                  <p className="text-[12px] font-semibold text-near-black/30 uppercase tracking-wider mb-3">Try asking</p>
                   <div className="grid grid-cols-2 gap-2">
                     {suggestions.map((s) => (
                       <button
                         key={s}
                         onClick={() => { setInput(s); }}
-                        className="text-left text-[13px] font-medium text-white/40 hover:text-white/70 p-3 bg-[#111] hover:bg-[#161616] rounded-lg transition-colors"
-                        style={{ border: "1px solid rgba(255,255,255,0.04)" }}
+                        className="text-left text-[13px] font-medium text-near-black/40 hover:text-near-black/70 p-3 bg-[#f5f5f4] hover:bg-[#dddddc] rounded-lg transition-colors"
+                        style={{ border: "1px solid rgba(0,0,0,0.06)" }}
                       >
                         {s}
                       </button>
@@ -178,16 +178,16 @@ export default function ChatWidget() {
                         maxWidth: "85%",
                         padding: "12px 16px",
                         borderRadius: msg.role === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
-                        background: msg.role === "user" ? "#de2127" : "#141414",
-                        color: msg.role === "user" ? "#fff" : "rgba(255,255,255,0.8)",
-                        border: msg.role === "user" ? "none" : "1px solid rgba(255,255,255,0.04)",
+                        background: msg.role === "user" ? "#de2127" : "#dddddc",
+                        color: msg.role === "user" ? "#fff" : "rgba(28,27,29,0.8)",
+                        border: msg.role === "user" ? "none" : "1px solid rgba(0,0,0,0.04)",
                       }}
                     >
                       {msg.content || (
                         <span className="inline-flex gap-1.5 py-1">
-                          <span className="w-2 h-2 bg-white/20 rounded-full animate-pulse" />
-                          <span className="w-2 h-2 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: "0.15s" }} />
-                          <span className="w-2 h-2 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: "0.3s" }} />
+                          <span className="w-2 h-2 bg-black/20 rounded-full animate-pulse" />
+                          <span className="w-2 h-2 bg-black/20 rounded-full animate-pulse" style={{ animationDelay: "0.15s" }} />
+                          <span className="w-2 h-2 bg-black/20 rounded-full animate-pulse" style={{ animationDelay: "0.3s" }} />
                         </span>
                       )}
                     </div>
@@ -197,7 +197,7 @@ export default function ChatWidget() {
             </div>
 
             {/* Input area */}
-            <div className="shrink-0" style={{ padding: "16px 24px 20px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+            <div className="shrink-0" style={{ padding: "16px 24px 20px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
               <form onSubmit={(e) => { e.preventDefault(); send(); }} className="flex gap-3">
                 <input
                   type="text"
@@ -205,7 +205,7 @@ export default function ChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask a question..."
                   disabled={streaming}
-                  className="flex-1 h-[48px] px-4 bg-[#141414] border border-white/6 rounded-xl text-[15px] font-medium text-white placeholder:text-white/20 outline-none focus:border-white/15 transition-colors disabled:opacity-50"
+                  className="flex-1 h-[48px] px-4 bg-[#dddddc] border border-black/6 rounded-xl text-[15px] font-medium text-near-black placeholder:text-black/25 outline-none focus:border-black/15 transition-colors disabled:opacity-50"
                 />
                 <button
                   type="submit"

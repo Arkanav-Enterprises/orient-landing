@@ -15,7 +15,7 @@ export default function ScrollRevealText({ text }: { text: string }) {
   return (
     <p
       ref={containerRef}
-      className="font-medium leading-[1.35] text-white"
+      className="font-medium leading-[1.35] text-near-black"
       style={{ fontSize: "clamp(22px, 2vw, 30px)" }}
     >
       {words.map((word, i) => (

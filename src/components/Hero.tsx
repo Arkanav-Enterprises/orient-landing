@@ -43,7 +43,7 @@ export default function Hero() {
         {/* Top row */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 flex-1">
           {/* Animated headline */}
-          <div className="flex-1" style={{ minHeight: 280 }}>
+          <div className="flex-1" style={{ minHeight: 340 }}>
             <AnimatePresence mode="wait">
               <motion.h1
                 key={index}
@@ -51,7 +51,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6 }}
-                className="text-white font-medium leading-[1.0] tracking-[-0.01em] whitespace-pre-line"
+                className="text-near-black font-medium leading-[1.0] tracking-[-0.01em] whitespace-pre-line"
                 style={{ fontSize: "clamp(40px, 5vw, 70px)" }}
               >
                 {slide.headline}
@@ -68,7 +68,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-[18px] font-bold leading-[1.2] text-white/80"
+                className="text-[18px] font-bold leading-[1.2] text-near-black/80"
               >
                 {slide.subtitle}
               </motion.p>
@@ -77,7 +77,7 @@ export default function Hero() {
         </div>
 
         {/* Slide indicators */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex gap-2 mb-6 mt-8">
           {heroSlides.map((_, i) => (
             <button
               key={i}
@@ -85,7 +85,7 @@ export default function Hero() {
               className="h-[3px] rounded-full transition-all duration-500"
               style={{
                 width: i === index ? 48 : 24,
-                background: i === index ? "#fff" : "rgba(255,255,255,0.2)",
+                background: i === index ? "#1C1B1D" : "rgba(28,27,29,0.2)",
               }}
             />
           ))}
@@ -93,10 +93,10 @@ export default function Hero() {
 
         {/* Product placeholder */}
         <div
-          className="bg-[#141414] w-full flex items-end justify-center overflow-hidden"
+          className="bg-[#dddddc] w-full flex items-end justify-center overflow-hidden"
           style={{ height: "clamp(250px, 40vh, 500px)", borderRadius: "12px 12px 0 0" }}
         >
-          <span className="text-white/10 text-[14px] font-medium mb-12">
+          <span className="text-near-black/10 text-[14px] font-medium mb-12">
             Orient Press — Product Image
           </span>
         </div>
@@ -107,10 +107,10 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center"
+          className="w-12 h-12 rounded-full bg-black/10 backdrop-blur-sm flex items-center justify-center"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M8 2V14M8 14L3 9M8 14L13 9" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8 2V14M8 14L3 9M8 14L13 9" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.div>
       </a>

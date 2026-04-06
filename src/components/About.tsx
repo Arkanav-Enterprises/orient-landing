@@ -19,7 +19,7 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.1 }}
             style={{ width: 370, flexShrink: 0, paddingTop: 10 }}
           >
-            <p className="text-[18px] font-medium leading-[1.4] text-white/50">
+            <p className="text-[18px] font-medium leading-[1.4] text-near-black/50">
               The name Orient comes from the rising sun — symbolizing new beginnings, energy, and the relentless pursuit of excellence in every machine we build.
             </p>
           </motion.div>
@@ -30,7 +30,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
-              className="font-medium leading-[1.1] text-white mb-12"
+              className="font-medium leading-[1.1] text-near-black mb-12"
               style={{ fontSize: "clamp(32px, 3.2vw, 50px)" }}
             >
               Meet Orient

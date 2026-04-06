@@ -35,19 +35,19 @@ export default function NewsPage() {
       <section style={{ paddingTop: 80 + 60, paddingBottom: 120 }}>
         <div className="container-site">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-8 text-[14px] font-medium text-white/20">
-            <Link href="/" className="hover:text-white/40 transition-colors">Main</Link>
+          <div className="flex items-center gap-2 mb-8 text-[14px] font-medium text-near-black/20">
+            <Link href="/" className="hover:text-near-black/40 transition-colors">Main</Link>
             <span>&gt;</span>
-            <span className="text-white/35">News & Events</span>
+            <span className="text-near-black/35">News & Events</span>
           </div>
 
           {/* Header */}
           <div className="flex items-end justify-between mb-12">
-            <h1 className="font-medium text-white" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>
+            <h1 className="font-medium text-near-black" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>
               News & Events
             </h1>
             <div className="relative hidden sm:block" style={{ width: 280 }}>
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 text-white/25" width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <svg className="absolute left-4 top-1/2 -translate-y-1/2 text-near-black/30" width="18" height="18" viewBox="0 0 20 20" fill="none">
                 <path d="M8.5 2C12.09 2 15 4.91 15 8.5C15 10.115 14.41 11.59 13.435 12.728L17.854 17.147L17.146 17.854L12.728 13.435C11.59 14.41 10.115 15 8.5 15C4.91 15 2 12.09 2 8.5C2 4.91 4.91 2 8.5 2ZM8.5 3C5.462 3 3 5.462 3 8.5C3 11.538 5.462 14 8.5 14C11.538 14 14 11.538 14 8.5C14 5.462 11.538 3 8.5 3Z" fill="currentColor" />
               </svg>
               <input
@@ -55,7 +55,7 @@ export default function NewsPage() {
                 placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-[48px] pl-12 pr-4 bg-[#0a0a0a] border border-white/8 rounded-xl text-[15px] font-medium text-white placeholder:text-white/20 outline-none focus:border-white/20 transition-colors"
+                className="w-full h-[48px] pl-12 pr-4 bg-white border border-black/10 rounded-xl text-[15px] font-medium text-near-black placeholder:text-near-black/20 outline-none focus:border-black/20 transition-colors"
               />
             </div>
           </div>
@@ -68,9 +68,9 @@ export default function NewsPage() {
                 onClick={() => setActiveCategory(cat)}
                 className="text-[14px] font-medium px-5 py-2.5 rounded-xl transition-all"
                 style={{
-                  background: activeCategory === cat ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.02)",
-                  color: activeCategory === cat ? "#fff" : "rgba(255,255,255,0.3)",
-                  border: `1px solid ${activeCategory === cat ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.04)"}`,
+                  background: activeCategory === cat ? "rgba(0,0,0,0.06)" : "rgba(0,0,0,0.02)",
+                  color: activeCategory === cat ? "#1C1B1D" : "rgba(28,27,29,0.4)",
+                  border: `1px solid ${activeCategory === cat ? "rgba(0,0,0,0.12)" : "rgba(0,0,0,0.04)"}`,
                 }}
               >
                 {cat}
@@ -86,25 +86,25 @@ export default function NewsPage() {
                 href="/news"
                 className="group overflow-hidden transition-all hover:translate-y-[-2px]"
                 style={{
-                  background: "#0a0a0a",
-                  border: "1px solid rgba(255,255,255,0.05)",
+                  background: "#ffffff",
+                  border: "1px solid rgba(0,0,0,0.08)",
                   borderRadius: 16,
                 }}
               >
                 {/* Image area — padded inside card like Hajster */}
                 <div style={{ padding: "16px 16px 0" }}>
                   <div
-                    className="bg-[#151515] flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden"
+                    className="bg-[#dddddc] flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden"
                     style={{ height: 260, borderRadius: 12 }}
                   >
-                    <span className="text-white/4 text-[12px] font-medium">News Image</span>
+                    <span className="text-near-black/10 text-[12px] font-medium">News Image</span>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div style={{ padding: "20px 20px 24px" }}>
                   <h3
-                    className="text-[18px] font-medium text-white leading-[1.35] group-hover:text-cream transition-colors mb-5"
+                    className="text-[18px] font-medium text-near-black leading-[1.35] group-hover:text-near-black transition-colors mb-5"
                     style={{ minHeight: 48 }}
                   >
                     {item.title}
@@ -115,14 +115,14 @@ export default function NewsPage() {
                     <span
                       className="text-[12px] font-semibold px-3 py-1.5"
                       style={{
-                        background: "rgba(255,252,227,0.06)",
-                        color: "rgba(255,252,227,0.6)",
+                        background: "rgba(0,0,0,0.05)",
+                        color: "rgba(28,27,29,0.6)",
                         borderRadius: 8,
                       }}
                     >
                       {item.category}
                     </span>
-                    <span className="text-[13px] font-medium text-white/20">{item.date}</span>
+                    <span className="text-[13px] font-medium text-near-black/20">{item.date}</span>
                   </div>
                 </div>
               </Link>
@@ -130,7 +130,7 @@ export default function NewsPage() {
           </div>
 
           {filtered.length === 0 && (
-            <p className="text-[16px] font-medium text-white/25 py-20 text-center">No results found.</p>
+            <p className="text-[16px] font-medium text-near-black/30 py-20 text-center">No results found.</p>
           )}
         </div>
       </section>

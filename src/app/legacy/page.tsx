@@ -19,9 +19,9 @@ export default function LegacyPage() {
     <PageShell title="Our Legacy" subtitle="From a single workshop to the world's most prolific supplier of printing machinery.">
       <div className="space-y-0">
         {timeline.map((t, i) => (
-          <div key={t.year} className="flex gap-8 md:gap-16 border-b border-white/[0.06]" style={{ padding: "40px 0" }}>
-            <span className="text-[48px] font-medium text-white/20 shrink-0" style={{ width: 140 }}>{t.year}</span>
-            <p className="text-[18px] font-medium text-white/60 leading-[1.5] pt-3">{t.event}</p>
+          <div key={t.year} className="flex gap-8 md:gap-16 border-b border-black/[0.06]" style={{ padding: "40px 0" }}>
+            <span className="text-[48px] font-medium text-near-black/20 shrink-0" style={{ width: 140 }}>{t.year}</span>
+            <p className="text-[18px] font-medium text-near-black/60 leading-[1.5] pt-3">{t.event}</p>
           </div>
         ))}
       </div>

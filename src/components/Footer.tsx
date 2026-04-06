@@ -60,24 +60,24 @@ const footerColumns = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06]" style={{ marginTop: 80 }}>
+    <footer className="border-t border-black/[0.06]" style={{ marginTop: 80 }}>
       <div className="container-site" style={{ paddingTop: 80, paddingBottom: 64 }}>
         {/* Top: logo + newsletter */}
         <div className="flex flex-col md:flex-row md:justify-between gap-12 mb-20">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="w-9 h-9 rounded-sm bg-orient-red flex items-center justify-center text-white font-semibold text-base">O</div>
-              <span className="text-[16px] font-medium text-white">Orient</span>
+              <span className="text-[16px] font-medium text-near-black">Orient</span>
             </div>
-            <p className="text-[14px] font-medium text-white/25">Est. 1946 — The Printers House</p>
+            <p className="text-[14px] font-medium text-near-black/30">Est. 1946 — The Printers House</p>
           </div>
 
           <div style={{ maxWidth: 440 }}>
-            <p className="text-[18px] font-medium text-white/70 mb-4">Stay Updated — Subscribe to Our Newsletter.</p>
+            <p className="text-[18px] font-medium text-near-black/70 mb-4">Stay Updated — Subscribe to Our Newsletter.</p>
             <form className="relative" onSubmit={(e) => e.preventDefault()}>
               <input type="email" placeholder="Your Email" className="input-field pr-16" />
-              <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-cream flex items-center justify-center" aria-label="Subscribe">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-near-black flex items-center justify-center" aria-label="Subscribe">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>
             </form>
           </div>
@@ -87,11 +87,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 mb-16">
           {footerColumns.map((col) => (
             <div key={col.title}>
-              <h4 className="text-[14px] font-semibold text-white/50 uppercase tracking-wider mb-5">{col.title}</h4>
+              <h4 className="text-[14px] font-semibold text-near-black/50 uppercase tracking-wider mb-5">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-[15px] font-medium text-white/35 hover:text-white/70 transition-colors">
+                    <Link href={link.href} className="text-[15px] font-medium text-near-black/35 hover:text-near-black/70 transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -102,12 +102,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="pt-8 border-t border-black/[0.06] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex flex-wrap items-center gap-6">
-            {["Fb", "Ig", "Li"].map((s) => <a key={s} href="#" className="text-[14px] font-medium text-white/25 hover:text-white/50 transition-colors">{s}</a>)}
-            <span className="text-[14px] font-medium text-white/25">tphho@tphorient.com</span>
+            {["Fb", "Ig", "Li"].map((s) => <a key={s} href="#" className="text-[14px] font-medium text-near-black/30 hover:text-near-black/50 transition-colors">{s}</a>)}
+            <span className="text-[14px] font-medium text-near-black/30">tphho@tphorient.com</span>
           </div>
-          <span className="text-[14px] font-medium text-white/25">&copy; {new Date().getFullYear()} Orient — The Printers House</span>
+          <span className="text-[14px] font-medium text-near-black/30">&copy; {new Date().getFullYear()} Orient — The Printers House</span>
         </div>
       </div>
     </footer>

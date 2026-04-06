@@ -52,7 +52,7 @@ export default function Benefits() {
         {/* Background */}
         <motion.div
           className="absolute inset-0"
-          animate={{ backgroundColor: `hsl(0, 0%, ${10 + activeIndex * 5}%)` }}
+          animate={{ backgroundColor: `hsl(0, 0%, ${97 - activeIndex * 3}%)` }}
           transition={{ duration: 0.5 }}
         />
 
@@ -64,7 +64,7 @@ export default function Benefits() {
           {/* Left title — always visible */}
           <div style={{ width: "40%", paddingRight: 60, flexShrink: 0 }}>
             <h2
-              className="font-medium leading-[1.3] text-cream"
+              className="font-medium leading-[1.3] text-near-black"
               style={{ fontSize: "clamp(24px, 2.5vw, 50px)" }}
             >
               Even More Reasons to Choose Orient for Your Production
@@ -85,7 +85,7 @@ export default function Benefits() {
                   exit={{ opacity: 0, y: -40 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
-                  <div className="bg-white rounded-xl" style={{ padding: 40 }}>
+                  <div className="bg-[#dddddc] rounded-xl" style={{ padding: 40 }}>
                     <h3 className="text-[28px] font-medium leading-[1.3] text-near-black mb-5">
                       {benefits[activeIndex].title}
                     </h3>

@@ -16,11 +16,11 @@ export default function Products() {
   return (
     <section id="catalog" ref={ref} style={{ marginBottom: 10 }}>
       <div className="container-site">
-        <div className="rounded-xl bg-[#111]" style={{ padding: "76px 76px 100px" }}>
+        <div className="rounded-xl bg-[#f5f5f4]" style={{ padding: "76px 76px 100px" }}>
           {/* Top row */}
           <div className="flex items-center justify-between mb-16">
-            <span className="text-[16px] font-medium text-white/25">Since 1946</span>
-            <span className="text-[24px] font-medium text-white tracking-[0.02em]">Orient</span>
+            <span className="text-[16px] font-medium text-near-black/30">Since 1946</span>
+            <span className="text-[24px] font-medium text-near-black tracking-[0.02em]">Orient</span>
           </div>
 
           {/* 3 column grid — 19px gap like Hajster */}
@@ -33,18 +33,18 @@ export default function Products() {
                 transition={{ duration: 0.6, delay: 0.15 + i * 0.1 }}
               >
                 {/* Image card */}
-                <div className="relative bg-[#222] rounded-xl overflow-hidden flex items-end p-6" style={{ height: 403 }}>
+                <div className="relative bg-[#dddddc] rounded-xl overflow-hidden flex items-end p-6" style={{ height: 403 }}>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/5 text-[14px] font-medium">Product Image</span>
+                    <span className="text-near-black/10 text-[14px] font-medium">Product Image</span>
                   </div>
                   <div className="relative z-10">
-                    <p className="text-[14px] font-medium text-cream/50 mb-1">{product.category}</p>
-                    <p className="text-[28px] font-medium leading-[1.2] text-cream">{product.name}</p>
+                    <p className="text-[14px] font-medium text-near-black/50 mb-1">{product.category}</p>
+                    <p className="text-[28px] font-medium leading-[1.2] text-near-black">{product.name}</p>
                   </div>
                 </div>
 
                 {/* Button */}
-                <button className="btn btn-arr text-[16px] mt-3 w-full bg-transparent text-white border-white/15 hover:border-white/30 rounded-xl">
+                <button className="btn btn-arr text-[16px] mt-3 w-full bg-transparent text-near-black border-black/15 hover:border-black/30 rounded-xl">
                   <span>More Details</span>
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

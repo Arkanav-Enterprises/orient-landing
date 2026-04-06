@@ -18,7 +18,7 @@ export default function Legacy() {
     <section id="news" ref={sectionRef} style={{ marginTop: 200, marginBottom: 200 }}>
       <div className="container-site">
         <h2
-          className="font-medium leading-[1.1] text-white mb-20"
+          className="font-medium leading-[1.1] text-near-black mb-20"
           style={{ fontSize: "clamp(28px, 3.2vw, 50px)" }}
         >
           Our History
@@ -58,7 +58,7 @@ function ScrollRevealLine({ sectionRef }: { sectionRef: React.RefObject<HTMLDivE
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: caretSvg("rgba(255,255,255,0.06)"),
+          backgroundImage: caretSvg("rgba(28,27,29,0.08)"),
           backgroundSize: "14px 18px",
           backgroundRepeat: "repeat-y",
           backgroundPosition: "center top",
@@ -72,7 +72,7 @@ function ScrollRevealLine({ sectionRef }: { sectionRef: React.RefObject<HTMLDivE
         <div
           className="w-full h-[200%]"
           style={{
-            backgroundImage: caretSvg("rgba(255,255,255,0.5)"),
+            backgroundImage: caretSvg("rgba(28,27,29,0.5)"),
             backgroundSize: "14px 18px",
             backgroundRepeat: "repeat-y",
             backgroundPosition: "center top",
@@ -108,7 +108,7 @@ function MilestoneRow({
     <div ref={rowRef} className="relative overflow-hidden" style={{ paddingTop: 48, paddingBottom: 48 }}>
       {/* White overlay that slides away — Hajster's reveal mechanic */}
       <motion.div
-        className="absolute inset-0 bg-black z-10 pointer-events-none"
+        className="absolute inset-0 bg-white z-10 pointer-events-none"
         style={{ y: overlayY, opacity: 0.85 }}
       />
 
@@ -116,17 +116,17 @@ function MilestoneRow({
       <div className="flex gap-8 md:gap-12 items-start">
         {/* Year column */}
         <div className="shrink-0" style={{ width: 200 }}>
-          <span className="text-[18px] font-medium text-white/40 block mb-1">
+          <span className="text-[18px] font-medium text-near-black/40 block mb-1">
             {milestone.label}
           </span>
-          <span className="font-medium leading-[1.0] text-white block" style={{ fontSize: 70 }}>
+          <span className="font-medium leading-[1.0] text-near-black block" style={{ fontSize: 70 }}>
             {milestone.year}
           </span>
         </div>
 
         {/* Event text */}
         <div className="flex-1 pt-6" style={{ maxWidth: 400 }}>
-          <p className="text-[18px] font-medium leading-[1.4] text-white/70">
+          <p className="text-[18px] font-medium leading-[1.4] text-near-black/70">
             {milestone.event}
           </p>
         </div>

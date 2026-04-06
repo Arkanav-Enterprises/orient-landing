@@ -25,8 +25,8 @@ export default function ProductPage({
       <div className="flex flex-col lg:flex-row gap-16">
         {/* Left — image + CTA */}
         <div className="lg:w-[45%] shrink-0">
-          <div className="bg-[#111] rounded-[6px] flex items-center justify-center" style={{ height: 500 }}>
-            <span className="text-white/5 text-[14px] font-medium">Product Image</span>
+          <div className="bg-[#f5f5f4] rounded-[6px] flex items-center justify-center" style={{ height: 500 }}>
+            <span className="text-near-black/10 text-[14px] font-medium">Product Image</span>
           </div>
           <div className="flex gap-3 mt-6">
             <Link href="/contact" className="btn btn-cream text-[16px] h-[48px] flex-1 justify-center">
@@ -40,21 +40,21 @@ export default function ProductPage({
 
         {/* Right — details */}
         <div className="flex-1">
-          <p className="text-[18px] font-medium text-white/60 leading-[1.5] mb-10">{description}</p>
+          <p className="text-[18px] font-medium text-near-black/60 leading-[1.5] mb-10">{description}</p>
 
           {speed && (
-            <div className="mb-10 p-6 bg-[#111] rounded-[6px]">
-              <span className="text-[14px] font-medium text-white/30 block mb-1">Maximum Speed</span>
-              <span className="text-[36px] font-medium text-cream">{speed}</span>
+            <div className="mb-10 p-6 bg-[#f5f5f4] rounded-[6px]">
+              <span className="text-[14px] font-medium text-near-black/40 block mb-1">Maximum Speed</span>
+              <span className="text-[36px] font-medium text-near-black">{speed}</span>
             </div>
           )}
 
           {configurations && configurations.length > 0 && (
             <div className="mb-10">
-              <h3 className="text-[20px] font-medium text-white mb-4">Configurations</h3>
+              <h3 className="text-[20px] font-medium text-near-black mb-4">Configurations</h3>
               <div className="flex flex-wrap gap-2">
                 {configurations.map((c) => (
-                  <span key={c} className="text-[14px] font-medium text-white/40 px-4 py-2 border border-white/10 rounded-[4px]">
+                  <span key={c} className="text-[14px] font-medium text-near-black/40 px-4 py-2 border border-black/10 rounded-[4px]">
                     {c}
                   </span>
                 ))}
@@ -62,11 +62,11 @@ export default function ProductPage({
             </div>
           )}
 
-          <h3 className="text-[20px] font-medium text-white mb-4">Key Features</h3>
+          <h3 className="text-[20px] font-medium text-near-black mb-4">Key Features</h3>
           <ul className="space-y-3 mb-10">
             {features.map((f) => (
-              <li key={f} className="text-[16px] font-medium text-white/50 flex gap-3">
-                <span className="text-cream shrink-0">→</span>
+              <li key={f} className="text-[16px] font-medium text-near-black/50 flex gap-3">
+                <span className="text-near-black shrink-0">→</span>
                 {f}
               </li>
             ))}
@@ -74,12 +74,12 @@ export default function ProductPage({
 
           {specs.length > 0 && (
             <>
-              <h3 className="text-[20px] font-medium text-white mb-4">Specifications</h3>
-              <div className="border border-white/8 rounded-[6px] overflow-hidden">
+              <h3 className="text-[20px] font-medium text-near-black mb-4">Specifications</h3>
+              <div className="border border-black/8 rounded-[6px] overflow-hidden">
                 {specs.map((s, i) => (
-                  <div key={s.label} className={`flex justify-between p-4 ${i % 2 === 0 ? "bg-white/[0.02]" : ""}`}>
-                    <span className="text-[15px] font-medium text-white/40">{s.label}</span>
-                    <span className="text-[15px] font-medium text-white/70">{s.value}</span>
+                  <div key={s.label} className={`flex justify-between p-4 ${i % 2 === 0 ? "bg-black/[0.02]" : ""}`}>
+                    <span className="text-[15px] font-medium text-near-black/40">{s.label}</span>
+                    <span className="text-[15px] font-medium text-near-black/70">{s.value}</span>
                   </div>
                 ))}
               </div>

@@ -90,7 +90,7 @@ export default function Specifications() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="font-medium leading-[1.1] text-white"
+            className="font-medium leading-[1.1] text-near-black"
             style={{ fontSize: "clamp(28px, 3.2vw, 50px)" }}
           >
             Technical Specifications
@@ -100,23 +100,23 @@ export default function Specifications() {
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 px-5 py-3 bg-white/[0.08] border border-white/[0.12] rounded-xl text-sm text-white hover:bg-white/[0.12] hover:border-white/[0.2] transition-colors"
+              className="flex items-center gap-2 px-5 py-3 bg-black/[0.04] border border-black/[0.12] rounded-xl text-sm text-near-black hover:bg-black/[0.08] hover:border-black/[0.2] transition-colors"
             >
               <span>{machines[activeMachine].label}</span>
-              <span className="text-white/25">·</span>
-              <span className="text-white/40">{machines[activeMachine].subtitle}</span>
+              <span className="text-near-black/25">·</span>
+              <span className="text-near-black/40">{machines[activeMachine].subtitle}</span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-1"><path d="M3 5L6 8L9 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
             </button>
             {dropdownOpen && (
-              <div className="absolute right-0 top-full mt-2 bg-[#111] border border-white/[0.08] rounded-xl overflow-hidden z-20 min-w-[300px]">
+              <div className="absolute right-0 top-full mt-2 bg-[#f5f5f4] border border-black/[0.08] rounded-xl overflow-hidden z-20 min-w-[300px]">
                 {machines.map((m, i) => (
                   <button
                     key={i}
                     onClick={() => { setActiveMachine(i); setDropdownOpen(false); }}
-                    className={`w-full text-left px-5 py-3 transition-colors ${activeMachine === i ? "bg-white/[0.06] text-white" : "text-white/50 hover:bg-white/[0.03]"}`}
+                    className={`w-full text-left px-5 py-3 transition-colors ${activeMachine === i ? "bg-black/[0.06] text-near-black" : "text-near-black/50 hover:bg-black/[0.03]"}`}
                   >
                     <span className="text-sm block">{m.label}</span>
-                    <span className="text-xs text-white/30">{m.subtitle}</span>
+                    <span className="text-xs text-near-black/40">{m.subtitle}</span>
                   </button>
                 ))}
               </div>
@@ -135,13 +135,13 @@ export default function Specifications() {
               <button
                 onClick={() => setIsChatMode(!isChatMode)}
                 className="relative btn btn-outline text-sm h-[42px] w-full justify-center rounded-xl overflow-hidden"
-                style={{ background: isChatMode ? "rgba(255,255,255,0.06)" : "transparent", border: "none" }}
+                style={{ background: isChatMode ? "rgba(0,0,0,0.04)" : "transparent", border: "none" }}
               >
                 <span className="absolute inset-0 rounded-xl pointer-events-none" style={{ padding: 1, background: "linear-gradient(135deg, rgba(222,33,39,0.5), rgba(222,33,39,0.12))", WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)", WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
                 <span className="relative z-10">{isChatMode ? "Back to Specs" : "Chat with Orient AI"}</span>
               </button>
               <a href="/contact" className="btn btn-cream text-sm h-[42px] w-full justify-center rounded-xl">Request Quote</a>
-              <a href="/downloads" className="flex items-center gap-1.5 text-sm text-white/40 hover:text-white/70 transition-colors justify-center mt-1">
+              <a href="/downloads" className="flex items-center gap-1.5 text-sm text-near-black/40 hover:text-near-black/70 transition-colors justify-center mt-1">
                 Download Catalog
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </a>
@@ -155,18 +155,18 @@ export default function Specifications() {
               <div className="flex gap-6 h-full">
                 <div className="flex-1 min-w-0 overflow-hidden">
                   {specs.map((row, i) => (
-                    <div key={row.label} className={`flex ${i % 2 === 0 ? "bg-white/[0.015]" : ""}`}>
-                      <div className="w-[200px] shrink-0 px-5 py-4 border-r border-white/[0.03]">
-                        <span className="text-[15px] text-white/35">{row.label}</span>
+                    <div key={row.label} className={`flex ${i % 2 === 0 ? "bg-black/[0.02]" : ""}`}>
+                      <div className="w-[200px] shrink-0 px-5 py-4 border-r border-black/[0.06]">
+                        <span className="text-[13px] text-near-black/40">{row.label}</span>
                       </div>
                       <div className="flex-1 px-5 py-4">
-                        <span className="text-base text-white/80">{row.values[activeMachine]}</span>
+                        <span className="text-[14px] text-near-black/75">{row.values[activeMachine]}</span>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="hidden xl:flex w-[45%] shrink-0 bg-[#0e0e0e] border border-white/[0.04] rounded-xl items-center justify-center">
-                  <span className="text-white/[0.06] text-sm">Product Image</span>
+                <div className="hidden xl:flex w-[45%] shrink-0 bg-[#f5f5f4] border border-black/[0.04] rounded-xl items-center justify-center">
+                  <span className="text-near-black/10 text-sm">Product Image</span>
                 </div>
               </div>
             ) : (
@@ -174,34 +174,34 @@ export default function Specifications() {
               <div className="flex flex-col h-full">
                 {chatMessages.length === 0 ? (
                   <div className="flex-1 flex flex-col items-center justify-center px-4">
-                    <h3 className="text-3xl font-medium text-white mb-10 text-center">What can we help you with?</h3>
+                    <h3 className="text-3xl font-medium text-near-black mb-10 text-center">What can we help you with?</h3>
                     <div className="w-full max-w-2xl mb-8">
                       <form onSubmit={(e) => { e.preventDefault(); sendChat(); }} className="relative">
-                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask about Orient Jet presses..." rows={3} disabled={chatStreaming} className="w-full px-6 py-5 pr-16 bg-[#1a1a1a] border border-white/[0.06] rounded-2xl text-lg text-white placeholder:text-white/25 outline-none resize-none disabled:opacity-50 focus:border-white/[0.12] transition-colors" />
-                        <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-white/[0.1] hover:bg-white/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask about Orient Jet presses..." rows={3} disabled={chatStreaming} className="w-full px-6 py-5 pr-16 bg-[#dddddc] border border-black/[0.06] rounded-2xl text-lg text-near-black placeholder:text-black/25 outline-none resize-none disabled:opacity-50 focus:border-black/[0.12] transition-colors" />
+                        <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-black/[0.1] hover:bg-black/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         </button>
                       </form>
                     </div>
                     <div className="flex flex-wrap justify-center gap-2">
                       {chatSuggestions.map((s) => (
-                        <button key={s} onClick={() => sendChat(s)} className="text-sm text-white/40 hover:text-white/70 px-4 py-2.5 rounded-full border border-white/[0.08] hover:bg-white/[0.04] transition-colors">{s}</button>
+                        <button key={s} onClick={() => sendChat(s)} className="text-sm text-near-black/40 hover:text-near-black/70 px-4 py-2.5 rounded-full border border-black/[0.08] hover:bg-black/[0.04] transition-colors">{s}</button>
                       ))}
                     </div>
                   </div>
                 ) : (
                   <>
                     <div ref={chatScrollRef} className="flex-1 overflow-y-auto min-h-0">
-                      <div className="space-y-8 py-4 max-w-3xl">
+                      <div className="space-y-8 py-4 w-full">
                         {chatMessages.map((msg, i) => (
                           <div key={i}>
                             {msg.role === "user" ? (
-                              <div className="flex justify-end"><div className="text-lg leading-relaxed text-white/90 bg-[#1a1a1a] px-5 py-3.5 rounded-2xl max-w-lg">{msg.content}</div></div>
+                              <div className="flex justify-end"><div className="text-lg leading-relaxed text-near-black/90 bg-[#dddddc] px-5 py-3.5 rounded-2xl max-w-lg">{msg.content}</div></div>
                             ) : (
                               <div className="flex gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center shrink-0 mt-1"><span className="text-white/40 font-semibold text-xs">O</span></div>
-                                <div className="text-lg leading-loose text-white/75 flex-1 max-w-2xl">
-                                  {msg.content || (<span className="inline-flex gap-1.5 py-2"><span className="w-2 h-2 bg-white/15 rounded-full animate-pulse" /><span className="w-2 h-2 bg-white/15 rounded-full animate-pulse" style={{ animationDelay: "150ms" }} /><span className="w-2 h-2 bg-white/15 rounded-full animate-pulse" style={{ animationDelay: "300ms" }} /></span>)}
+                                <div className="w-8 h-8 rounded-lg bg-black/[0.06] flex items-center justify-center shrink-0 mt-1"><span className="text-near-black/40 font-semibold text-xs">O</span></div>
+                                <div className="text-lg leading-loose text-near-black/75 flex-1 max-w-2xl">
+                                  {msg.content || (<span className="inline-flex gap-1.5 py-2"><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" /><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" style={{ animationDelay: "150ms" }} /><span className="w-2 h-2 bg-black/15 rounded-full animate-pulse" style={{ animationDelay: "300ms" }} /></span>)}
                                 </div>
                               </div>
                             )}
@@ -209,11 +209,11 @@ export default function Specifications() {
                         ))}
                       </div>
                     </div>
-                    <div className="shrink-0 pt-4 max-w-2xl">
+                    <div className="shrink-0 pt-4 w-full">
                       <form onSubmit={(e) => { e.preventDefault(); sendChat(); }} className="relative">
-                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask a follow-up..." rows={2} disabled={chatStreaming} className="w-full px-6 py-4 pr-16 bg-[#1a1a1a] border border-white/[0.06] rounded-2xl text-lg text-white placeholder:text-white/25 outline-none resize-none disabled:opacity-50 focus:border-white/[0.12] transition-colors" />
-                        <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-white/[0.1] hover:bg-white/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask a follow-up..." rows={2} disabled={chatStreaming} className="w-full px-6 py-4 pr-16 bg-[#dddddc] border border-black/[0.06] rounded-2xl text-lg text-near-black placeholder:text-black/25 outline-none resize-none disabled:opacity-50 focus:border-black/[0.12] transition-colors" />
+                        <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-black/[0.1] hover:bg-black/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         </button>
                       </form>
                     </div>

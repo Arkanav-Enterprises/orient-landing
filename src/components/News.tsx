@@ -39,7 +39,7 @@ export default function News() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="font-medium leading-[1.1] text-white"
+            className="font-medium leading-[1.1] text-near-black"
             style={{ fontSize: "clamp(28px, 3.2vw, 50px)" }}
           >
             News
@@ -48,7 +48,7 @@ export default function News() {
           {/* Search input */}
           <div className="relative" style={{ width: 260 }}>
             <svg
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-near-black/30"
               width="18"
               height="18"
               viewBox="0 0 20 20"
@@ -67,7 +67,7 @@ export default function News() {
                 setQuery(e.target.value);
                 setVisibleCount(6);
               }}
-              className="w-full h-[44px] pl-11 pr-4 bg-transparent border border-white/10 rounded-[6px] text-[15px] font-medium text-white placeholder:text-white/25 outline-none focus:border-white/25 transition-colors"
+              className="w-full h-[44px] pl-11 pr-4 bg-transparent border border-black/10 rounded-[6px] text-[15px] font-medium text-near-black placeholder:text-black/25 outline-none focus:border-black/25 transition-colors"
             />
           </div>
         </div>
@@ -77,14 +77,14 @@ export default function News() {
           {/* Main list */}
           <div className="flex-1">
             {/* Column headers */}
-            <div className="flex items-center gap-6 pb-4 border-b border-white/[0.06] mb-0">
-              <span className="text-[12px] font-medium text-white/25 uppercase tracking-wider" style={{ width: 120, flexShrink: 0 }}>
+            <div className="flex items-center gap-6 pb-4 border-b border-black/[0.06] mb-0">
+              <span className="text-[12px] font-medium text-near-black/30 uppercase tracking-wider" style={{ width: 120, flexShrink: 0 }}>
                 Date
               </span>
-              <span className="text-[12px] font-medium text-white/25 uppercase tracking-wider" style={{ width: 140, flexShrink: 0 }}>
+              <span className="text-[12px] font-medium text-near-black/30 uppercase tracking-wider" style={{ width: 140, flexShrink: 0 }}>
                 Category
               </span>
-              <span className="text-[12px] font-medium text-white/25 uppercase tracking-wider flex-1">
+              <span className="text-[12px] font-medium text-near-black/30 uppercase tracking-wider flex-1">
                 Title
               </span>
             </div>
@@ -100,21 +100,21 @@ export default function News() {
                 >
                   <Link
                     href="/news"
-                    className="flex items-start gap-6 py-5 border-b border-white/[0.04] group hover:bg-white/[0.02] -mx-4 px-4 transition-colors"
+                    className="flex items-start gap-6 py-5 border-b border-black/[0.04] group hover:bg-black/[0.02] -mx-4 px-4 transition-colors"
                   >
                     <time
-                      className="text-[15px] font-medium text-white/30 shrink-0 pt-0.5"
+                      className="text-[15px] font-medium text-near-black/40 shrink-0 pt-0.5"
                       style={{ width: 120 }}
                     >
                       {item.date}
                     </time>
                     <span
-                      className="text-[15px] font-medium text-white/30 shrink-0 pt-0.5"
+                      className="text-[15px] font-medium text-near-black/40 shrink-0 pt-0.5"
                       style={{ width: 140 }}
                     >
                       {item.category}
                     </span>
-                    <span className="text-[16px] font-medium text-white/70 group-hover:text-white transition-colors flex-1 leading-[1.4]">
+                    <span className="text-[16px] font-medium text-near-black/70 group-hover:text-near-black transition-colors flex-1 leading-[1.4]">
                       {item.title}
                     </span>
                   </Link>
@@ -126,7 +126,7 @@ export default function News() {
             {visibleCount < filtered.length && (
               <button
                 onClick={() => setVisibleCount((c) => c + 6)}
-                className="flex items-center gap-2 mt-6 text-[16px] font-medium text-white/40 hover:text-white/70 transition-colors"
+                className="flex items-center gap-2 mt-6 text-[16px] font-medium text-near-black/40 hover:text-near-black/70 transition-colors"
               >
                 <span>See More</span>
                 <svg width="16" height="16" viewBox="0 0 16 17" fill="none">
@@ -139,7 +139,7 @@ export default function News() {
             )}
 
             {filtered.length === 0 && (
-              <p className="text-[16px] font-medium text-white/25 py-10">
+              <p className="text-[16px] font-medium text-near-black/30 py-10">
                 No results found for &ldquo;{query}&rdquo;
               </p>
             )}
@@ -148,10 +148,10 @@ export default function News() {
           {/* Aside — featured image placeholder (like Anthropic's illustration) */}
           <aside className="hidden lg:block shrink-0" style={{ width: 320 }}>
             <div
-              className="bg-[#111] rounded-[6px] flex items-center justify-center sticky top-[140px]"
+              className="bg-[#f5f5f4] rounded-[6px] flex items-center justify-center sticky top-[140px]"
               style={{ width: 320, height: 320 }}
             >
-              <span className="text-white/5 text-[12px] font-medium">Featured Image</span>
+              <span className="text-near-black/10 text-[12px] font-medium">Featured Image</span>
             </div>
           </aside>
         </div>

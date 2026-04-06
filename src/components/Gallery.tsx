@@ -15,20 +15,20 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="bg-[#141414] rounded-xl flex items-center justify-center"
+            className="bg-[#dddddc] rounded-xl flex items-center justify-center"
             style={{ height: 562 }}
           >
-            <span className="text-white/5 text-[14px] font-medium">Orient Press Close-up</span>
+            <span className="text-near-black/10 text-[14px] font-medium">Orient Press Close-up</span>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="bg-[#0e0e0e] rounded-xl flex items-center justify-center"
+            className="bg-[#f5f5f4] rounded-xl flex items-center justify-center"
             style={{ height: 562 }}
           >
-            <span className="text-white/5 text-[14px] font-medium">Orient Factory Floor</span>
+            <span className="text-near-black/10 text-[14px] font-medium">Orient Factory Floor</span>
           </motion.div>
         </div>
       </div>

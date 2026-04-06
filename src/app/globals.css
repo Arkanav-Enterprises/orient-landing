@@ -2,12 +2,11 @@
 
 @theme inline {
   --color-near-black: #1C1B1D;
-  --color-dark-surface: #111111;
+  --color-gray-bg: #dddddc;
+  --color-gray-light: #f5f5f4;
   --color-medium-gray: #78797E;
-  --color-cream: #FFFCE3;
   --color-orient-red: #de2127;
-  --font-sans: var(--font-geist), "Helvetica Neue", sans-serif;
-  --font-display: "Poppins", sans-serif;
+  --font-sans: var(--font-roboto-flex), "Helvetica Neue", sans-serif;
 }
 
 * {
@@ -18,22 +17,21 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: #000;
-  color: #fff;
-  font-family: var(--font-geist), "Helvetica Neue", sans-serif;
+  background: #ffffff;
+  color: #1C1B1D;
+  font-family: var(--font-roboto-flex), "Helvetica Neue", sans-serif;
   font-weight: 400;
   margin: 0;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
   font-weight: 500;
 }
 
-::selection { background: rgba(222, 33, 39, 0.25); }
+::selection { background: rgba(222, 33, 39, 0.15); }
 
-/* ── Container — NO max-width, just padding like Hajster ── */
+/* ── Layout ── */
 .container-site {
   width: 100%;
   margin: 0 auto;
@@ -48,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
   .container-site { padding-left: 24px; padding-right: 24px; }
 }
 
-/* ── Buttons — squared, professional ── */
+/* ── Buttons ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -65,12 +63,14 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid;
 }
 
-.btn-dark { background: #1C1B1D; color: #FFFCE3; border-color: #1C1B1D; }
-.btn-dark:hover { background: #2a292c; }
-.btn-cream { background: #FFFCE3; color: #1C1B1D; border-color: #FFFCE3; }
-.btn-cream:hover { background: #f0edce; }
-.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.25); }
-.btn-outline:hover { border-color: rgba(255,255,255,0.5); }
+.btn-dark { background: #1C1B1D; color: #fff; border-color: #1C1B1D; }
+.btn-dark:hover { background: #333; }
+.btn-cream { background: #1C1B1D; color: #fff; border-color: #1C1B1D; }
+.btn-cream:hover { background: #333; }
+.btn-outline { background: transparent; color: #1C1B1D; border-color: rgba(0,0,0,0.15); }
+.btn-outline:hover { border-color: rgba(0,0,0,0.4); }
+.btn-red { background: #de2127; color: #fff; border-color: #de2127; }
+.btn-red:hover { background: #c41d22; }
 
 .btn-arr {
   justify-content: space-between;
@@ -83,22 +83,22 @@ h1, h2, h3, h4, h5, h6 {
   height: 65px;
   padding: 0 24px;
   border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #fff;
   font-size: 18px;
-  font-weight: 500;
-  font-family: var(--font-geist), "Helvetica Neue", sans-serif;
-  color: #fff;
+  font-weight: 400;
+  font-family: var(--font-roboto-flex), "Helvetica Neue", sans-serif;
+  color: #1C1B1D;
   outline: none;
   transition: border-color 0.2s ease;
 }
-.input-field::placeholder { color: rgba(255,255,255,0.3); }
-.input-field:focus { border-color: rgba(255,255,255,0.4); }
+.input-field::placeholder { color: rgba(0,0,0,0.3); }
+.input-field:focus { border-color: rgba(0,0,0,0.4); }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+::-webkit-scrollbar-track { background: #f5f5f4; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
 
 /* ── Logo scroll animation ── */
 @keyframes scroll-left {
