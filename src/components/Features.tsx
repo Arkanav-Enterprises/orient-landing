@@ -6,15 +6,15 @@ import { motion, useInView } from "framer-motion";
 const features = [
   {
     label: "Printing",
-    icon: <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M16 12l8-4 8 4M12 20l12-4 12 4M16 28l8-4 8 4" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>,
+    icon: <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M16 12l8-4 8 4M12 20l12-4 12 4M16 28l8-4 8 4" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>,
   },
   {
     label: "Converting",
-    icon: <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M10 16l14 8-14 8V16z" stroke="#1C1B1D" strokeWidth="1.5" strokeLinejoin="round" /><path d="M24 16l14 8-14 8V16z" stroke="#1C1B1D" strokeWidth="1.5" strokeLinejoin="round" /></svg>,
+    icon: <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M10 16l14 8-14 8V16z" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" /><path d="M24 16l14 8-14 8V16z" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" /></svg>,
   },
   {
     label: "Finishing",
-    icon: <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><rect x="10" y="10" width="28" height="28" rx="4" stroke="#1C1B1D" strokeWidth="1.5" /><path d="M18 24h12M24 18v12" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" /></svg>,
+    icon: <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><rect x="10" y="10" width="28" height="28" rx="4" stroke="#ffffff" strokeWidth="1.5" /><path d="M18 24h12M24 18v12" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" /></svg>,
   },
 ];
 
@@ -26,12 +26,18 @@ export default function Features() {
     <section ref={ref} style={{ marginBottom: 10 }}>
       <div className="container-site">
         {/* Hajster: bg #78797E, padding 160px 76px */}
-        <div className="rounded-xl bg-[#dddddc] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16" style={{ padding: "160px 76px" }}>
+        <div
+          className="rounded-xl flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16"
+          style={{
+            padding: "160px 76px",
+            background: "linear-gradient(135deg, #b91c1c 0%, #dc2626 20%, #ef4444 45%, #d4d4d8 92%, #a1a1aa 100%)",
+          }}
+        >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="font-medium leading-[1.1] text-near-black"
+            className="font-medium leading-[1.1] text-white"
             style={{ fontSize: "clamp(28px, 3.2vw, 50px)", maxWidth: 480 }}
           >
             Offset, Flexo, Digital & Packaging
@@ -46,10 +52,10 @@ export default function Features() {
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
                 className="flex flex-col items-center gap-4"
               >
-                <div className="flex items-center justify-center rounded-xl" style={{ width: 100, height: 100, border: "2px solid rgba(28,27,29,0.25)" }}>
+                <div className="flex items-center justify-center rounded-xl" style={{ width: 100, height: 100, border: "2px solid rgba(255,255,255,0.4)" }}>
                   {feat.icon}
                 </div>
-                <span className="text-[16px] font-medium text-near-black/70">{feat.label}</span>
+                <span className="text-[16px] font-medium text-white/80">{feat.label}</span>
               </motion.div>
             ))}
           </div>

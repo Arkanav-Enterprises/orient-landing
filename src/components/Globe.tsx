@@ -126,7 +126,7 @@ export default function Globe({ className }: { className?: string }) {
         center[0], center[1], radius * 0.95,
         center[0], center[1], radius * 1.15
       );
-      grad.addColorStop(0, "rgba(222,33,39,0.06)");
+      grad.addColorStop(0, "rgba(200,195,160,0.06)");
       grad.addColorStop(1, "rgba(255,255,255,0)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
@@ -150,8 +150,8 @@ export default function Globe({ className }: { className?: string }) {
         ctx.beginPath();
         path(country);
         if (HIGHLIGHT_IDS.has(country.id)) {
-          ctx.fillStyle = "rgba(222,33,39,0.35)";
-          ctx.strokeStyle = "rgba(222,33,39,0.6)";
+          ctx.fillStyle = "rgba(255,252,228,0.85)";
+          ctx.strokeStyle = "rgba(200,195,160,0.6)";
           ctx.lineWidth = 0.8;
           ctx.fill();
           ctx.stroke();

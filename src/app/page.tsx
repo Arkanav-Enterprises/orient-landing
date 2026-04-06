@@ -7,10 +7,12 @@ import Features from "@/components/Features";
 import Offer from "@/components/Offer";
 import Benefits from "@/components/Benefits";
 import Patrons from "@/components/Patrons";
+import Testimonials from "@/components/Testimonials";
 import News from "@/components/News";
 import Gallery from "@/components/Gallery";
 import About from "@/components/About";
 import CTA from "@/components/CTA";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Legacy from "@/components/Legacy";
 import Footer from "@/components/Footer";
@@ -27,10 +29,12 @@ export default function Home() {
       <Offer />
       <Benefits />
       <Patrons />
+      {/* <Testimonials /> */}
       <News />
       <Gallery />
       <About />
       <CTA />
+      <FAQ />
       <Contact />
       <Legacy />
       <Footer />

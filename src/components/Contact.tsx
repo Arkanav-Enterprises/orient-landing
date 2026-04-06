@@ -57,8 +57,16 @@ export default function Contact() {
 
             {/* Right — info cards */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.15 }} className="flex flex-col gap-5">
-              <div className="bg-black/[0.03] rounded-xl flex items-center justify-center flex-1" style={{ minHeight: 200 }}>
-                <span className="text-near-black/10 text-sm">Orient Headquarters</span>
+              <div className="rounded-xl overflow-hidden flex-1" style={{ minHeight: 200 }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.9!2d77.2195!3d28.6325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b741d057%3A0xcdee88e47393c3f1!2sScindia%20House%2C%20Connaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: 200 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
               <div className="bg-black/[0.03] rounded-xl p-8">
                 <h4 className="text-lg font-medium text-near-black mb-4">Headquarters</h4>

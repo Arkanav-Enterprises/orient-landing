@@ -35,15 +35,48 @@ export default function Hero() {
   const slide = heroSlides[index];
 
   return (
-    <section className="relative" style={{ minHeight: "100svh", paddingTop: 80 }}>
+    <section className="relative overflow-hidden" style={{ height: "100svh" }}>
+      {/* Video background — absolute, fills entire section including behind navbar */}
+      <div className="absolute inset-0" style={{ top: -80 }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/product-press.png"
+          className="w-full h-full"
+          style={{ objectFit: "cover" }}
+        >
+          <source src="/videos/orient-hero-video.mp4" type="video/mp4" />
+        </video>
+        <noscript>
+          <img
+            src="/images/product-press.png"
+            alt="Orient Inkjet Press"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </noscript>
+      </div>
+
+      {/* Content overlay */}
       <div
-        className="container-site flex flex-col justify-between"
-        style={{ minHeight: "calc(100svh - 126px)", paddingTop: 32, paddingBottom: 0 }}
+        className="relative z-10 container-site flex flex-col justify-between h-full"
+        style={{ paddingTop: 112, paddingBottom: 40 }}
       >
-        {/* Top row */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 flex-1">
+        {/* Top row — headline left, subtitle right — liquid glass backdrop */}
+        <div
+          className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 p-6 md:p-8"
+          style={{
+            background: "linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.15))",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+            borderRadius: 12,
+            boxShadow: "inset 1px 1px 1px rgba(255,255,255,0.1), inset -1px -1px 1px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.15)",
+            border: "1px solid rgba(255,255,255,0.1)",
+          }}
+        >
           {/* Animated headline */}
-          <div className="flex-1" style={{ minHeight: 340 }}>
+          <div className="flex-1">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={index}
@@ -51,7 +84,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6 }}
-                className="text-near-black font-medium leading-[1.0] tracking-[-0.01em] whitespace-pre-line"
+                className="text-white font-medium leading-[1.0] tracking-[-0.01em] whitespace-pre-line"
                 style={{ fontSize: "clamp(40px, 5vw, 70px)" }}
               >
                 {slide.headline}
@@ -68,7 +101,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-[18px] font-bold leading-[1.2] text-near-black/80"
+                className="text-[18px] font-bold leading-[1.2] text-white/80"
               >
                 {slide.subtitle}
               </motion.p>
@@ -76,44 +109,37 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Slide indicators */}
-        <div className="flex gap-2 mb-6 mt-8">
-          {heroSlides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className="h-[3px] rounded-full transition-all duration-500"
-              style={{
-                width: i === index ? 48 : 24,
-                background: i === index ? "#1C1B1D" : "rgba(28,27,29,0.2)",
-              }}
-            />
-          ))}
-        </div>
+        {/* Bottom — slide indicators + scroll arrow */}
+        <div className="flex items-end justify-between">
+          {/* Slide indicators */}
+          <div className="flex gap-2">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                className="h-[3px] rounded-full transition-all duration-500"
+                style={{
+                  width: i === index ? 48 : 24,
+                  background: i === index ? "#fff" : "rgba(255,255,255,0.3)",
+                }}
+              />
+            ))}
+          </div>
 
-        {/* Product placeholder */}
-        <div
-          className="bg-[#dddddc] w-full flex items-end justify-center overflow-hidden"
-          style={{ height: "clamp(250px, 40vh, 500px)", borderRadius: "12px 12px 0 0" }}
-        >
-          <span className="text-near-black/10 text-[14px] font-medium mb-12">
-            Orient Press — Product Image
-          </span>
+          {/* Scroll arrow */}
+          <a href="#introduction">
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2V14M8 14L3 9M8 14L13 9" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.div>
+          </a>
         </div>
       </div>
-
-      {/* Scroll arrow */}
-      <a href="#introduction" className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-12 h-12 rounded-full bg-black/10 backdrop-blur-sm flex items-center justify-center"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M8 2V14M8 14L3 9M8 14L13 9" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
-      </a>
     </section>
   );
 }

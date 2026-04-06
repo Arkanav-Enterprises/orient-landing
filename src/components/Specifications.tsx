@@ -4,24 +4,24 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
 const machines = [
-  { label: "Orient Jet C-Series", subtitle: "600 dpi · Duplex Digital Press" },
-  { label: "Orient Jet C-Series", subtitle: "1200 dpi · High-Res Duplex" },
-  { label: "Orient Jet L&P Series", subtitle: "600 dpi · Label & Packaging" },
-  { label: "Orient Jet L&P Series", subtitle: "1200 dpi · High-Res L&P" },
+  { label: "Orient Jet C-Series", subtitle: "Digital Inkjet · Duplex Press", img: "/images/spec-jet-c.jpg" },
+  { label: "Orient Jet L&P Series", subtitle: "Digital Inkjet · Label & Packaging", img: "/images/spec-jet-lp.jpg" },
+  { label: "X-Press Flex", subtitle: "Flexographic · Narrow to Wide Web", img: "/images/cover-xpress-flex.jpg" },
+  { label: "Offset Series", subtitle: "Web Offset · High-Speed Commercial", img: "/images/spec-offset.png" },
 ];
 
 const specs = [
-  { label: "Print Head Technology", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera RC only", "Kyocera Katana / Epson D", "Kyocera Katana / Epson D"] },
-  { label: "Resolution", values: ["600 x 600 dpi", "1200 dpi", "600 x 600 dpi", "1200 dpi"] },
-  { label: "Max Print Width", values: ["1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)"] },
-  { label: "Print Speed", values: ["Up to 100 m/min (RC) · 75 (Katana) · 80 (Epson D)", "Up to 100 m/min", "Up to 75 m/min (Katana) · 80 (Epson D)", "Up to 75 m/min (Katana) · 80 (Epson D)"] },
-  { label: "Duplex / Simplex", values: ["Duplex (both sides)", "Duplex", "Simplex (single side)", "Simplex"] },
-  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4 (CMYK)", "Up to 4 (CMYK), expandable", "Up to 4, expandable"] },
-  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²"] },
-  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based"] },
-  { label: "Electronics", values: ["Meteor, UK", "Meteor, UK", "Meteor, UK", "Meteor, UK"] },
-  { label: "RIP + Server", values: ["Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server"] },
-  { label: "Finishing", values: ["In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder"] },
+  { label: "Print Head Technology", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera Katana / Epson D", "Contact sales", "Contact sales"] },
+  { label: "Resolution", values: ["600–1200 dpi", "600–1200 dpi", "Up to 175 lpi", "Up to 200 lpi"] },
+  { label: "Max Print Width", values: ["1080 mm (324–1080 mm in 108mm steps)", "Contact sales", "Contact sales", "Contact sales"] },
+  { label: "Print Speed", values: ["Up to 100 m/min", "Up to 75 m/min", "Contact sales", "Up to 50,000 cph"] },
+  { label: "Duplex / Simplex", values: ["Duplex", "Simplex", "Depends on config", "Depends on config"] },
+  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4 (CMYK), expandable", "Multi-colour", "Multi-colour"] },
+  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Contact sales", "Contact sales"] },
+  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Flexo inks", "Offset inks"] },
+  { label: "Electronics", values: ["Meteor, UK", "Meteor, UK", "Contact sales", "Contact sales"] },
+  { label: "RIP + Server", values: ["Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Contact sales", "Contact sales"] },
+  { label: "Finishing", values: ["In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "Contact sales", "Contact sales"] },
 ];
 
 type ChatMsg = { role: "user" | "assistant"; content: string };
@@ -165,8 +165,8 @@ export default function Specifications() {
                     </div>
                   ))}
                 </div>
-                <div className="hidden xl:flex w-[45%] shrink-0 bg-[#f5f5f4] border border-black/[0.04] rounded-xl items-center justify-center">
-                  <span className="text-near-black/10 text-sm">Product Image</span>
+                <div className="hidden xl:block w-[45%] shrink-0 bg-[#f5f5f4] border border-black/[0.04] rounded-xl overflow-hidden relative flex items-center justify-center">
+                  <span className="text-sm text-near-black/30">{machines[activeMachine].label}</span>
                 </div>
               </div>
             ) : (

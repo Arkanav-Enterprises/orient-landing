@@ -42,13 +42,6 @@ const productColumns = [
     ],
   },
   {
-    title: "Packaging",
-    links: [
-      { label: "Orient X-Press Fold", href: "/products/x-press-fold" },
-      { label: "Orient X-Press Cut", href: "/products/x-press-cut" },
-    ],
-  },
-  {
     title: "Inkjet Presses",
     links: [
       { label: "Orient Jet C Series", href: "/products/orient-jet-c" },
@@ -94,38 +87,9 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1 ml-10">
-            {/* About dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => openDropdown("about")}
-              onMouseLeave={closeDropdown}
-            >
-              <button className="flex items-center gap-1 text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">
-                About Us
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="mt-0.5"><path d="M2 4L5 7L8 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
-              </button>
-              <AnimatePresence>
-                {activeDropdown === "about" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 pt-2"
-                    onMouseEnter={() => openDropdown("about")}
-                    onMouseLeave={closeDropdown}
-                  >
-                    <div className="bg-[#f5f5f4] border border-black/8 rounded-[6px] p-3 min-w-[200px]">
-                      {aboutLinks.map((l) => (
-                        <Link key={l.href} href={l.href} className="block text-[14px] font-medium text-near-black/50 hover:text-near-black hover:bg-black/[0.04] px-3 py-2.5 rounded-[4px] transition-colors">
-                          {l.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <Link href="/about" className="text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">
+              About Us
+            </Link>
 
             {/* Products mega dropdown */}
             <div
@@ -190,8 +154,7 @@ export default function Navbar() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl overflow-y-auto" style={{ paddingTop: 80 }}>
             <div className="container-site py-8 space-y-6">
               <div>
-                <p className="text-[12px] font-semibold text-near-black/40 uppercase tracking-wider mb-3">About</p>
-                {aboutLinks.map((l) => <Link key={l.href} href={l.href} onClick={() => setMobileOpen(false)} className="block text-[16px] font-medium text-near-black/60 py-2">{l.label}</Link>)}
+                <Link href="/about" onClick={() => setMobileOpen(false)} className="block text-[16px] font-medium text-near-black py-2">About Us</Link>
               </div>
               {productColumns.map((col) => (
                 <div key={col.title}>

@@ -2,10 +2,11 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 const offers = [
-  { title: "New Press Enquiry", desc: "Explore our full range of offset, flexo, and inkjet presses for your new production line." },
-  { title: "Upgrade Existing Press", desc: "Add-ons, modules, and modernization packages for your current Orient equipment." },
+  { title: "New Press Enquiry", desc: "Explore our full range of offset, flexo, and inkjet presses for your new production line.", img: "/images/offer-new-press.jpg" },
+  { title: "Upgrade Existing Press", desc: "Add-ons, modules, and modernization packages for your current Orient equipment.", img: "/images/offer-upgrade.jpg" },
 ];
 
 export default function Offer() {
@@ -35,10 +36,9 @@ export default function Offer() {
               className="cursor-pointer group"
             >
               <div className="relative bg-[#dddddc] rounded-xl overflow-hidden flex items-end p-6" style={{ height: 403 }}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-near-black/10 text-[14px] font-medium">Lifestyle Photo</span>
-                </div>
-                <p className="relative z-10 text-[30px] font-medium leading-[1.3] text-near-black">{offer.title}</p>
+                <Image src={offer.img} alt={offer.title} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <p className="relative z-10 text-[30px] font-medium leading-[1.3] text-white">{offer.title}</p>
               </div>
             </motion.div>
           ))}

@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 const Globe = dynamic(() => import("./Globe"), { ssr: false });
 
@@ -15,6 +16,52 @@ const countries = [
   "Saudi Arabia", "South Africa", "Spain", "Sri Lanka", "UAE", "UK",
   "USA", "Venezuela", "Vietnam", "Yemen", "Zimbabwe",
 ];
+
+function CountryCloud() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const instanceRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    let destroyed = false;
+
+    import("TagCloud").then((mod) => {
+      if (destroyed || !containerRef.current) return;
+      const TagCloud = mod.default ?? mod;
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      instanceRef.current = (TagCloud as any)(".tagcloud-sphere", countries, {
+        radius: 260,
+        maxSpeed: "slow",
+        initSpeed: "slow",
+        direction: 135,
+        keep: true,
+      });
+    });
+
+    return () => {
+      destroyed = true;
+      if (instanceRef.current?.destroy) instanceRef.current.destroy();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="tagcloud-sphere"
+      style={{
+        width: 520,
+        height: 520,
+        fontSize: "13px",
+        fontWeight: 500,
+        color: "rgba(28,27,29,0.4)",
+        fontFamily: "var(--font-roboto-flex), Helvetica Neue, sans-serif",
+        cursor: "default",
+      }}
+    />
+  );
+}
 
 export default function Patrons() {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,7 +78,7 @@ export default function Patrons() {
             className="font-medium leading-[1.1] text-near-black"
             style={{ fontSize: "clamp(28px, 3.2vw, 50px)", maxWidth: 500 }}
           >
-            Trusted Across 60+ Countries
+            Trusted by Industry Leaders Worldwide
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -44,47 +91,41 @@ export default function Patrons() {
           </motion.p>
         </div>
 
-        {/* Globe */}
-        <div className="flex justify-center my-12">
-          <div style={{ width: "min(90vw, 700px)", height: "min(90vw, 700px)" }}>
+        {/* Globe + Country Cloud side by side */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 my-12">
+          <div style={{ width: "min(90vw, 560px)", height: "min(90vw, 560px)" }}>
             <Globe className="w-full h-full" />
           </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4 }}
+            className="flex items-center justify-center"
+          >
+            <CountryCloud />
+          </motion.div>
         </div>
 
-        {/* Scrolling logo placeholders */}
-        <div className="space-y-3 mb-16 overflow-hidden">
-          <div className="flex gap-3 animate-scroll-left">
-            {[...Array(14)].map((_, i) => (
-              <div key={i} className="shrink-0 bg-[#f5f5f4] rounded-[4px] flex items-center justify-center" style={{ width: 160, height: 80 }}>
-                <span className="text-near-black/10 text-[11px] font-medium">Client Logo</span>
+        {/* Scrolling client logos */}
+        {(() => {
+          const row1 = Array.from({ length: 16 }, (_, i) => ((i % 16) + 1));
+          const row2 = Array.from({ length: 16 }, (_, i) => ((i % 16) + 17));
+          const LogoItem = ({ n }: { n: number }) => (
+            <div className="shrink-0 flex items-center justify-center" style={{ width: 160, height: 80 }}>
+              <Image src={`/images/logos/logo${n}.png`} alt={`Client logo ${n}`} width={140} height={60} className="object-contain max-h-[60px] opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+            </div>
+          );
+          return (
+            <div className="space-y-3 mb-4 overflow-hidden">
+              <div className="flex gap-3 animate-scroll-left">
+                {[...row1, ...row1].map((n, i) => <LogoItem key={i} n={n} />)}
               </div>
-            ))}
-          </div>
-          <div className="flex gap-3 animate-scroll-right">
-            {[...Array(14)].map((_, i) => (
-              <div key={i} className="shrink-0 bg-[#f5f5f4] rounded-[4px] flex items-center justify-center" style={{ width: 160, height: 80 }}>
-                <span className="text-near-black/10 text-[11px] font-medium">Client Logo</span>
+              <div className="flex gap-3 animate-scroll-right">
+                {[...row2, ...row2].map((n, i) => <LogoItem key={i} n={n} />)}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Country tags */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap gap-2"
-        >
-          {countries.map((country) => (
-            <span
-              key={country}
-              className="text-[13px] font-medium text-near-black/40 px-3 py-1.5 border border-black/8 rounded-[4px]"
-            >
-              {country}
-            </span>
-          ))}
-        </motion.div>
+            </div>
+          );
+        })()}
       </div>
     </section>
   );

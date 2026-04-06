@@ -1,0 +1,340 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 750" width="1500" height="750">
+  <style>
+    .outline { fill: none; stroke: #1a1a1a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .thin { fill: none; stroke: #1a1a1a; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+    .dash { fill: none; stroke: #1a1a1a; stroke-width: 1; stroke-dasharray: 12,6; }
+    .dashdot { fill: none; stroke: #1a1a1a; stroke-width: 1; stroke-dasharray: 12,4,3,4; }
+    .heavy { fill: none; stroke: #1a1a1a; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .fill-light { fill: #e8e8e8; stroke: #1a1a1a; stroke-width: 1.5; }
+    .fill-mid { fill: #c0c0c0; stroke: #1a1a1a; stroke-width: 1.5; }
+    .fill-dark { fill: #555; stroke: #1a1a1a; stroke-width: 1.5; }
+    .fill-white { fill: #fff; stroke: #1a1a1a; stroke-width: 1.5; }
+    .gear-tooth { fill: #d0d0d0; stroke: #1a1a1a; stroke-width: 1.2; }
+    .roller { fill: #ddd; stroke: #1a1a1a; stroke-width: 1.5; }
+    .body { fill: #f0f0f0; stroke: #1a1a1a; stroke-width: 2; }
+    .shadow { fill: #b0b0b0; stroke: none; }
+  </style>
+
+  <rect width="1500" height="750" fill="#f5f5f5"/>
+
+  <!-- Floor line -->
+  <line x1="30" y1="680" x2="1470" y2="680" class="heavy"/>
+
+  <!-- === LEFT UNWIND SECTION === -->
+
+  <!-- Back roll (larger, partially visible) -->
+  <circle cx="155" cy="500" r="130" class="fill-light"/>
+  <circle cx="155" cy="500" r="120" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="155" cy="500" r="100" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="155" cy="500" r="80" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="155" cy="500" r="60" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="155" cy="500" r="40" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="155" cy="500" r="18" class="fill-mid"/>
+  <!-- Center axis -->
+  <line x1="30" y1="500" x2="280" y2="500" class="dashdot"/>
+
+  <!-- Front roll (smaller) -->
+  <circle cx="250" cy="420" r="95" class="fill-light"/>
+  <circle cx="250" cy="420" r="85" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="250" cy="420" r="70" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="250" cy="420" r="55" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="250" cy="420" r="40" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="250" cy="420" r="25" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="250" cy="420" r="15" class="fill-mid"/>
+
+  <!-- Roll support stand -->
+  <rect x="120" y="600" width="80" height="80" class="body"/>
+  <rect x="220" y="580" width="60" height="100" class="body"/>
+
+  <!-- Support legs -->
+  <rect x="100" y="640" width="30" height="40" class="fill-mid"/>
+  <rect x="270" y="640" width="30" height="40" class="fill-mid"/>
+
+  <!-- === CONTROL PANEL === -->
+  <rect x="130" y="540" width="80" height="70" rx="3" class="body"/>
+  <rect x="140" y="548" width="40" height="25" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="1"/>
+  <!-- Buttons -->
+  <rect x="140" y="580" width="12" height="8" rx="1" class="fill-mid"/>
+  <rect x="156" y="580" width="12" height="8" rx="1" class="fill-mid"/>
+  <rect x="172" y="580" width="12" height="8" rx="1" class="fill-mid"/>
+  <rect x="140" y="594" width="12" height="8" rx="1" class="fill-dark"/>
+  <rect x="156" y="594" width="12" height="8" rx="1" class="fill-mid"/>
+  <rect x="172" y="594" width="12" height="8" rx="1" class="fill-mid"/>
+
+  <!-- === MAIN PRESS BODY === -->
+
+  <!-- Left upright frame -->
+  <rect x="320" y="160" width="120" height="520" rx="4" class="body"/>
+  <!-- Frame detail lines -->
+  <line x1="340" y1="180" x2="340" y2="660" class="thin"/>
+  <line x1="420" y1="180" x2="420" y2="660" class="thin"/>
+
+  <!-- Top roller bracket -->
+  <rect x="300" y="150" width="160" height="40" rx="5" class="fill-light"/>
+
+  <!-- Knob on top -->
+  <circle cx="380" cy="150" r="14" class="fill-mid"/>
+  <circle cx="380" cy="150" r="8" class="fill-light"/>
+
+  <!-- Upper guide roller -->
+  <ellipse cx="430" cy="210" rx="12" ry="25" class="roller"/>
+
+  <!-- Infeed guide rollers -->
+  <ellipse cx="330" cy="300" rx="10" ry="20" class="roller"/>
+  <ellipse cx="450" cy="260" rx="10" ry="20" class="roller"/>
+
+  <!-- === CENTRAL PRESS UNIT === -->
+
+  <!-- Main frame body -->
+  <rect x="440" y="120" width="200" height="560" rx="4" class="body"/>
+
+  <!-- Top section detail -->
+  <rect x="450" y="130" width="180" height="60" rx="3" class="fill-light"/>
+
+  <!-- Upper roller bank -->
+  <g>
+    <!-- Roller 1 -->
+    <rect x="455" y="200" width="170" height="22" rx="11" class="roller"/>
+    <circle cx="455" cy="211" r="8" class="fill-mid"/>
+    <circle cx="625" cy="211" r="8" class="fill-mid"/>
+
+    <!-- Roller 2 -->
+    <rect x="455" y="230" width="170" height="22" rx="11" class="roller"/>
+    <circle cx="455" cy="241" r="8" class="fill-mid"/>
+    <circle cx="625" cy="241" r="8" class="fill-mid"/>
+
+    <!-- Roller 3 -->
+    <rect x="455" y="260" width="170" height="22" rx="11" class="roller"/>
+    <circle cx="455" cy="271" r="8" class="fill-mid"/>
+    <circle cx="625" cy="271" r="8" class="fill-mid"/>
+
+    <!-- Roller 4 -->
+    <rect x="455" y="290" width="170" height="22" rx="11" class="roller"/>
+    <circle cx="455" cy="301" r="8" class="fill-mid"/>
+    <circle cx="625" cy="301" r="8" class="fill-mid"/>
+
+    <!-- Roller 5 (small spacer) -->
+    <rect x="460" y="318" width="160" height="16" rx="8" class="fill-mid"/>
+  </g>
+
+  <!-- Ink/anilox roller system -->
+  <g>
+    <!-- Large impression cylinder -->
+    <rect x="455" y="348" width="170" height="65" rx="32" class="roller"/>
+    <line x1="455" y1="380" x2="625" y2="380" class="thin"/>
+
+    <!-- Ink roller (dark) -->
+    <rect x="470" y="420" width="140" height="45" rx="22" class="fill-dark"/>
+
+    <!-- Smaller transfer roller -->
+    <rect x="480" y="470" width="120" height="30" rx="15" class="fill-mid"/>
+  </g>
+
+  <!-- Lower frame section -->
+  <rect x="450" y="510" width="180" height="80" rx="3" class="fill-light"/>
+  <line x1="470" y1="530" x2="610" y2="530" class="thin"/>
+  <line x1="470" y1="550" x2="610" y2="550" class="thin"/>
+  <line x1="470" y1="570" x2="610" y2="570" class="thin"/>
+
+  <!-- Press base -->
+  <rect x="430" y="600" width="220" height="80" rx="3" class="body"/>
+  <rect x="440" y="650" width="50" height="30" class="fill-mid"/>
+  <rect x="590" y="650" width="50" height="30" class="fill-mid"/>
+
+  <!-- === GEAR TRAIN SECTION === -->
+
+  <!-- Gear housing background -->
+  <rect x="650" y="140" width="320" height="480" rx="5" class="body"/>
+
+  <!-- Gear definitions -->
+  <defs>
+    <!-- Large gear pattern -->
+    <g id="gear-large">
+      <circle r="70" class="gear-tooth"/>
+      <circle r="58" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
+      <circle r="15" class="fill-mid"/>
+      <circle r="8" fill="#fff" stroke="#1a1a1a" stroke-width="1"/>
+      <!-- Teeth (simplified as bumps) -->
+      <g stroke="#1a1a1a" stroke-width="1.2" fill="#d0d0d0">
+        <rect x="-6" y="-72" width="12" height="8" rx="1"/>
+        <rect x="-6" y="64" width="12" height="8" rx="1"/>
+        <rect x="64" y="-6" width="8" height="12" rx="1"/>
+        <rect x="-72" y="-6" width="8" height="12" rx="1"/>
+        <rect x="43" y="-52" width="10" height="8" rx="1" transform="rotate(35 48 -48)"/>
+        <rect x="-53" y="-52" width="10" height="8" rx="1" transform="rotate(-35 -48 -48)"/>
+        <rect x="43" y="44" width="10" height="8" rx="1" transform="rotate(-35 48 48)"/>
+        <rect x="-53" y="44" width="10" height="8" rx="1" transform="rotate(35 -48 48)"/>
+      </g>
+      <!-- Spokes -->
+      <line x1="-45" y1="0" x2="45" y2="0" stroke="#aaa" stroke-width="1"/>
+      <line x1="0" y1="-45" x2="0" y2="45" stroke="#aaa" stroke-width="1"/>
+      <line x1="-32" y1="-32" x2="32" y2="32" stroke="#aaa" stroke-width="1"/>
+      <line x1="32" y1="-32" x2="-32" y2="32" stroke="#aaa" stroke-width="1"/>
+    </g>
+
+    <!-- Medium gear pattern -->
+    <g id="gear-med">
+      <circle r="48" class="gear-tooth"/>
+      <circle r="38" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
+      <circle r="12" class="fill-mid"/>
+      <circle r="6" fill="#fff" stroke="#1a1a1a" stroke-width="1"/>
+      <g stroke="#1a1a1a" stroke-width="1" fill="#d0d0d0">
+        <rect x="-5" y="-50" width="10" height="7" rx="1"/>
+        <rect x="-5" y="43" width="10" height="7" rx="1"/>
+        <rect x="43" y="-5" width="7" height="10" rx="1"/>
+        <rect x="-50" y="-5" width="7" height="10" rx="1"/>
+        <rect x="28" y="-37" width="8" height="7" rx="1" transform="rotate(35 32 -34)"/>
+        <rect x="-36" y="-37" width="8" height="7" rx="1" transform="rotate(-35 -32 -34)"/>
+        <rect x="28" y="30" width="8" height="7" rx="1" transform="rotate(-35 32 34)"/>
+        <rect x="-36" y="30" width="8" height="7" rx="1" transform="rotate(35 -32 34)"/>
+      </g>
+      <line x1="-30" y1="0" x2="30" y2="0" stroke="#aaa" stroke-width="0.8"/>
+      <line x1="0" y1="-30" x2="0" y2="30" stroke="#aaa" stroke-width="0.8"/>
+    </g>
+
+    <!-- Small gear pattern -->
+    <g id="gear-sm">
+      <circle r="32" class="gear-tooth"/>
+      <circle r="24" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
+      <circle r="9" class="fill-mid"/>
+      <circle r="5" fill="#fff" stroke="#1a1a1a" stroke-width="1"/>
+      <g stroke="#1a1a1a" stroke-width="1" fill="#d0d0d0">
+        <rect x="-4" y="-34" width="8" height="6" rx="1"/>
+        <rect x="-4" y="28" width="8" height="6" rx="1"/>
+        <rect x="28" y="-4" width="6" height="8" rx="1"/>
+        <rect x="-34" y="-4" width="6" height="8" rx="1"/>
+        <rect x="18" y="-24" width="7" height="6" rx="1" transform="rotate(40 22 -21)"/>
+        <rect x="-25" y="-24" width="7" height="6" rx="1" transform="rotate(-40 -22 -21)"/>
+        <rect x="18" y="18" width="7" height="6" rx="1" transform="rotate(-40 22 21)"/>
+        <rect x="-25" y="18" width="7" height="6" rx="1" transform="rotate(40 -22 21)"/>
+      </g>
+    </g>
+
+    <!-- Tiny gear -->
+    <g id="gear-xs">
+      <circle r="20" class="gear-tooth"/>
+      <circle r="14" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
+      <circle r="6" class="fill-mid"/>
+      <circle r="3" fill="#fff" stroke="#1a1a1a" stroke-width="1"/>
+      <g stroke="#1a1a1a" stroke-width="0.8" fill="#d0d0d0">
+        <rect x="-3" y="-22" width="6" height="5" rx="1"/>
+        <rect x="-3" y="17" width="6" height="5" rx="1"/>
+        <rect x="17" y="-3" width="5" height="6" rx="1"/>
+        <rect x="-22" y="-3" width="5" height="6" rx="1"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- Place gears in gear train -->
+  <!-- Top large gear -->
+  <use href="#gear-large" x="780" y="250"/>
+
+  <!-- Upper right medium gear -->
+  <use href="#gear-med" x="870" y="180"/>
+
+  <!-- Middle medium gear meshing with large -->
+  <use href="#gear-med" x="880" y="320"/>
+
+  <!-- Small gear cluster - right side -->
+  <use href="#gear-sm" x="940" y="250"/>
+
+  <!-- Lower large gear -->
+  <use href="#gear-large" x="790" y="420"/>
+
+  <!-- Lower small gears -->
+  <use href="#gear-sm" x="880" y="470"/>
+  <use href="#gear-xs" x="930" y="420"/>
+
+  <!-- Bottom small gear -->
+  <use href="#gear-sm" x="790" y="540"/>
+  <use href="#gear-xs" x="850" y="560"/>
+
+  <!-- Extra meshing gears -->
+  <use href="#gear-xs" x="720" y="340"/>
+  <use href="#gear-sm" x="700" y="450"/>
+
+  <!-- Gear shafts (horizontal lines through gears) -->
+  <line x1="650" y1="250" x2="710" y2="250" class="thin"/>
+  <line x1="850" y1="250" x2="970" y2="250" class="thin"/>
+  <line x1="650" y1="420" x2="720" y2="420" class="thin"/>
+  <line x1="860" y1="420" x2="970" y2="420" class="thin"/>
+
+  <!-- Construction/dimension lines -->
+  <line x1="780" y1="140" x2="780" y2="160" stroke="#999" stroke-width="0.5"/>
+  <line x1="940" y1="140" x2="940" y2="160" stroke="#999" stroke-width="0.5"/>
+  <line x1="780" y1="150" x2="940" y2="150" stroke="#999" stroke-width="0.5"/>
+
+  <!-- Red marker triangles (as black in B&W) -->
+  <polygon points="930,190 936,180 924,180" fill="#1a1a1a"/>
+  <polygon points="660,380 666,390 654,390" fill="#1a1a1a"/>
+  <polygon points="870,500 876,510 864,510" fill="#1a1a1a"/>
+  <polygon points="960,310 966,300 954,300" fill="#1a1a1a"/>
+
+  <!-- === RIGHT OUTPUT SECTION === -->
+
+  <!-- Right frame -->
+  <rect x="970" y="180" width="100" height="440" rx="4" class="body"/>
+  <line x1="990" y1="200" x2="990" y2="600" class="thin"/>
+  <line x1="1050" y1="200" x2="1050" y2="600" class="thin"/>
+
+  <!-- Output roller guides -->
+  <ellipse cx="1070" cy="280" rx="10" ry="20" class="roller"/>
+  <ellipse cx="1070" cy="380" rx="10" ry="20" class="roller"/>
+  <ellipse cx="1070" cy="480" rx="10" ry="20" class="roller"/>
+
+  <!-- Right support base -->
+  <rect x="960" y="620" width="120" height="60" rx="3" class="body"/>
+  <rect x="970" y="650" width="40" height="30" class="fill-mid"/>
+  <rect x="1040" y="650" width="40" height="30" class="fill-mid"/>
+
+  <!-- === FAR RIGHT - REWIND SECTION === -->
+
+  <!-- Outfeed guide arm -->
+  <line x1="1070" y1="300" x2="1200" y2="250" class="outline"/>
+  <line x1="1070" y1="310" x2="1200" y2="260" class="outline"/>
+
+  <!-- Small guide rollers -->
+  <circle cx="1150" cy="270" r="10" class="roller"/>
+  <circle cx="1200" cy="250" r="10" class="roller"/>
+
+  <!-- Rewind roll -->
+  <circle cx="1300" cy="380" r="100" class="fill-light"/>
+  <circle cx="1300" cy="380" r="90" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="1300" cy="380" r="75" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="1300" cy="380" r="60" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="1300" cy="380" r="45" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="1300" cy="380" r="30" fill="none" stroke="#ccc" stroke-width="0.5"/>
+  <circle cx="1300" cy="380" r="15" class="fill-mid"/>
+
+  <!-- Web path (material threading through press) -->
+  <path d="M 250 325 Q 300 280 330 300 Q 380 200 430 210
+           L 450 210 L 450 301 L 625 301 L 640 300
+           Q 660 300 670 320 L 680 340"
+        fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-dasharray="none"/>
+
+  <!-- Rewind stand -->
+  <rect x="1260" y="500" width="80" height="100" rx="3" class="body"/>
+  <rect x="1250" y="580" width="100" height="40" rx="3" class="body"/>
+  <rect x="1250" y="600" width="40" height="80" class="fill-mid"/>
+  <rect x="1310" y="600" width="40" height="80" class="fill-mid"/>
+
+  <!-- Small output gears -->
+  <use href="#gear-xs" x="1100" y="560"/>
+  <use href="#gear-xs" x="1140" y="540"/>
+  <use href="#gear-sm" x="1180" y="580"/>
+
+  <!-- Dimension/construction lines -->
+  <line x1="1090" y1="280" x2="1130" y2="280" stroke="#999" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <line x1="1090" y1="480" x2="1130" y2="480" stroke="#999" stroke-width="0.5" stroke-dasharray="4,3"/>
+
+  <!-- Cross-hair alignment marks -->
+  <g stroke="#1a1a1a" stroke-width="0.8">
+    <line x1="1090" y1="370" x2="1110" y2="370"/>
+    <line x1="1100" y1="360" x2="1100" y2="380"/>
+    <line x1="950" y1="300" x2="965" y2="300"/>
+    <line x1="957" y1="293" x2="957" y2="307"/>
+  </g>
+
+  <!-- Title block area (subtle) -->
+  <line x1="50" y1="710" x2="1450" y2="710" stroke="#ccc" stroke-width="0.5"/>
+</svg>

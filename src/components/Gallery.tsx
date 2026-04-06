@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 export default function Gallery() {
   const ref = useRef<HTMLDivElement>(null);
@@ -15,20 +16,20 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="bg-[#dddddc] rounded-xl flex items-center justify-center"
+            className="rounded-xl overflow-hidden relative"
             style={{ height: 562 }}
           >
-            <span className="text-near-black/10 text-[14px] font-medium">Orient Press Close-up</span>
+            <Image src="/images/press-closeup.jpg" alt="Orient press precision machining" fill className="object-cover" />
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="bg-[#f5f5f4] rounded-xl flex items-center justify-center"
+            className="rounded-xl overflow-hidden relative"
             style={{ height: 562 }}
           >
-            <span className="text-near-black/10 text-[14px] font-medium">Orient Factory Floor</span>
+            <Image src="/images/factory-floor.jpg" alt="Orient factory floor" fill className="object-cover" />
           </motion.div>
         </div>
       </div>
