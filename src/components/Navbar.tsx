@@ -192,8 +192,8 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Hidden Google Translate widget — opened programmatically */}
-      <div id="google_translate_element" className="fixed top-[80px] right-4 z-[60] [&>.goog-te-gadget]:font-[inherit] [&_select]:rounded-lg [&_select]:border [&_select]:border-black/10 [&_select]:bg-white [&_select]:px-3 [&_select]:py-2 [&_select]:text-sm [&_select]:text-near-black/70 [&_select]:outline-none [&_.goog-te-gadget>span]:hidden [&_.goog-logo-link]:hidden [&_.goog-te-gadget>div:first-child]:hidden" />
+      {/* Google Translate widget — visually hidden, select is opened programmatically */}
+      <div id="google_translate_element" className="fixed top-[80px] right-4 z-[60] opacity-0 pointer-events-none [&:focus-within]:opacity-100 [&:focus-within]:pointer-events-auto [&>.goog-te-gadget]:font-[inherit] [&_select]:rounded-lg [&_select]:border [&_select]:border-black/10 [&_select]:bg-white [&_select]:px-3 [&_select]:py-2 [&_select]:text-sm [&_select]:text-near-black/70 [&_select]:outline-none [&_.goog-te-gadget>span]:hidden [&_.goog-logo-link]:hidden [&_.goog-te-gadget>div:first-child]:hidden" />
 
       {/* Mobile menu */}
       <AnimatePresence>
