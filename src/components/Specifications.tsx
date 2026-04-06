@@ -41,9 +41,12 @@ export default function Specifications() {
   const [activeMachine, setActiveMachine] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [sidebarDropdownOpen, setSidebarDropdownOpen] = useState(false);
-  const [isChatMode, setIsChatMode] = useState(
-    typeof window !== "undefined" && window.innerWidth < 768
-  );
+  const [isChatMode, setIsChatMode] = useState(false);
+
+  // Default to chat on mobile after hydration
+  useEffect(() => {
+    if (window.innerWidth < 768) setIsChatMode(true);
+  }, []);
 
   // Chat state
   const [chatInput, setChatInput] = useState("");
