@@ -129,10 +129,10 @@ export default function Navbar() {
               onMouseEnter={() => openDropdown("products")}
               onMouseLeave={closeDropdown}
             >
-              <button className="flex items-center gap-1 text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">
+              <Link href="/products" className="flex items-center gap-1 text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">
                 Products
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="mt-0.5"><path d="M2 4L5 7L8 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
-              </button>
+              </Link>
               <AnimatePresence>
                 {activeDropdown === "products" && (
                   <motion.div

@@ -61,18 +61,23 @@ export default function ProductsPage() {
       <div className="space-y-20">
         {categories.map((cat, ci) => (
           <section key={cat.title}>
-            {/* Category header with optional image */}
-            <div className={`flex flex-col ${cat.image ? "md:flex-row" : ""} gap-8 mb-8`}>
-              <div className="flex-1">
+            {/* Category hero image */}
+            {cat.image && (
+              <div className="relative w-full h-[240px] sm:h-[320px] lg:h-[400px] rounded-xl overflow-hidden mb-8 bg-[#f5f5f4]">
+                <Image src={cat.image} alt={cat.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 1200px" priority={ci === 0} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 sm:p-8">
+                  <h2 className="text-[24px] sm:text-[30px] font-medium text-white mb-1">{cat.title}</h2>
+                  <p className="text-[14px] sm:text-[15px] text-white/70 max-w-lg">{cat.description}</p>
+                </div>
+              </div>
+            )}
+            {!cat.image && (
+              <div className="mb-8">
                 <h2 className="text-[22px] font-medium text-near-black mb-2">{cat.title}</h2>
                 <p className="text-[15px] text-near-black/40 max-w-lg">{cat.description}</p>
               </div>
-              {cat.image && (
-                <div className="md:w-[280px] h-[180px] relative rounded-lg overflow-hidden shrink-0 bg-[#f5f5f4]">
-                  <Image src={cat.image} alt={cat.title} fill className="object-cover" sizes="280px" />
-                </div>
-              )}
-            </div>
+            )}
 
             {/* Product grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
