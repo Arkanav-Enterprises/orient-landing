@@ -1,0 +1,60 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
+const products = [
+  { category: "Web Offset Printing", name: "Orient Offset Series" },
+  { category: "Flexographic Printing", name: "Orient X-Press Flex" },
+  { category: "Digital Inkjet Printing", name: "Orient Jet Series" },
+];
+
+export default function Products() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="catalog" ref={ref} style={{ marginBottom: 10 }}>
+      <div className="container-site">
+        <div className="rounded-xl bg-[#111]" style={{ padding: "76px 76px 100px" }}>
+          {/* Top row */}
+          <div className="flex items-center justify-between mb-16">
+            <span className="text-[16px] font-medium text-white/25">Since 1946</span>
+            <span className="text-[24px] font-medium text-white tracking-[0.02em]">Orient</span>
+          </div>
+
+          {/* 3 column grid — 19px gap like Hajster */}
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 24 }}>
+            {products.map((product, i) => (
+              <motion.div
+                key={product.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.15 + i * 0.1 }}
+              >
+                {/* Image card */}
+                <div className="relative bg-[#222] rounded-xl overflow-hidden flex items-end p-6" style={{ height: 403 }}>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-white/5 text-[14px] font-medium">Product Image</span>
+                  </div>
+                  <div className="relative z-10">
+                    <p className="text-[14px] font-medium text-cream/50 mb-1">{product.category}</p>
+                    <p className="text-[28px] font-medium leading-[1.2] text-cream">{product.name}</p>
+                  </div>
+                </div>
+
+                {/* Button */}
+                <button className="btn btn-arr text-[16px] mt-3 w-full bg-transparent text-white border-white/15 hover:border-white/30 rounded-xl">
+                  <span>More Details</span>
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

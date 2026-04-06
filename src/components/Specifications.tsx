@@ -1,0 +1,229 @@
+"use client";
+
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+
+const machines = [
+  { label: "Orient Jet C-Series", subtitle: "600 dpi · Duplex Digital Press" },
+  { label: "Orient Jet C-Series", subtitle: "1200 dpi · High-Res Duplex" },
+  { label: "Orient Jet L&P Series", subtitle: "600 dpi · Label & Packaging" },
+  { label: "Orient Jet L&P Series", subtitle: "1200 dpi · High-Res L&P" },
+];
+
+const specs = [
+  { label: "Print Head Technology", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera RC only", "Kyocera Katana / Epson D", "Kyocera Katana / Epson D"] },
+  { label: "Resolution", values: ["600 x 600 dpi", "1200 dpi", "600 x 600 dpi", "1200 dpi"] },
+  { label: "Max Print Width", values: ["1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)"] },
+  { label: "Print Speed", values: ["Up to 100 m/min (RC) · 75 (Katana) · 80 (Epson D)", "Up to 100 m/min", "Up to 75 m/min (Katana) · 80 (Epson D)", "Up to 75 m/min (Katana) · 80 (Epson D)"] },
+  { label: "Duplex / Simplex", values: ["Duplex (both sides)", "Duplex", "Simplex (single side)", "Simplex"] },
+  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4 (CMYK)", "Up to 4 (CMYK), expandable", "Up to 4, expandable"] },
+  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²"] },
+  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based"] },
+  { label: "Electronics", values: ["Meteor, UK", "Meteor, UK", "Meteor, UK", "Meteor, UK"] },
+  { label: "RIP + Server", values: ["Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server"] },
+  { label: "Finishing", values: ["In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder"] },
+];
+
+type ChatMsg = { role: "user" | "assistant"; content: string };
+
+const chatSuggestions = [
+  "What is the max print width?",
+  "C-Series vs L&P Series differences?",
+  "What print heads are available?",
+  "Tell me about the ink system",
+  "What media weights are supported?",
+  "Is duplex printing available?",
+];
+
+export default function Specifications() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [activeMachine, setActiveMachine] = useState(0);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isChatMode, setIsChatMode] = useState(false);
+
+  // Chat state
+  const [chatInput, setChatInput] = useState("");
+  const [chatMessages, setChatMessages] = useState<ChatMsg[]>([]);
+  const [chatStreaming, setChatStreaming] = useState(false);
+  const chatScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (chatScrollRef.current) chatScrollRef.current.scrollTop = chatScrollRef.current.scrollHeight;
+  }, [chatMessages]);
+
+  async function sendChat(text?: string) {
+    const msg = text || chatInput.trim();
+    if (!msg || chatStreaming) return;
+    const userMsg: ChatMsg = { role: "user", content: msg };
+    const updated = [...chatMessages, userMsg];
+    setChatMessages(updated);
+    setChatInput("");
+    setChatStreaming(true);
+    setChatMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+    try {
+      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: updated }) });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error("No reader");
+      const decoder = new TextDecoder();
+      let accumulated = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        accumulated += decoder.decode(value, { stream: true });
+        const t = accumulated;
+        setChatMessages((prev) => { const copy = [...prev]; copy[copy.length - 1] = { role: "assistant", content: t }; return copy; });
+      }
+    } catch {
+      setChatMessages((prev) => { const copy = [...prev]; copy[copy.length - 1] = { role: "assistant", content: "Sorry, I'm unable to respond right now." }; return copy; });
+    }
+    setChatStreaming(false);
+  }
+
+  return (
+    <section ref={ref} style={{ marginTop: 160, marginBottom: 160 }}>
+      <div className="container-site">
+        {/* Header: title left, machine dropdown right */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
+            className="font-medium leading-[1.1] text-white"
+            style={{ fontSize: "clamp(28px, 3.2vw, 50px)" }}
+          >
+            Technical Specifications
+          </motion.h2>
+
+          {/* Machine dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="flex items-center gap-2 px-5 py-3 bg-white/[0.08] border border-white/[0.12] rounded-xl text-sm text-white hover:bg-white/[0.12] hover:border-white/[0.2] transition-colors"
+            >
+              <span>{machines[activeMachine].label}</span>
+              <span className="text-white/25">·</span>
+              <span className="text-white/40">{machines[activeMachine].subtitle}</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-1"><path d="M3 5L6 8L9 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
+            </button>
+            {dropdownOpen && (
+              <div className="absolute right-0 top-full mt-2 bg-[#111] border border-white/[0.08] rounded-xl overflow-hidden z-20 min-w-[300px]">
+                {machines.map((m, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { setActiveMachine(i); setDropdownOpen(false); }}
+                    className={`w-full text-left px-5 py-3 transition-colors ${activeMachine === i ? "bg-white/[0.06] text-white" : "text-white/50 hover:bg-white/[0.03]"}`}
+                  >
+                    <span className="text-sm block">{m.label}</span>
+                    <span className="text-xs text-white/30">{m.subtitle}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Left sidebar — action buttons */}
+          <div className="lg:w-[240px] shrink-0 flex flex-col">
+            {/* Spacer pushes buttons to bottom */}
+            <div className="flex-1" />
+
+            {/* Action buttons — Chat tab sits right above Download Catalog */}
+            <div className="hidden lg:flex flex-col gap-3">
+              <button
+                onClick={() => setIsChatMode(!isChatMode)}
+                className="relative btn btn-outline text-sm h-[42px] w-full justify-center rounded-xl overflow-hidden"
+                style={{ background: isChatMode ? "rgba(255,255,255,0.06)" : "transparent", border: "none" }}
+              >
+                <span className="absolute inset-0 rounded-xl pointer-events-none" style={{ padding: 1, background: "linear-gradient(135deg, rgba(222,33,39,0.5), rgba(222,33,39,0.12))", WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)", WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
+                <span className="relative z-10">{isChatMode ? "Back to Specs" : "Chat with Orient AI"}</span>
+              </button>
+              <a href="/contact" className="btn btn-cream text-sm h-[42px] w-full justify-center rounded-xl">Request Quote</a>
+              <a href="/downloads" className="flex items-center gap-1.5 text-sm text-white/40 hover:text-white/70 transition-colors justify-center mt-1">
+                Download Catalog
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Right — fixed height container for specs or chat */}
+          <div className="flex-1 min-w-0" style={{ height: 560 }}>
+            {!isChatMode ? (
+              /* Specs: table + image */
+              <div className="flex gap-6 h-full">
+                <div className="flex-1 min-w-0 overflow-hidden">
+                  {specs.map((row, i) => (
+                    <div key={row.label} className={`flex ${i % 2 === 0 ? "bg-white/[0.015]" : ""}`}>
+                      <div className="w-[200px] shrink-0 px-5 py-4 border-r border-white/[0.03]">
+                        <span className="text-[15px] text-white/35">{row.label}</span>
+                      </div>
+                      <div className="flex-1 px-5 py-4">
+                        <span className="text-base text-white/80">{row.values[activeMachine]}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="hidden xl:flex w-[45%] shrink-0 bg-[#0e0e0e] border border-white/[0.04] rounded-xl items-center justify-center">
+                  <span className="text-white/[0.06] text-sm">Product Image</span>
+                </div>
+              </div>
+            ) : (
+              /* Chat */
+              <div className="flex flex-col h-full">
+                {chatMessages.length === 0 ? (
+                  <div className="flex-1 flex flex-col items-center justify-center px-4">
+                    <h3 className="text-3xl font-medium text-white mb-10 text-center">What can we help you with?</h3>
+                    <div className="w-full max-w-2xl mb-8">
+                      <form onSubmit={(e) => { e.preventDefault(); sendChat(); }} className="relative">
+                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask about Orient Jet presses..." rows={3} disabled={chatStreaming} className="w-full px-6 py-5 pr-16 bg-[#1a1a1a] border border-white/[0.06] rounded-2xl text-lg text-white placeholder:text-white/25 outline-none resize-none disabled:opacity-50 focus:border-white/[0.12] transition-colors" />
+                        <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-white/[0.1] hover:bg-white/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </button>
+                      </form>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {chatSuggestions.map((s) => (
+                        <button key={s} onClick={() => sendChat(s)} className="text-sm text-white/40 hover:text-white/70 px-4 py-2.5 rounded-full border border-white/[0.08] hover:bg-white/[0.04] transition-colors">{s}</button>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div ref={chatScrollRef} className="flex-1 overflow-y-auto min-h-0">
+                      <div className="space-y-8 py-4 max-w-3xl">
+                        {chatMessages.map((msg, i) => (
+                          <div key={i}>
+                            {msg.role === "user" ? (
+                              <div className="flex justify-end"><div className="text-lg leading-relaxed text-white/90 bg-[#1a1a1a] px-5 py-3.5 rounded-2xl max-w-lg">{msg.content}</div></div>
+                            ) : (
+                              <div className="flex gap-3">
+                                <div className="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center shrink-0 mt-1"><span className="text-white/40 font-semibold text-xs">O</span></div>
+                                <div className="text-lg leading-loose text-white/75 flex-1 max-w-2xl">
+                                  {msg.content || (<span className="inline-flex gap-1.5 py-2"><span className="w-2 h-2 bg-white/15 rounded-full animate-pulse" /><span className="w-2 h-2 bg-white/15 rounded-full animate-pulse" style={{ animationDelay: "150ms" }} /><span className="w-2 h-2 bg-white/15 rounded-full animate-pulse" style={{ animationDelay: "300ms" }} /></span>)}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="shrink-0 pt-4 max-w-2xl">
+                      <form onSubmit={(e) => { e.preventDefault(); sendChat(); }} className="relative">
+                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask a follow-up..." rows={2} disabled={chatStreaming} className="w-full px-6 py-4 pr-16 bg-[#1a1a1a] border border-white/[0.06] rounded-2xl text-lg text-white placeholder:text-white/25 outline-none resize-none disabled:opacity-50 focus:border-white/[0.12] transition-colors" />
+                        <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-white/[0.1] hover:bg-white/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </button>
+                      </form>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

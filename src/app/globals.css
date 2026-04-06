@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-near-black: #1C1B1D;
+  --color-dark-surface: #111111;
+  --color-medium-gray: #78797E;
+  --color-cream: #FFFCE3;
+  --color-orient-red: #de2127;
+  --font-sans: var(--font-geist), "Helvetica Neue", sans-serif;
+  --font-display: "Poppins", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-geist), "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  overflow-x: hidden;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+::selection { background: rgba(222, 33, 39, 0.25); }
+
+/* ── Container — NO max-width, just padding like Hajster ── */
+.container-site {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+@media (max-width: 1680px) {
+  .container-site { padding-left: 40px; padding-right: 40px; }
+}
+@media (max-width: 768px) {
+  .container-site { padding-left: 24px; padding-right: 24px; }
+}
+
+/* ── Buttons — squared, professional ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid;
+}
+
+.btn-dark { background: #1C1B1D; color: #FFFCE3; border-color: #1C1B1D; }
+.btn-dark:hover { background: #2a292c; }
+.btn-cream { background: #FFFCE3; color: #1C1B1D; border-color: #FFFCE3; }
+.btn-cream:hover { background: #f0edce; }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.25); }
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); }
+
+.btn-arr {
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ── Inputs ── */
+.input-field {
+  width: 100%;
+  height: 65px;
+  padding: 0 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+  font-size: 18px;
+  font-weight: 500;
+  font-family: var(--font-geist), "Helvetica Neue", sans-serif;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.input-field::placeholder { color: rgba(255,255,255,0.3); }
+.input-field:focus { border-color: rgba(255,255,255,0.4); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+/* ── Logo scroll animation ── */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-scroll-left { animation: scroll-left 30s linear infinite; }
+.animate-scroll-right { animation: scroll-right 30s linear infinite; }
