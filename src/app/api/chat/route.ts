@@ -1,18 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
-
-const SYSTEM_PROMPT = `You are Orient Jet's product specialist — a helpful, concise assistant that ONLY answers questions about Orient Jet digital printing machines made by The Printers House Pvt. Ltd.
-
-## STRICT RULES — FOLLOW THESE ABSOLUTELY:
-1. ONLY answer questions related to Orient Jet machines, Orient printing products, The Printers House, or the printing/packaging industry
-2. If someone asks about math, coding, general knowledge, other companies, personal advice, or ANYTHING unrelated to Orient products — respond with: "I can only help with questions about Orient Jet printing machines. What would you like to know about our C-Series or L&P Series presses?"
-3. Never help with homework, writing, coding, or any task unrelated to Orient machines
-4. Keep answers short and factual (2-4 sentences unless detail is requested)
-5. If asked about pricing, say "Pricing depends on configuration — please contact our sales team at tphho@tphorient.com for a quote"
-6. Never make up specs — if unsure, say so
+const SYSTEM_PROMPT = `You are Orient Jet's product specialist — a helpful, concise assistant that answers questions about Orient Jet digital printing machines made by The Printers House Pvt. Ltd.
 
 ## Orient Jet C-Series (Duplex Digital Press)
 - Available at 600x600 dpi and 1200 dpi
@@ -42,17 +30,30 @@ const SYSTEM_PROMPT = `You are Orient Jet's product specialist — a helpful, co
 - Machines manufactured in India (Ballabhgarh plant)
 - Delivery: typically 4 months from advance payment
 - Prices are Ex Works (EXW)
-- Contact: tphho@tphorient.com, +91 11 2331 3071`;
+- Contact: tphho@tphorient.com, +91 11 2331 3071
+
+Rules:
+- Keep answers short and factual (2-4 sentences unless detail is requested)
+- If asked about pricing, say "Pricing depends on configuration — please contact our sales team at tphho@tphorient.com for a quote"
+- If asked something outside Orient Jet machines, politely redirect
+- Never make up specs — if unsure, say so`;
 
 export async function POST(req: Request) {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    return new Response("API key not configured", { status: 500 });
+  }
+
   try {
     const { messages } = await req.json();
+    const client = new Anthropic({ apiKey });
 
-    const stream = client.messages.stream({
+    const stream = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 512,
       system: SYSTEM_PROMPT,
       messages,
+      stream: true,
     });
 
     const encoder = new TextEncoder();
@@ -70,6 +71,7 @@ export async function POST(req: Request) {
           }
           controller.close();
         } catch (err) {
+          console.error("Stream error:", err);
           controller.enqueue(encoder.encode("Sorry, I encountered an error. Please try again."));
           controller.close();
         }
@@ -80,6 +82,7 @@ export async function POST(req: Request) {
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
   } catch (err) {
+    console.error("Chat API error:", err);
     return new Response("Internal server error", { status: 500 });
   }
 }

@@ -4,24 +4,24 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
 const machines = [
-  { label: "Orient Jet C-Series", subtitle: "Digital Inkjet · Duplex Press", img: "/images/spec-jet-c.jpg" },
-  { label: "Orient Jet L&P Series", subtitle: "Digital Inkjet · Label & Packaging", img: "/images/spec-jet-lp.jpg" },
-  { label: "X-Press Flex", subtitle: "Flexographic · Narrow to Wide Web", img: "/images/cover-xpress-flex.jpg" },
-  { label: "Offset Series", subtitle: "Web Offset · High-Speed Commercial", img: "/images/spec-offset.png" },
+  { label: "Orient Jet C-Series", subtitle: "600 dpi · Duplex Digital Press", img: "/images/spec-jet-c.jpg" },
+  { label: "Orient Jet C-Series", subtitle: "1200 dpi · High-Res Duplex", img: "/images/spec-jet-c.jpg" },
+  { label: "Orient Jet L&P Series", subtitle: "600 dpi · Label & Packaging", img: "/images/spec-jet-lp.jpg" },
+  { label: "Orient Jet L&P Series", subtitle: "1200 dpi · High-Res L&P", img: "/images/spec-jet-lp.jpg" },
 ];
 
 const specs = [
-  { label: "Print Head Technology", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera Katana / Epson D", "Contact sales", "Contact sales"] },
-  { label: "Resolution", values: ["600–1200 dpi", "600–1200 dpi", "Up to 175 lpi", "Up to 200 lpi"] },
-  { label: "Max Print Width", values: ["1080 mm (324–1080 mm in 108mm steps)", "Contact sales", "Contact sales", "Contact sales"] },
-  { label: "Print Speed", values: ["Up to 100 m/min", "Up to 75 m/min", "Contact sales", "Up to 50,000 cph"] },
-  { label: "Duplex / Simplex", values: ["Duplex", "Simplex", "Depends on config", "Depends on config"] },
-  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4 (CMYK), expandable", "Multi-colour", "Multi-colour"] },
-  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Contact sales", "Contact sales"] },
-  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Flexo inks", "Offset inks"] },
-  { label: "Electronics", values: ["Meteor, UK", "Meteor, UK", "Contact sales", "Contact sales"] },
-  { label: "RIP + Server", values: ["Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Contact sales", "Contact sales"] },
-  { label: "Finishing", values: ["In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "Contact sales", "Contact sales"] },
+  { label: "Print Head Technology", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera RC only", "Katana / Epson D", "Kyocera Katana / Epson D"] },
+  { label: "Resolution", values: ["600 x 600 dpi", "1200 dpi", "600 x 600 dpi", "1200 dpi"] },
+  { label: "Max Print Width", values: ["1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)"] },
+  { label: "Print Speed", values: ["Up to 100 m/min (RC) · 75 (Katana) · 80 (Epson D)", "Up to 100 m/min", "Up to 75 m/min (Katana) · 80 (Epson D)", "Up to 75 m/min (Katana) · 80 (Epson D)"] },
+  { label: "Duplex / Simplex", values: ["Duplex (both sides)", "Duplex", "Simplex (single side)", "Simplex"] },
+  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4 (CMYK)", "Up to 4 (CMYK), expandable", "Up to 4, expandable"] },
+  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²"] },
+  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based"] },
+  { label: "Electronics", values: ["Meteor, UK", "Meteor, UK", "Meteor, UK", "Meteor, UK"] },
+  { label: "RIP + Server", values: ["Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server"] },
+  { label: "Finishing", values: ["In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder"] },
 ];
 
 type ChatMsg = { role: "user" | "assistant"; content: string };
@@ -203,7 +203,7 @@ export default function Specifications() {
                     <h3 className="text-3xl font-medium text-near-black mb-10 text-center">What can we help you with?</h3>
                     <div className="w-full max-w-2xl mb-8">
                       <form onSubmit={(e) => { e.preventDefault(); sendChat(); }} className="relative">
-                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask about Orient Jet presses..." rows={3} disabled={chatStreaming} className="w-full px-6 py-5 pr-16 bg-[#dddddc] border border-black/[0.06] rounded-2xl text-lg text-near-black placeholder:text-black/25 outline-none resize-none disabled:opacity-50 focus:border-black/[0.12] transition-colors" />
+                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask about Orient Jet presses..." rows={3} disabled={chatStreaming} className="w-full px-6 py-5 pr-16 bg-[#f5f5f4] border border-black/[0.15] rounded-2xl shadow-sm text-lg text-near-black placeholder:text-black/25 outline-none resize-none disabled:opacity-50 focus:border-black/[0.12] transition-colors" />
                         <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-black/[0.1] hover:bg-black/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         </button>
@@ -237,7 +237,7 @@ export default function Specifications() {
                     </div>
                     <div className="shrink-0 pt-4 w-full">
                       <form onSubmit={(e) => { e.preventDefault(); sendChat(); }} className="relative">
-                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask a follow-up..." rows={2} disabled={chatStreaming} className="w-full px-6 py-4 pr-16 bg-[#dddddc] border border-black/[0.06] rounded-2xl text-lg text-near-black placeholder:text-black/25 outline-none resize-none disabled:opacity-50 focus:border-black/[0.12] transition-colors" />
+                        <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask a follow-up..." rows={2} disabled={chatStreaming} className="w-full px-6 py-4 pr-16 bg-[#f5f5f4] border border-black/[0.15] rounded-2xl shadow-sm text-lg text-near-black placeholder:text-black/25 outline-none resize-none disabled:opacity-50 focus:border-black/[0.12] transition-colors" />
                         <button type="submit" disabled={chatStreaming || !chatInput.trim()} className="absolute bottom-4 right-4 w-10 h-10 bg-black/[0.1] hover:bg-black/[0.18] rounded-xl flex items-center justify-center disabled:opacity-20 transition-all">
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M8 2L3 7M8 2L13 7" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         </button>
