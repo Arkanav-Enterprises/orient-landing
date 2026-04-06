@@ -188,10 +188,10 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Google Translate widget — toggled by globe button */}
+      {/* Google Translate widget — always in DOM for init, visually toggled */}
       <div
         id="google_translate_element"
-        className={`fixed top-[80px] right-4 z-[60] transition-all duration-200 ${translateOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} [&>.goog-te-gadget]:font-[inherit] [&_select]:rounded-lg [&_select]:border [&_select]:border-black/10 [&_select]:bg-white [&_select]:shadow-lg [&_select]:px-3 [&_select]:py-2 [&_select]:text-sm [&_select]:text-near-black/70 [&_select]:outline-none [&_.goog-te-gadget>span]:hidden [&_.goog-logo-link]:hidden [&_.goog-te-gadget>div:first-child]:hidden`}
+        className={`fixed z-[60] bg-white rounded-xl shadow-xl border border-black/10 p-3 min-w-[200px] transition-all duration-200 [&>.goog-te-gadget]:font-[inherit] [&_select]:w-full [&_select]:rounded-lg [&_select]:border [&_select]:border-black/10 [&_select]:bg-[#f5f5f4] [&_select]:px-3 [&_select]:py-2.5 [&_select]:text-sm [&_select]:text-near-black/70 [&_select]:outline-none [&_.goog-te-gadget>span]:hidden [&_.goog-logo-link]:hidden [&_.goog-te-gadget>div:first-child]:hidden ${translateOpen ? "top-[84px] right-4 opacity-100 visible" : "top-[70px] right-4 opacity-0 invisible"}`}
       />
 
       {/* Mobile menu */}

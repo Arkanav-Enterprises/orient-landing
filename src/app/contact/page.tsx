@@ -102,7 +102,18 @@ export default function ContactPage() {
           </form>
         </div>
 
-        <div className="lg:w-[40%] space-y-6">
+        <div className="lg:w-[40%] space-y-5">
+          <div className="rounded-xl overflow-hidden" style={{ height: 220 }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.9!2d77.2195!3d28.6325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b741d057%3A0xcdee88e47393c3f1!2sScindia%20House%2C%20Connaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
           <div className="bg-black/[0.03] rounded-[6px] p-8">
             <h3 className="text-[20px] font-medium text-near-black mb-4">Corporate Headquarters</h3>
             <p className="text-[16px] font-medium text-near-black/40 leading-[1.5] mb-3 whitespace-pre-line">{hq.address}</p>
