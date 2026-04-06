@@ -81,8 +81,12 @@ export async function POST(req: Request) {
     return new Response(readable, {
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
-  } catch (err) {
-    console.error("Chat API error:", err);
-    return new Response("Internal server error", { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("Chat API error:", message, err);
+    return new Response(JSON.stringify({ error: message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
