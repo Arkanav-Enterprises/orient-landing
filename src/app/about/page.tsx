@@ -272,6 +272,8 @@ export default function AboutPage() {
 
 function LegacySection({ timeline }: { timeline: { year: string; event: string; img?: string }[] }) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const featuredImg = hoveredIdx !== null ? timeline[hoveredIdx]?.img : timeline[0]?.img;
 
   return (
     <section id="legacy" ref={sectionRef} className="border-t border-black/[0.06]" style={{ padding: "120px 0" }}>
@@ -282,13 +284,38 @@ function LegacySection({ timeline }: { timeline: { year: string; event: string; 
         From a single workshop to the world&apos;s most prolific supplier of printing machinery.
       </p>
 
-      <div className="relative">
-        <LegacyScrollLine sectionRef={sectionRef} />
-        <div style={{ paddingLeft: 60 }}>
-          {timeline.map((t) => (
-            <LegacyRow key={t.year} year={t.year} event={t.event} img={t.img} />
-          ))}
+      <div className="flex gap-12">
+        {/* Timeline */}
+        <div className="flex-1 min-w-0 relative">
+          <LegacyScrollLine sectionRef={sectionRef} />
+          <div style={{ paddingLeft: 60 }}>
+            {timeline.map((t, i) => (
+              <LegacyRow
+                key={t.year}
+                year={t.year}
+                event={t.event}
+                onHover={() => setHoveredIdx(i)}
+                onLeave={() => setHoveredIdx(null)}
+              />
+            ))}
+          </div>
         </div>
+
+        {/* Sticky featured image — desktop only */}
+        <aside className="hidden lg:block shrink-0" style={{ width: 320 }}>
+          <div className="sticky top-[140px] bg-[#f5f5f4] rounded-xl overflow-hidden relative" style={{ width: 320, height: 400 }}>
+            {featuredImg && (
+              <Image
+                key={featuredImg}
+                src={featuredImg}
+                alt="Timeline"
+                fill
+                className="object-cover transition-opacity duration-300"
+                sizes="320px"
+              />
+            )}
+          </div>
+        </aside>
       </div>
     </section>
   );
@@ -333,9 +360,8 @@ function LegacyScrollLine({ sectionRef }: { sectionRef: React.RefObject<HTMLDivE
   );
 }
 
-function LegacyRow({ year, event, img }: { year: string; event: string; img?: string }) {
+function LegacyRow({ year, event, onHover, onLeave }: { year: string; event: string; onHover: () => void; onLeave: () => void }) {
   const rowRef = useRef<HTMLDivElement>(null);
-  const [showImg, setShowImg] = useState(false);
   const { scrollYProgress } = useScroll({
     target: rowRef,
     offset: ["start 0.85", "start 0.4"],
@@ -345,11 +371,10 @@ function LegacyRow({ year, event, img }: { year: string; event: string; img?: st
   return (
     <div
       ref={rowRef}
-      className="relative overflow-hidden cursor-pointer"
+      className="relative overflow-hidden"
       style={{ paddingTop: 36, paddingBottom: 36 }}
-      onMouseEnter={() => setShowImg(true)}
-      onMouseLeave={() => setShowImg(false)}
-      onClick={() => setShowImg((v) => !v)}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
     >
       <motion.div
         className="absolute inset-0 bg-white z-10 pointer-events-none"
@@ -357,16 +382,7 @@ function LegacyRow({ year, event, img }: { year: string; event: string; img?: st
       />
       <div className="flex gap-8 md:gap-16 items-start">
         <span className="text-[50px] font-medium text-near-black shrink-0 leading-[1.0]" style={{ width: 140 }}>{year}</span>
-        <div className="flex-1 pt-3">
-          <p className="text-[17px] font-medium text-near-black leading-[1.5]">{event}</p>
-          {img && (
-            <div className={`overflow-hidden transition-all duration-300 ${showImg ? "max-h-[300px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}>
-              <div className="relative w-full h-[200px] sm:h-[260px] rounded-lg overflow-hidden bg-[#f5f5f4]">
-                <Image src={img} alt={`${year} — ${event}`} fill className="object-cover" sizes="600px" />
-              </div>
-            </div>
-          )}
-        </div>
+        <p className="text-[17px] font-medium text-near-black leading-[1.5] pt-3 flex-1">{event}</p>
       </div>
     </div>
   );
