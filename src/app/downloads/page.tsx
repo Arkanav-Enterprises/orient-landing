@@ -50,17 +50,6 @@ export default function DownloadsPage() {
             </button>
           ))}
 
-          {/* Download button */}
-          <a
-            href={`/api/download?file=${encodeURIComponent(catalogs[active].file)}`}
-            download={catalogs[active].file}
-            className="flex items-center justify-center gap-2 w-full mt-3 p-3 rounded-lg bg-near-black text-white text-[14px] font-medium hover:bg-near-black/80 transition-colors"
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M8 2v9M8 11L4.5 7.5M8 11l3.5-3.5M3 14h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Download PDF
-          </a>
         </div>
 
         {/* PDF preview */}
@@ -70,7 +59,7 @@ export default function DownloadsPage() {
             <a
               href={`/api/download?file=${encodeURIComponent(catalogs[active].file)}`}
               download={catalogs[active].file}
-              className="absolute top-3 right-14 z-10 w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-sm border border-black/10 rounded-lg hover:bg-white shadow-sm transition-colors"
+              className="absolute top-3 right-16 z-10 w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-sm border border-black/10 rounded-lg hover:bg-white shadow-sm transition-colors"
               title="Download PDF"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
