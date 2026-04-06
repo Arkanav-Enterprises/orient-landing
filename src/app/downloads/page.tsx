@@ -65,7 +65,18 @@ export default function DownloadsPage() {
 
         {/* PDF preview */}
         <div className="flex-1 min-w-0">
-          <div className="bg-[#f5f5f4] rounded-xl overflow-hidden border border-black/[0.06]" style={{ height: "calc(100vh - 260px)", minHeight: 500 }}>
+          <div className="relative bg-[#f5f5f4] rounded-xl overflow-hidden border border-black/[0.06]" style={{ height: "calc(100vh - 260px)", minHeight: 500 }}>
+            {/* Floating download button */}
+            <a
+              href={`/api/download?file=${encodeURIComponent(catalogs[active].file)}`}
+              download={catalogs[active].file}
+              className="absolute top-3 right-14 z-10 w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-sm border border-black/10 rounded-lg hover:bg-white shadow-sm transition-colors"
+              title="Download PDF"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v9M8 11L4.5 7.5M8 11l3.5-3.5M3 14h10" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
             <iframe
               key={catalogs[active].file}
               src={previewUrl(catalogs[active].file)}
