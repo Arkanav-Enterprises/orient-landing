@@ -126,7 +126,7 @@ export default function Globe({ className }: { className?: string }) {
         center[0], center[1], radius * 0.95,
         center[0], center[1], radius * 1.15
       );
-      grad.addColorStop(0, "rgba(200,195,160,0.06)");
+      grad.addColorStop(0, "rgba(28,27,29,0.04)");
       grad.addColorStop(1, "rgba(255,255,255,0)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
@@ -144,30 +144,38 @@ export default function Globe({ className }: { className?: string }) {
       ctx.lineWidth = 0.5;
       ctx.stroke();
 
+      // Determine current focus country
+      const cycleTime = Math.max(0, elapsed - INTRO);
+      const totalCycle = HOLD + MOVE;
+      const idx = Math.floor((cycleTime % (FOCUS.length * totalCycle)) / totalCycle) % FOCUS.length;
+      const focusId = FOCUS[idx].id;
+
       // Countries
       const countries = (worldRef.current as any).features;
       for (const country of countries) {
         ctx.beginPath();
         path(country);
-        if (HIGHLIGHT_IDS.has(country.id)) {
-          ctx.fillStyle = "rgba(255,252,228,0.85)";
-          ctx.strokeStyle = "rgba(200,195,160,0.6)";
-          ctx.lineWidth = 0.8;
+        if (country.id === focusId) {
+          // Active pinned country — strong highlight
+          ctx.fillStyle = "rgba(222,33,39,0.25)";
+          ctx.strokeStyle = "rgba(222,33,39,0.5)";
+          ctx.lineWidth = 1.2;
+          ctx.fill();
+          ctx.stroke();
+        } else if (HIGHLIGHT_IDS.has(country.id)) {
+          ctx.fillStyle = "rgba(222,33,39,0.08)";
+          ctx.strokeStyle = "rgba(222,33,39,0.15)";
+          ctx.lineWidth = 0.6;
           ctx.fill();
           ctx.stroke();
         } else {
-          ctx.fillStyle = "rgba(28,27,29,0.08)";
-          ctx.strokeStyle = "rgba(28,27,29,0.12)";
+          ctx.fillStyle = "rgba(28,27,29,0.06)";
+          ctx.strokeStyle = "rgba(28,27,29,0.10)";
           ctx.lineWidth = 0.3;
           ctx.fill();
           ctx.stroke();
         }
       }
-
-      // Pin labels for current focus country
-      const cycleTime = Math.max(0, elapsed - INTRO);
-      const totalCycle = HOLD + MOVE;
-      const idx = Math.floor((cycleTime % (FOCUS.length * totalCycle)) / totalCycle) % FOCUS.length;
       const focusCountry = FOCUS[idx];
 
       // Check if focus point is on visible hemisphere

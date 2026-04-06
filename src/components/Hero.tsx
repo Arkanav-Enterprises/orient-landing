@@ -101,7 +101,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-[18px] font-bold leading-[1.2] text-orient-red"
+                className="text-[18px] font-bold leading-[1.2] text-white/80"
               >
                 {slide.subtitle}
               </motion.p>
