@@ -49,7 +49,6 @@ const productColumns = [
   {
     title: "Offset Presses",
     links: [
-      { label: "Orient Standard", href: "/products/orient-standard" },
       { label: "Orient Super", href: "/products/orient-super" },
       { label: "Orient X-Cel", href: "/products/orient-x-cel" },
       { label: "Orient X-Press", href: "/products/orient-x-press" },
@@ -60,9 +59,8 @@ const productColumns = [
   {
     title: "Services",
     links: [
-      { label: "Spare Parts", href: "/services/spare-parts" },
+      { label: "Spare Parts & Consumables", href: "/services/spare-parts" },
       { label: "AMC Servicing", href: "/services/amc" },
-      { label: "Financial Support", href: "/services/financial" },
     ],
   },
   {

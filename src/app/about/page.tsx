@@ -30,16 +30,16 @@ const timeline = [
 ];
 
 const plants = [
-  { name: "Plant 1 — Machining Centre", desc: "CNC machinery, pre-assembly, metallurgy labs, CMM quality control, and CAD/CAM design center." },
-  { name: "Plant 2 — Assembly Center", desc: "Final assembly, mechanical and electrical automation, quality inspection, and patron demonstration area." },
-  { name: "Plant 3 — R&D Centre", desc: "New product development, trial production, and performance testing for next-generation press technology." },
+  { name: "Plant 1 — Machining Centre", desc: "CNC machinery, pre-assembly, metallurgy labs, CMM quality control, and CAD/CAM design center.", img: "/images/plant-machining.jpg" },
+  { name: "Plant 2 — Assembly Center", desc: "Final assembly, mechanical and electrical automation, quality inspection, and patron demonstration area.", img: "/images/plant-assembly.jpg" },
+  { name: "Plant 3 — R&D Centre", desc: "New product development, trial production, and performance testing for next-generation press technology.", img: "/images/plant-rd.jpg" },
 ];
 
-const leaders = [
+const leaders: { name: string; title: string; img?: string }[] = [
   { name: "Mr. Pradeep A. Unny", title: "CEO" },
-  { name: "Mr. Rishab Kohli", title: "Director" },
-  { name: "Mr. Naveen Chahal", title: "Director" },
-  { name: "Mr. Sachin Pahuja", title: "COO" },
+  { name: "Mr. Rishab Kohli", title: "Director", img: "/images/team-rishab.jpg" },
+  { name: "Mr. Naveen Chahal", title: "Director", img: "/images/team-naveen.jpg" },
+  { name: "Mr. Sachin Pahuja", title: "COO", img: "/images/team-sachin.jpg" },
 ];
 
 const principles = [
@@ -126,6 +126,20 @@ export default function AboutPage() {
             <p className="text-[18px] font-medium text-near-black/50 leading-[1.4] mb-12" style={{ maxWidth: 600 }}>
               Established in 1946, a legacy of excellence in printing machinery.
             </p>
+
+            {/* Full-width drone hero */}
+            <div className="rounded-[6px] overflow-hidden mb-16 bg-black/[0.03]" style={{ aspectRatio: "16 / 9" }}>
+              <video
+                src="/videos/about-hero.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
             <div className="flex flex-col lg:flex-row gap-16">
               <div className="flex-1">
                 <p className="text-[18px] font-medium text-near-black/60 leading-[1.6] mb-8">
@@ -141,10 +155,7 @@ export default function AboutPage() {
                   With 10 offices across India and exports to 60+ countries, Orient continues to set new standards in the global printing machinery industry.
                 </p>
               </div>
-              <div className="lg:w-[40%] shrink-0 space-y-5">
-                <div className="bg-black/[0.03] rounded-[6px] flex items-center justify-center" style={{ height: 260 }}>
-                  <span className="text-near-black/10 text-[14px] font-medium">Company Image</span>
-                </div>
+              <div className="lg:w-[40%] shrink-0">
                 <div className="grid grid-cols-2 gap-4">
                   {[{ n: "79", l: "Years" }, { n: "20,000+", l: "Units" }, { n: "60+", l: "Countries" }, { n: "10", l: "Offices" }].map((s) => (
                     <div key={s.l} className="bg-black/[0.03] rounded-[6px] p-6">
@@ -171,8 +182,8 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               {plants.map((p) => (
                 <div key={p.name} className="bg-black/[0.03] rounded-[6px] overflow-hidden">
-                  <div className="flex items-center justify-center bg-black/[0.03]" style={{ height: 180 }}>
-                    <span className="text-near-black/10 text-[12px] font-medium">Facility Photo</span>
+                  <div className="relative bg-black/[0.03]" style={{ height: 220 }}>
+                    <Image src={p.img} alt={p.name} fill className="object-cover" sizes="(min-width: 768px) 33vw, 100vw" />
                   </div>
                   <div className="p-6">
                     <h3 className="text-[17px] font-medium text-near-black mb-3">{p.name}</h3>
@@ -197,8 +208,14 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
               {leaders.map((l) => (
                 <div key={l.name}>
-                  <div className="bg-black/[0.03] rounded-[6px] flex items-center justify-center mb-4" style={{ height: 240 }}>
-                    <span className="text-near-black/10 text-[11px] font-medium">Photo</span>
+                  <div className="relative bg-black/[0.03] rounded-[6px] overflow-hidden mb-4" style={{ height: 240 }}>
+                    {l.img ? (
+                      <Image src={l.img} alt={l.name} fill className="object-cover" sizes="(min-width: 768px) 25vw, 50vw" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-near-black/10 text-[11px] font-medium">Photo</span>
+                      </div>
+                    )}
                   </div>
                   <h3 className="text-[16px] font-medium text-near-black mb-1">{l.name}</h3>
                   <p className="text-[14px] font-medium text-near-black/40">{l.title}</p>

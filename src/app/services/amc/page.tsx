@@ -1,9 +1,11 @@
+import Image from "next/image";
 import PageShell from "@/components/PageShell";
 
 export default function AMCPage() {
   return (
     <PageShell title="AMC Servicing" subtitle="Orient Smart AMC">
-      <div className="max-w-[720px]">
+      <div className="flex flex-col lg:flex-row gap-16 items-start">
+        <div className="flex-1 max-w-[640px]">
         <p className="text-[18px] font-medium text-near-black/60 leading-[1.6] mb-8">
           Orient Smart AMC provides comprehensive annual maintenance contracts designed to keep
           your presses running at peak efficiency. With 24/7 telephonic support, our team is
@@ -41,6 +43,19 @@ export default function AMCPage() {
               Round-the-clock phone support from Orient engineers who know your equipment inside
               and out.
             </p>
+          </div>
+        </div>
+        </div>
+
+        <div className="lg:w-[42%] shrink-0 w-full">
+          <div className="relative bg-black/[0.03] rounded-[6px] overflow-hidden" style={{ aspectRatio: "1 / 1" }}>
+            <Image
+              src="/images/amc-servicing.jpg"
+              alt="Orient press close-up"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 42vw, 100vw"
+            />
           </div>
         </div>
       </div>

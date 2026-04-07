@@ -4,7 +4,6 @@ import { useState } from "react";
 import PageShell from "@/components/PageShell";
 
 const catalogs = [
-  { label: "Orient Standard", file: "Orient-Standard_.pdf" },
   { label: "Orient Super", file: "Orient-Super_.pdf" },
   { label: "Orient X-Cel", file: "X-CEL-28-1-25.pdf" },
   { label: "Orient X-Press", file: "X-PRESS_.pdf" },

@@ -16,7 +16,6 @@ const categories = [
     title: "Web Offset Printing Presses",
     description: "Industry-leading web offset presses for newspaper, book, and commercial printing.",
     products: [
-      { name: "Orient Standard", href: "/products/orient-standard", desc: "Single-width press for newspaper, tabloid & book printing", speed: "16,000 cph" },
       { name: "Orient Super", href: "/products/orient-super", desc: "Versatile press — up to 4 colours both sides of one web", speed: "30,000 cph" },
       { name: "Orient X-Cel", href: "/products/orient-x-cel", desc: "High-performance press with infra-red web detection", speed: "36,000 cph" },
       { name: "Orient X-Press", href: "/products/orient-x-press", desc: "Flagship press with stainless steel cylinders & touchscreen console", speed: "50,000 cph" },
@@ -55,9 +54,8 @@ const categories = [
     title: "Services",
     description: "End-to-end support for your Orient presses.",
     products: [
-      { name: "Spare Parts", href: "/services/spare-parts", desc: "Genuine Orient spare parts for all press models" },
+      { name: "Spare Parts & Consumables", href: "/services/spare-parts", desc: "Original parts, proprietary inks, and high-end offset chemicals" },
       { name: "AMC Servicing", href: "/services/amc", desc: "Annual maintenance contracts & on-site support" },
-      { name: "Financial Support", href: "/services/financial", desc: "Financing options for new press purchases" },
     ],
   },
 ];

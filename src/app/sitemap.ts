@@ -18,7 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const productPages = [
-    "/products/orient-standard",
     "/products/orient-super",
     "/products/orient-x-cel",
     "/products/orient-x-press",
@@ -34,7 +33,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const servicePages = [
     "/services/spare-parts",
     "/services/amc",
-    "/services/financial",
   ].map((url) => ({ url, priority: 0.6 as number, changeFrequency: "monthly" as const }));
 
   return [...staticPages, ...productPages, ...servicePages].map((page) => ({

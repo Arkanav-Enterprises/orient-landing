@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       { source: "/product.php", destination: "/products", permanent: true },
 
       // Offset presses
-      { source: "/orient-standard.php", destination: "/products/orient-standard", permanent: true },
+      { source: "/orient-standard.php", destination: "/products", permanent: true },
       { source: "/orient-super.php", destination: "/products/orient-super", permanent: true },
       { source: "/orient-x-cel.php", destination: "/products/orient-x-cel", permanent: true },
       { source: "/orient-xpress.php", destination: "/products/orient-x-press", permanent: true },
@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
       // Services
       { source: "/spare-parts.php", destination: "/services/spare-parts", permanent: true },
       { source: "/amc-servicing.php", destination: "/services/amc", permanent: true },
-      { source: "/financial-services.php", destination: "/services/financial", permanent: true },
+      { source: "/financial-services.php", destination: "/contact", permanent: true },
 
       // Other pages
       { source: "/news-and-events.php", destination: "/news", permanent: true },
