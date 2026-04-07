@@ -16,6 +16,7 @@ export default function OrientJetCPage() {
         { label: "Application", value: "Book, Commercial, Newspaper, Label, Packaging" },
         { label: "Ink", value: "Economical usage" },
       ]}
+      videoId="hP0uOO0yPpo"
     />
   );
 }

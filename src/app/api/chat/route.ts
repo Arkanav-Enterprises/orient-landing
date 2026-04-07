@@ -71,13 +71,19 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { messages } = await req.json();
+    const { messages, product } = await req.json();
     const client = new Anthropic({ apiKey });
+
+    const system = product
+      ? `${SYSTEM_PROMPT}
+
+CRITICAL SCOPE RULE: The user is currently on the ${product} product page. You MUST ONLY answer questions specifically about ${product}. For ANY question about other Orient machines, other printing equipment, pricing of other products, or unrelated topics, politely redirect: "I'm here to help with questions about ${product} specifically. For other Orient machines, please visit the main Orient AI chat on our homepage or contact sales at tphho@tphorient.com." Do not volunteer information about other products even if it seems relevant. Stay strictly focused on ${product}.`
+      : SYSTEM_PROMPT;
 
     const stream = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 512,
-      system: SYSTEM_PROMPT,
+      system,
       messages,
       stream: true,
     });

@@ -15,6 +15,7 @@ export default function XPressFlexMidPage() {
         { label: "Web Width", value: "650-1000mm" },
         { label: "Application", value: "Film Labels, Pouches, Cartons" },
       ]}
+      videoId="3ulUbJItgFY"
     />
   );
 }

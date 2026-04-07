@@ -18,6 +18,7 @@ export default function XPressFlexWidePage() {
         { label: "Wastage Reduction", value: "Up to 50%" },
         { label: "Sectors", value: "FMCG, Food, Medical, Pharma" },
       ]}
+      videoId="RJGczOt_jb0"
     />
   );
 }

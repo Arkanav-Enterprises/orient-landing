@@ -20,6 +20,7 @@ export default function OrientXLCPage() {
         { label: "Tower Height", value: "3,065mm" },
         { label: "Tower Width", value: "1,390mm" },
       ]}
+      videoId="eGJn9CscN14"
     />
   );
 }

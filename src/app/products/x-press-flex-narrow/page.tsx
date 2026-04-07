@@ -16,6 +16,7 @@ export default function XPressFlexNarrowPage() {
         { label: "Web Width", value: "330-650mm" },
         { label: "Application", value: "Labels, Flexible Packaging" },
       ]}
+      videoId="3ulUbJItgFY"
     />
   );
 }

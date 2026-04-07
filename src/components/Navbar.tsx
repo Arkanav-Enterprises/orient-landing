@@ -172,8 +172,14 @@ export default function Navbar() {
             <Link href="/contact" className="btn btn-outline text-[14px] h-[40px] px-5">Request a Quote</Link>
           </div>
 
-          {/* Mobile: translate + toggle */}
+          {/* Mobile: quote CTA + translate + toggle */}
           <div className="lg:hidden flex items-center gap-1 ml-auto">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center h-[36px] px-4 rounded-md border border-black/15 text-[16px] font-medium text-near-black hover:border-black/40 transition-colors mr-1 whitespace-nowrap"
+            >
+              Request Quote
+            </Link>
             <button onClick={toggleTranslate} className="w-[36px] h-[36px] flex items-center justify-center rounded-lg text-near-black/40 hover:text-near-black/70 transition-colors" aria-label="Translate">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </button>
