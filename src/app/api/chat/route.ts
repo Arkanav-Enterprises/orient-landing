@@ -36,8 +36,7 @@ Four web offset press models for newspaper, book, and commercial printing:
 
 ## Orient X-Press Flex (Flexographic Range)
 Three flexo press widths for paper, film, labels, and flexible packaging:
-- **X-Press Flex Narrow Web**: 330–650mm width. For labels, flexible packaging, paper packaging. Proprietary Orient X-Gear design, optional sleeve technology.
-- **X-Press Flex Mid Web**: 650–1000mm width. For film labels, shrink sleeves, pouches, mono cartons. Custom cylinder assembly for registration.
+- **X-Press Flex Narrow & Mid Web**: 330–1000mm width (narrow 330–650mm, mid 650–1000mm). Covers labels, flexible packaging, paper packaging, film labels, shrink sleeves, pouches, and mono cartons. Proprietary Orient X-Gear design with optional sleeve technology (narrow) and custom cylinder assembly for registration (mid).
 - **X-Press Flex Wide Web**: 1000–1500mm width. Sleeve technology for quick changeover, up to 50% less wastage. Sustainable green inks supported.
 - Up to 10 colours
 - Speeds up to 250 m/min

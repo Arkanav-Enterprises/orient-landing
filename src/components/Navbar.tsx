@@ -66,8 +66,7 @@ const productColumns = [
   {
     title: "Flexo Presses",
     links: [
-      { label: "X-Press Flex Narrow Web", href: "/products/x-press-flex-narrow" },
-      { label: "X-Press Flex Mid Web", href: "/products/x-press-flex-mid" },
+      { label: "X-Press Flex Narrow & Mid Web", href: "/products/x-press-flex-narrow-mid" },
       { label: "X-Press Flex Wide Web", href: "/products/x-press-flex-wide" },
     ],
   },
@@ -127,10 +126,10 @@ export default function Navbar() {
               onMouseEnter={() => openDropdown("products")}
               onMouseLeave={closeDropdown}
             >
-              <Link href="/products" className="flex items-center gap-1 text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">
+              <button type="button" className="flex items-center gap-1 text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">
                 Products
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="mt-0.5"><path d="M2 4L5 7L8 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
-              </Link>
+              </button>
               <AnimatePresence>
                 {activeDropdown === "products" && (
                   <motion.div

@@ -29,8 +29,7 @@ const footerColumns = [
   {
     title: "Flexo & Inkjet",
     links: [
-      { label: "X-Press Flex Narrow Web", href: "/products/x-press-flex-narrow" },
-      { label: "X-Press Flex Mid Web", href: "/products/x-press-flex-mid" },
+      { label: "X-Press Flex Narrow & Mid Web", href: "/products/x-press-flex-narrow-mid" },
       { label: "X-Press Flex Wide Web", href: "/products/x-press-flex-wide" },
       { label: "Orient Jet C Series", href: "/products/orient-jet-c" },
       { label: "Orient Jet L&P Series", href: "/products/orient-jet-lp" },

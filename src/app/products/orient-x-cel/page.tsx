@@ -21,6 +21,15 @@ export default function OrientXCelPage() {
         { label: "Dampening", value: "Brushmist" },
       ]}
       configurations={["Mono Unit", "3-Colour Satellite", "4 High Tower"]}
+      images={[
+        "/images/prod-xcel-1.jpg",
+        "/images/prod-xcel-2.jpg",
+        "/images/prod-xcel-3.jpg",
+        "/images/prod-xcel-4.jpg",
+        "/images/prod-xcel-5.jpg",
+        "/images/prod-xcel-6.jpg",
+      ]}
+      videoFile="/videos/offset-final.mp4"
     />
   );
 }

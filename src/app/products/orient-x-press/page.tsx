@@ -22,6 +22,13 @@ export default function OrientXPressPage() {
         { label: "Reel Change", value: "Automated" },
       ]}
       configurations={["Full Tower", "Double Width"]}
+      images={[
+        "/images/prod-xpress-1.jpg",
+        "/images/prod-xpress-2.jpg",
+        "/images/prod-xpress-3.jpg",
+        "/images/prod-xpress-4.jpg",
+      ]}
+      videoFile="/videos/offset-final.mp4"
     />
   );
 }

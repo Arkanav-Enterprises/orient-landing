@@ -9,18 +9,22 @@ export default function OrientXLCPage() {
       speed="Up to 30,000 cph"
       features={[
         "Compact tower: 3,065mm height, 1,390mm width",
-        "Paper Width: 660-889mm",
-        "Grammage: 38-100 gsm",
         "Contactless brushmist dampening",
       ]}
       specs={[
         { label: "Speed", value: "30,000 cph" },
-        { label: "Paper Width", value: "660-889mm" },
-        { label: "Grammage", value: "38-100 gsm" },
         { label: "Tower Height", value: "3,065mm" },
         { label: "Tower Width", value: "1,390mm" },
       ]}
+      images={[
+        "/images/prod-xlc-1.jpg",
+        "/images/prod-xlc-2.jpg",
+        "/images/prod-xlc-3.jpg",
+        "/images/prod-xlc-4.jpg",
+      ]}
+      bannerImage="/images/prod-xlc-banner.jpg"
       videoId="eGJn9CscN14"
+      pairBannerWithVideo
     />
   );
 }

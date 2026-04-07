@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const offers = [
   { title: "New Press Enquiry", desc: "Explore our full range of offset, flexo, and inkjet presses for your new production line.", img: "/images/offer-new-press.jpg" },
@@ -33,9 +34,13 @@ export default function Offer() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-              className="cursor-pointer group"
+              className="group"
             >
-              <div className="relative bg-[#dddddc] rounded-xl overflow-hidden flex items-end p-6 h-[280px] md:h-[403px]">
+              <Link
+                href="/contact"
+                aria-label={offer.title}
+                className="relative bg-[#dddddc] rounded-xl overflow-hidden flex items-end p-6 h-[280px] md:h-[403px] cursor-pointer"
+              >
                 <Image src={offer.img} alt={offer.title} fill className="object-cover" />
                 <p
                   className="relative z-10 text-[30px] font-medium leading-[1.3] text-white"
@@ -43,7 +48,7 @@ export default function Offer() {
                 >
                   {offer.title}
                 </p>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

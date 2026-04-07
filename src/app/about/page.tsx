@@ -146,7 +146,7 @@ export default function AboutPage() {
                   Established in 1946, TPH ORIENT has carved a formidable reputation as a leading quality-conscious manufacturer and supplier of printing machines, converting machines, consumables, and allied services worldwide.
                 </p>
                 <p className="text-[18px] font-medium text-near-black/60 leading-[1.6] mb-8">
-                  Under the guidance of Rishabh Kohli, the third generation of the family, Orient has expanded its operations into various sectors, including printing machinery manufacturing and solar energy.
+                  Under the guidance of Rishab Kohli, the third generation of the family, Orient has expanded its operations into various sectors, including printing machinery manufacturing and solar energy.
                 </p>
                 <p className="text-[18px] font-medium text-near-black/60 leading-[1.6] mb-8">
                   Orient operates a 20-acre manufacturing campus in Delhi NCR with state-of-the-art CNC machines, AutoCAD/3D modeling design centers, a dedicated final assembly unit, and in-house painting facilities.

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,6 +10,10 @@ import Footer from "./Footer";
 import ProductGallery from "./ProductGallery";
 
 export type ProductSpec = { label: string; value: string };
+export type SpecComparison = {
+  columns: string[];
+  rows: { label: string; values: string[] }[];
+};
 
 type ChatMsg = { role: "user" | "assistant"; content: string };
 
@@ -19,9 +24,17 @@ export default function ProductPage({
   speed,
   features,
   specs,
+  specComparison,
   configurations,
   images,
+  galleryVideo,
+  galleryVideoPoster,
+  bannerImage,
+  bannerVideo,
   videoId,
+  videoFile,
+  pairBannerWithVideo,
+  pairedLeftVideo,
 }: {
   name: string;
   category: string;
@@ -29,10 +42,25 @@ export default function ProductPage({
   speed?: string;
   features: string[];
   specs: ProductSpec[];
+  specComparison?: SpecComparison;
   configurations?: string[];
   images?: string[];
+  galleryVideo?: string;
+  galleryVideoPoster?: string;
+  bannerImage?: string;
+  bannerVideo?: string;
   videoId?: string;
+  videoFile?: string;
+  pairBannerWithVideo?: boolean;
+  pairedLeftVideo?: string;
 }) {
+  // Paired bottom layout: 2-column with bannerImage (or pairedLeftVideo) on the left
+  // and videoFile/videoId on the right. When pairedLeftVideo is set, bannerImage
+  // renders standalone full-width above instead of being consumed by the pair.
+  const bottomVideo = videoFile || videoId;
+  const pairedLeftIsVideo = !!pairedLeftVideo;
+  const isPaired = !!(pairBannerWithVideo && (bannerImage || pairedLeftVideo) && bottomVideo);
+  const bannerImageConsumedByPair = isPaired && !pairedLeftIsVideo;
   const [isChatMode, setIsChatMode] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>([]);
@@ -288,7 +316,12 @@ export default function ProductPage({
               <div className="flex flex-col lg:flex-row gap-12">
                 {/* Left — gallery + CTAs */}
                 <div className="lg:w-[45%] shrink-0">
-                  <ProductGallery images={images} alt={name} />
+                  <ProductGallery
+                    images={images}
+                    video={galleryVideo}
+                    videoPoster={galleryVideoPoster}
+                    alt={name}
+                  />
 
                   <div ref={inlineCtaRef} className="flex flex-col gap-3 mt-6">
                     <button
@@ -350,7 +383,39 @@ export default function ProductPage({
                     ))}
                   </ul>
 
-                  {specs.length > 0 && (
+                  {specComparison ? (
+                    <>
+                      <h3 className="text-[20px] font-medium text-near-black mb-4">Specifications</h3>
+                      <div className="border border-black/8 rounded-[6px] overflow-hidden overflow-x-auto">
+                        <div className="min-w-[480px]">
+                          {/* Column headers */}
+                          <div className="flex bg-black/[0.04]">
+                            <div className="w-[140px] md:w-[180px] shrink-0 px-4 py-3">
+                              <span className="text-[13px] font-medium text-near-black/40">&nbsp;</span>
+                            </div>
+                            {specComparison.columns.map((col) => (
+                              <div key={col} className="flex-1 px-4 py-3">
+                                <span className="text-[13px] font-semibold text-near-black uppercase tracking-wider">{col}</span>
+                              </div>
+                            ))}
+                          </div>
+                          {/* Rows */}
+                          {specComparison.rows.map((row, i) => (
+                            <div key={row.label} className={`flex ${i % 2 === 0 ? "bg-black/[0.02]" : ""}`}>
+                              <div className="w-[140px] md:w-[180px] shrink-0 px-4 py-3">
+                                <span className="text-[15px] font-medium text-near-black/40">{row.label}</span>
+                              </div>
+                              {row.values.map((val, j) => (
+                                <div key={j} className="flex-1 px-4 py-3">
+                                  <span className="text-[15px] font-medium text-near-black/70">{val}</span>
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : specs.length > 0 ? (
                     <>
                       <h3 className="text-[20px] font-medium text-near-black mb-4">Specifications</h3>
                       <div className="border border-black/8 rounded-[6px] overflow-hidden">
@@ -362,26 +427,126 @@ export default function ProductPage({
                         ))}
                       </div>
                     </>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Full-width image placeholder */}
-          <section style={{ paddingBottom: videoId ? 24 : 120 }}>
-            <div className="container-site">
-              <div
-                className="relative bg-[#f5f5f4] rounded-[6px] flex items-center justify-center overflow-hidden"
-                style={{ aspectRatio: "21 / 9" }}
-              >
-                <span className="text-near-black/15 text-[14px] font-medium">Product Image — Full Width</span>
+          {/* Full-width banner — video takes precedence over image; image suppressed only when consumed by pair */}
+          {(bannerVideo || (bannerImage && !bannerImageConsumedByPair)) && (
+            <section style={{ paddingBottom: videoId || videoFile ? 24 : 120 }}>
+              <div className="container-site">
+                <div
+                  className="relative bg-black rounded-[6px] overflow-hidden"
+                  style={{ aspectRatio: "21 / 9" }}
+                >
+                  {bannerVideo ? (
+                    <video
+                      src={bannerVideo}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={bannerImage!}
+                      alt={`${name} banner`}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                      loading="lazy"
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
-          {/* Full-width YouTube video — only when videoId is provided, sits at the bottom */}
-          {videoId && (
+          {/* Paired bottom: bannerImage (or pairedLeftVideo) + video in a 2-column layout */}
+          {isPaired && (
+            <section style={{ paddingBottom: 120 }}>
+              <div className="container-site">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div
+                    className="relative bg-black rounded-[6px] overflow-hidden"
+                    style={{ aspectRatio: "16 / 9" }}
+                  >
+                    {pairedLeftIsVideo ? (
+                      <video
+                        src={pairedLeftVideo}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 w-full h-full object-contain bg-black"
+                      />
+                    ) : (
+                      <Image
+                        src={bannerImage!}
+                        alt={`${name} banner`}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                  <div
+                    className="relative bg-black rounded-[6px] overflow-hidden"
+                    style={{ aspectRatio: "16 / 9" }}
+                  >
+                    {videoFile ? (
+                      <video
+                        src={videoFile}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+                        title={`${name} video`}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="absolute inset-0 w-full h-full"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Full-width video at the bottom — only when NOT paired */}
+          {!isPaired && videoFile ? (
+            <section style={{ paddingBottom: 120 }}>
+              <div className="container-site">
+                <div
+                  className="relative bg-black rounded-[6px] overflow-hidden"
+                  style={{ aspectRatio: "21 / 9" }}
+                >
+                  <video
+                    src={videoFile}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </section>
+          ) : !isPaired && videoId ? (
             <section style={{ paddingBottom: 120 }}>
               <div className="container-site">
                 <div
@@ -399,7 +564,7 @@ export default function ProductPage({
                 </div>
               </div>
             </section>
-          )}
+          ) : null}
 
           {/* Mobile sticky bottom CTA bar — hidden on lg+, appears after inline CTAs scroll out */}
           <div

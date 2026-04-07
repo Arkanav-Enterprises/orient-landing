@@ -18,6 +18,15 @@ export default function OrientSuperPage() {
         { label: "Configurations", value: "Mono, Satellite, Tower" },
       ]}
       configurations={["Mono Unit", "3-Colour Satellite", "4 High Tower"]}
+      images={[
+        "/images/prod-super-1.jpg",
+        "/images/prod-super-2.jpg",
+        "/images/prod-super-3.jpg",
+        "/images/prod-super-4.jpg",
+        "/images/prod-super-5.jpg",
+        "/images/prod-super-6.jpg",
+      ]}
+      videoFile="/videos/offset-final.mp4"
     />
   );
 }

@@ -36,7 +36,7 @@ export default function About() {
               Meet Orient
             </motion.h2>
             <ScrollRevealText
-              text="Established in 1946 by K.D. Kohli, a freedom fighter and newspaperman, Orient has grown from a single workshop in post-independence India to the world's most prolific supplier of printing machinery. Three generations of the Kohli family have steered the company through decades of innovation — from web offset to flexographic, from inkjet to packaging. Today, under the leadership of Rishabh Kohli, Orient operates a 20-acre manufacturing campus, serves 60+ countries, and has installed over 20,000 units worldwide."
+              text="Established in 1946 by K.D. Kohli, a freedom fighter and newspaperman, Orient has grown from a single workshop in post-independence India to the world's most prolific supplier of printing machinery. Three generations of the Kohli family have steered the company through decades of innovation — from web offset to flexographic, from inkjet to packaging. Today, under the leadership of Rishab Kohli, Orient operates a 20-acre manufacturing campus, serves 60+ countries, and has installed over 20,000 units worldwide."
             />
           </div>
         </div>

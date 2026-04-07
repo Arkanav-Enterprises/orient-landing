@@ -8,7 +8,7 @@ const milestones = [
   { label: "Year", year: "1960s", event: "First web offset printing press manufactured in India, pioneering domestic production" },
   { label: "Year", year: "1980s", event: "Export operations launched, bringing Orient machinery to international markets" },
   { label: "Year", year: "2000s", event: "Expansion into flexographic and digital inkjet printing technology" },
-  { label: "Year", year: "2020s", event: "20,000+ units installed worldwide under the leadership of Rishabh Kohli" },
+  { label: "Year", year: "2020s", event: "20,000+ units installed worldwide under the leadership of Rishab Kohli" },
 ];
 
 export default function Legacy() {

@@ -16,7 +16,17 @@ export default function OrientJetCPage() {
         { label: "Application", value: "Book, Commercial, Newspaper, Label, Packaging" },
         { label: "Ink", value: "Economical usage" },
       ]}
+      images={[
+        "/images/prod-jet-c-1.jpg",
+        "/images/prod-jet-c-2.jpg",
+        "/images/prod-jet-c-3.jpg",
+        "/images/prod-jet-c-4.jpg",
+        "/images/prod-jet-c-5.jpg",
+      ]}
+      bannerVideo="/videos/jet-c-banner.mp4"
+      bannerImage="/images/prod-jet-c-banner.jpg"
       videoId="hP0uOO0yPpo"
+      pairBannerWithVideo
     />
   );
 }

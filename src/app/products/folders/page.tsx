@@ -19,6 +19,13 @@ export default function FoldersPage() {
         { label: "Max Speed", value: "50,000 cph" },
         { label: "Max Webs", value: "12" },
       ]}
+      images={[
+        "/images/prod-folders-1.jpg",
+        "/images/prod-folders-2.jpg",
+        "/images/prod-folders-3.jpg",
+        "/images/prod-folders-4.jpg",
+      ]}
+      bannerImage="/images/prod-folders-banner.jpg"
     />
   );
 }

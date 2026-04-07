@@ -18,7 +18,16 @@ export default function OrientJetLPPage() {
         { label: "Substrates", value: "Paper, Plastics, Metals" },
         { label: "VDP", value: "Capable" },
       ]}
+      images={[
+        "/images/prod-jet-lp-1.jpg",
+        "/images/prod-jet-lp-2.jpg",
+        "/images/prod-jet-lp-3.jpg",
+        "/images/prod-jet-lp-4.jpg",
+      ]}
+      bannerVideo="/videos/jet-lp-banner.mp4"
+      bannerImage="/images/prod-jet-lp-banner.jpg"
       videoId="U4i-Szo_d9U"
+      pairBannerWithVideo
     />
   );
 }

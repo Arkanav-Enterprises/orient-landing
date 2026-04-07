@@ -12,11 +12,12 @@ const nextConfig: NextConfig = {
       { source: "/suppliers-hub.php", destination: "/about#suppliers", permanent: true },
       { source: "/our-team.php", destination: "/about#team", permanent: true },
 
-      // Product index
-      { source: "/product.php", destination: "/products", permanent: true },
+      // Product index (legacy — now points to homepage)
+      { source: "/product.php", destination: "/", permanent: true },
+      { source: "/products", destination: "/", permanent: true },
 
       // Offset presses
-      { source: "/orient-standard.php", destination: "/products", permanent: true },
+      { source: "/orient-standard.php", destination: "/", permanent: true },
       { source: "/orient-super.php", destination: "/products/orient-super", permanent: true },
       { source: "/orient-x-cel.php", destination: "/products/orient-x-cel", permanent: true },
       { source: "/orient-xpress.php", destination: "/products/orient-x-press", permanent: true },
@@ -24,13 +25,15 @@ const nextConfig: NextConfig = {
       { source: "/folder.php", destination: "/products/folders", permanent: true },
 
       // Flexo presses
-      { source: "/orient-x-press-flex-asr-370.php", destination: "/products/x-press-flex-narrow", permanent: true },
-      { source: "/orient-x-press-flex-asr-650.php", destination: "/products/x-press-flex-mid", permanent: true },
+      { source: "/orient-x-press-flex-asr-370.php", destination: "/products/x-press-flex-narrow-mid", permanent: true },
+      { source: "/orient-x-press-flex-asr-650.php", destination: "/products/x-press-flex-narrow-mid", permanent: true },
+      { source: "/products/x-press-flex-narrow", destination: "/products/x-press-flex-narrow-mid", permanent: true },
+      { source: "/products/x-press-flex-mid", destination: "/products/x-press-flex-narrow-mid", permanent: true },
       { source: "/orient-x-press-flex-asr-1000.php", destination: "/products/x-press-flex-wide", permanent: true },
 
       // Packaging & converting
       { source: "/folder-gluer-machine.php", destination: "/products/folders", permanent: true },
-      { source: "/die-cutting-machine.php", destination: "/products", permanent: true },
+      { source: "/die-cutting-machine.php", destination: "/", permanent: true },
 
       // Inkjet
       { source: "/inkjet-digital-printing-machine.php", destination: "/products/orient-jet-c", permanent: true },
@@ -47,11 +50,11 @@ const nextConfig: NextConfig = {
       { source: "/contact.php", destination: "/contact", permanent: true },
       { source: "/careers.php", destination: "/careers", permanent: true },
 
-      // SEO landing pages → products
-      { source: "/web-offset-printing-machine-press.php", destination: "/products", permanent: true },
-      { source: "/book-printing-machine-press.php", destination: "/products", permanent: true },
-      { source: "/offset-printing-machine.php", destination: "/products", permanent: true },
-      { source: "/newspaper-printing-machine-press.php", destination: "/products", permanent: true },
+      // SEO landing pages → homepage
+      { source: "/web-offset-printing-machine-press.php", destination: "/", permanent: true },
+      { source: "/book-printing-machine-press.php", destination: "/", permanent: true },
+      { source: "/offset-printing-machine.php", destination: "/", permanent: true },
+      { source: "/newspaper-printing-machine-press.php", destination: "/", permanent: true },
 
       // Enquiry forms → contact
       { source: "/new-press-enquiry.php", destination: "/contact", permanent: true },
