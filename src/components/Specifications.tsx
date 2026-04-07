@@ -43,6 +43,7 @@ export default function Specifications() {
   const [activeMachine, setActiveMachine] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [sidebarDropdownOpen, setSidebarDropdownOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [isChatMode, setIsChatMode] = useState(false);
 
   // Default to chat on mobile after hydration
@@ -200,13 +201,23 @@ export default function Specifications() {
                     </div>
                   ))}
                 </div>
-                <div className="hidden xl:block w-[45%] shrink-0 bg-[#f5f5f4] border border-black/[0.04] rounded-xl overflow-hidden relative">
+                <div className="hidden xl:block w-[45%] shrink-0 relative">
                   <img
                     key={machines[activeMachine].img}
                     src={machines[activeMachine].img}
                     alt={machines[activeMachine].label}
-                    className="absolute inset-0 w-full h-full object-contain p-6"
+                    className="w-full h-auto rounded-xl"
                   />
+                  <button
+                    onClick={() => setLightboxOpen(true)}
+                    className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-sm border border-black/10 rounded-lg hover:bg-white shadow-sm transition-colors"
+                    aria-label="View full size"
+                    title="View full size"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1B1D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             ) : (
@@ -268,6 +279,30 @@ export default function Specifications() {
           </div>
         </div>
       </div>
+
+      {/* Lightbox modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg text-white transition-colors"
+            aria-label="Close"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+          <img
+            src={machines[activeMachine].img}
+            alt={machines[activeMachine].label}
+            className="max-w-full max-h-full object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 }
