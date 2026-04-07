@@ -29,7 +29,7 @@ export default function Features() {
         <div
           className="rounded-xl flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16 px-6 py-12 md:px-[76px] md:py-[80px]"
           style={{
-            background: "linear-gradient(135deg, #5c0a0a 0%, #8b1a1a 18%, #a11d1d 35%, #c62828 55%, #b06060 78%, #c4b0b0 95%)",
+            background: "linear-gradient(135deg, #5c0a0a 0%, #8b1a1a 18%, #a11d1d 35%, #c62828 55%, #de2127 78%, #f06060 95%)",
           }}
         >
           <motion.h2
