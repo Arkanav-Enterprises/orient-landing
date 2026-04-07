@@ -49,40 +49,43 @@ const productColumns = [
   {
     title: "Offset Presses",
     links: [
-      { label: "Orient Super", href: "/products/orient-super" },
-      { label: "Orient X-Cel", href: "/products/orient-x-cel" },
-      { label: "Orient X-Press", href: "/products/orient-x-press" },
-      { label: "Orient XLC", href: "/products/orient-xlc" },
-      { label: "Folders", href: "/products/folders" },
+      { label: "Orient Super", href: "/products/orient-super", img: "/images/prod-super-1.jpg" },
+      { label: "Orient X-Cel", href: "/products/orient-x-cel", img: "/images/prod-xcel-1.jpg" },
+      { label: "Orient X-Press", href: "/products/orient-x-press", img: "/images/prod-xpress-1.jpg" },
+      { label: "Orient XLC", href: "/products/orient-xlc", img: "/images/prod-xlc-1.jpg" },
+      { label: "Folders", href: "/products/folders", img: "/images/prod-folders-1.jpg" },
     ],
   },
   {
     title: "Services",
     links: [
-      { label: "Spare Parts & Consumables", href: "/services/spare-parts" },
-      { label: "AMC Servicing", href: "/services/amc" },
+      { label: "Spare Parts & Consumables", href: "/services/spare-parts", img: "/images/consumables-inks.jpg" },
+      { label: "AMC Servicing", href: "/services/amc", img: "/images/amc-servicing.jpg" },
     ],
   },
   {
     title: "Flexo Presses",
     links: [
-      { label: "X-Press Flex Narrow & Mid Web", href: "/products/x-press-flex-narrow-mid" },
-      { label: "X-Press Flex Wide Web", href: "/products/x-press-flex-wide" },
+      { label: "X-Press Flex Narrow & Mid Web", href: "/products/x-press-flex-narrow-mid", img: "/images/prod-flex-nm-1.jpg" },
+      { label: "X-Press Flex Wide Web", href: "/products/x-press-flex-wide", img: "/images/prod-flex-wide-1.jpg" },
     ],
   },
   {
     title: "Inkjet Presses",
     links: [
-      { label: "Orient Jet C Series", href: "/products/orient-jet-c" },
-      { label: "Orient Jet L&P Series", href: "/products/orient-jet-lp" },
+      { label: "Orient Jet C Series", href: "/products/orient-jet-c", img: "/images/prod-jet-c-1.jpg" },
+      { label: "Orient Jet L&P Series", href: "/products/orient-jet-lp", img: "/images/prod-jet-lp-1.jpg" },
     ],
   },
 ];
+
+const defaultProductPreview = "/images/prod-jet-c-1.jpg";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [previewImg, setPreviewImg] = useState<string>(defaultProductPreview);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { open: translateOpen, toggle: toggleTranslate } = useGoogleTranslate();
 
@@ -98,7 +101,10 @@ export default function Navbar() {
   }
 
   function closeDropdown() {
-    timeoutRef.current = setTimeout(() => setActiveDropdown(null), 150);
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+      setPreviewImg(defaultProductPreview);
+    }, 150);
   }
 
   return (
@@ -142,17 +148,38 @@ export default function Navbar() {
                     onMouseEnter={() => openDropdown("products")}
                     onMouseLeave={closeDropdown}
                   >
-                    <div className="bg-[#f5f5f4] border border-black/8 rounded-[6px] p-6 flex gap-10">
+                    <div className="bg-[#f5f5f4] border border-black/8 rounded-[6px] p-6 flex gap-8 items-start">
                       {productColumns.map((col) => (
-                        <div key={col.title} style={{ minWidth: 180 }}>
+                        <div key={col.title} style={{ minWidth: 170 }}>
                           <span className="text-[12px] font-semibold text-near-black/40 uppercase tracking-wider block mb-3">{col.title}</span>
                           {col.links.map((l) => (
-                            <Link key={l.href} href={l.href} className="block text-[14px] font-medium text-near-black/50 hover:text-near-black py-1.5 transition-colors">
+                            <Link
+                              key={l.href}
+                              href={l.href}
+                              onMouseEnter={() => setPreviewImg(l.img)}
+                              className="block text-[14px] font-medium text-near-black/50 hover:text-near-black py-1.5 transition-colors"
+                            >
                               {l.label}
                             </Link>
                           ))}
                         </div>
                       ))}
+                      {/* Preview column */}
+                      <div className="shrink-0" style={{ width: 220 }}>
+                        <div
+                          className="relative bg-black/[0.04] rounded-[6px] overflow-hidden"
+                          style={{ aspectRatio: "4 / 3" }}
+                        >
+                          <Image
+                            key={previewImg}
+                            src={previewImg}
+                            alt="Product preview"
+                            fill
+                            className="object-cover"
+                            sizes="220px"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 )}

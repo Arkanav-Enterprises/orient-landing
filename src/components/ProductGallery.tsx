@@ -70,7 +70,7 @@ export default function ProductGallery({
               alt={alt}
               fill
               priority
-              className="object-cover"
+              className="object-cover object-center"
               sizes="(min-width: 1024px) 45vw, 100vw"
             />
           ) : (

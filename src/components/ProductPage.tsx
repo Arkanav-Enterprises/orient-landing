@@ -466,14 +466,15 @@ export default function ProductPage({
             </section>
           )}
 
-          {/* Paired bottom: bannerImage (or pairedLeftVideo) + video in a 2-column layout */}
+          {/* Paired bottom: bannerImage (or pairedLeftVideo) + video in a 2-column layout.
+              When pairedLeftVideo is square, columns split 9fr/16fr so both halves match in height. */}
           {isPaired && (
             <section style={{ paddingBottom: 120 }}>
               <div className="container-site">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className={`grid grid-cols-1 gap-4 ${pairedLeftIsVideo ? "lg:grid-cols-[9fr_16fr]" : "lg:grid-cols-2"}`}>
                   <div
                     className="relative bg-black rounded-[6px] overflow-hidden"
-                    style={{ aspectRatio: "16 / 9" }}
+                    style={{ aspectRatio: pairedLeftIsVideo ? "1 / 1" : "16 / 9" }}
                   >
                     {pairedLeftIsVideo ? (
                       <video
@@ -483,7 +484,7 @@ export default function ProductPage({
                         loop
                         playsInline
                         preload="metadata"
-                        className="absolute inset-0 w-full h-full object-contain bg-black"
+                        className="absolute inset-0 w-full h-full object-cover"
                       />
                     ) : (
                       <Image
