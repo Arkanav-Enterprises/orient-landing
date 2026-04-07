@@ -224,7 +224,7 @@ export default function Specifications() {
               <div className="flex flex-col h-full">
                 {chatMessages.length === 0 ? (
                   <div className="flex-1 flex flex-col items-center justify-center px-4">
-                    <h3 className="text-3xl font-medium text-near-black mb-10 text-center">What can we help you with?</h3>
+                    <h3 className="text-3xl font-medium text-near-black mb-10 text-center">Ask Orient AI Anything</h3>
                     <div className="w-full max-w-2xl mb-8">
                       <form onSubmit={(e) => { e.preventDefault(); sendChat(); }} className="relative">
                         <textarea value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); } }} placeholder="Ask about Orient Jet presses..." rows={3} disabled={chatStreaming} className="w-full px-6 py-5 pr-16 bg-[#f5f5f4] border border-black/[0.15] rounded-2xl shadow-sm text-lg text-near-black placeholder:text-black/25 outline-none resize-none disabled:opacity-50 focus:border-black/[0.12] transition-colors" />
