@@ -10,7 +10,7 @@ const machines = [
   { label: "Orient Jet L&P Series", subtitle: "Label & Packaging Inkjet", img: "/images/spec-jet-lp.jpg" },
   { label: "Orient Offset", subtitle: "Web Offset Press Range", img: "/images/spec-offset.jpg" },
   { label: "Orient X-Press Flex", subtitle: "Flexographic Press Range", img: "/images/spec-flex.jpg" },
-];
+] as const;
 
 const specs = [
   { label: "Type", values: ["Digital Inkjet (Duplex)", "Digital Inkjet (Simplex)", "Web Offset", "Flexographic"] },
@@ -200,8 +200,13 @@ export default function Specifications() {
                     </div>
                   ))}
                 </div>
-                <div className="hidden xl:block w-[45%] shrink-0 bg-[#f5f5f4] border border-black/[0.04] rounded-xl overflow-hidden relative flex items-center justify-center">
-                  <span className="text-sm text-near-black/30">{machines[activeMachine].label}</span>
+                <div className="hidden xl:block w-[45%] shrink-0 bg-[#f5f5f4] border border-black/[0.04] rounded-xl overflow-hidden relative">
+                  <img
+                    key={machines[activeMachine].img}
+                    src={machines[activeMachine].img}
+                    alt={machines[activeMachine].label}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                 </div>
               </div>
             ) : (
