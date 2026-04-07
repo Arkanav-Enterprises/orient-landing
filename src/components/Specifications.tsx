@@ -205,7 +205,7 @@ export default function Specifications() {
                     key={machines[activeMachine].img}
                     src={machines[activeMachine].img}
                     alt={machines[activeMachine].label}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain p-6"
                   />
                 </div>
               </div>
