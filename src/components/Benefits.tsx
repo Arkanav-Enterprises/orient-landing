@@ -71,7 +71,7 @@ export default function Benefits() {
               priority={activeIndex === 0}
             />
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/25" />
           </motion.div>
         </AnimatePresence>
 
@@ -104,17 +104,26 @@ export default function Benefits() {
                   exit={{ opacity: 0, y: -40 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
-                  <div className="bg-white rounded-2xl p-6 md:p-10">
-                    <h3 className="text-[28px] font-medium leading-[1.3] text-near-black mb-5">
+                  <div
+                    className="rounded-2xl p-6 md:p-10"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.15))",
+                      backdropFilter: "blur(6px)",
+                      WebkitBackdropFilter: "blur(6px)",
+                      boxShadow: "inset 1px 1px 1px rgba(255,255,255,0.1), inset -1px -1px 1px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.15)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <h3 className="text-[28px] font-medium leading-[1.3] text-white mb-5">
                       {benefits[activeIndex].title}
                     </h3>
                     <p
-                      className="font-medium text-near-black leading-[1.1] mb-5"
+                      className="font-medium text-white leading-[1.1] mb-5"
                       style={{ fontSize: "clamp(32px, 3vw, 50px)" }}
                     >
                       ↓ {benefits[activeIndex].stat}
                     </p>
-                    <p className="text-[16px] font-medium leading-[1.5]" style={{ color: "#78797E" }}>
+                    <p className="text-[16px] font-medium leading-[1.5] text-white/75">
                       {benefits[activeIndex].description}
                     </p>
                   </div>
