@@ -6,24 +6,24 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const machines = [
-  { label: "Orient Jet C-Series", subtitle: "600 dpi · Duplex Digital Press", img: "/images/spec-jet-c.jpg" },
-  { label: "Orient Jet C-Series", subtitle: "1200 dpi · High-Res Duplex", img: "/images/spec-jet-c.jpg" },
-  { label: "Orient Jet L&P Series", subtitle: "600 dpi · Label & Packaging", img: "/images/spec-jet-lp.jpg" },
-  { label: "Orient Jet L&P Series", subtitle: "1200 dpi · High-Res L&P", img: "/images/spec-jet-lp.jpg" },
+  { label: "Orient Jet C-Series", subtitle: "Commercial Digital Inkjet", img: "/images/spec-jet-c.jpg" },
+  { label: "Orient Jet L&P Series", subtitle: "Label & Packaging Inkjet", img: "/images/spec-jet-lp.jpg" },
+  { label: "Orient Offset", subtitle: "Web Offset Press Range", img: "/images/spec-offset.jpg" },
+  { label: "Orient X-Press Flex", subtitle: "Flexographic Press Range", img: "/images/spec-flex.jpg" },
 ];
 
 const specs = [
-  { label: "Print Head Technology", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera RC only", "Katana / Epson D", "Kyocera Katana / Epson D"] },
-  { label: "Resolution", values: ["600 x 600 dpi", "1200 dpi", "600 x 600 dpi", "1200 dpi"] },
-  { label: "Max Print Width", values: ["1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)", "1080 mm (324–1080 mm in 108mm steps)"] },
-  { label: "Print Speed", values: ["Up to 100 m/min (RC) · 75 (Katana) · 80 (Epson D)", "Up to 100 m/min", "Up to 75 m/min (Katana) · 80 (Epson D)", "Up to 75 m/min (Katana) · 80 (Epson D)"] },
-  { label: "Duplex / Simplex", values: ["Duplex (both sides)", "Duplex", "Simplex (single side)", "Simplex"] },
-  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4 (CMYK)", "Up to 4 (CMYK), expandable", "Up to 4, expandable"] },
-  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²"] },
-  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based"] },
-  { label: "Electronics", values: ["Meteor, UK", "Meteor, UK", "Meteor, UK", "Meteor, UK"] },
-  { label: "RIP + Server", values: ["Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server", "Harlequin RIP with VDP · HP/Dell Server"] },
-  { label: "Finishing", values: ["In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder", "In-Line Sheeter · Offline Sheeter · Folder"] },
+  { label: "Type", values: ["Digital Inkjet (Duplex)", "Digital Inkjet (Simplex)", "Web Offset", "Flexographic"] },
+  { label: "Application", values: ["Book, Commercial, Newspaper", "Labels, Flexible Packaging", "Newspaper, Book, Commercial", "Labels, Films, Flexible Packaging"] },
+  { label: "Print Head / Plate", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera Katana / Epson D", "CTP Plates", "Photopolymer Plates"] },
+  { label: "Resolution", values: ["600 / 1200 dpi", "600 / 1200 dpi", "Industry standard offset", "Up to 4800 dpi screening"] },
+  { label: "Max Print Width", values: ["1080 mm (324–1080 mm)", "1080 mm (324–1080 mm)", "Up to 1400 mm", "330–1500 mm (narrow / mid / wide)"] },
+  { label: "Print Speed", values: ["Up to 100 m/min", "Up to 80 m/min", "Up to 50,000 cph (X-Press)", "Up to 250 m/min"] },
+  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4, expandable", "4 colours both sides", "Up to 10 colours"] },
+  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Newsprint to coated stock", "Films, foils, paper, board"] },
+  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Conventional offset inks", "UV / Water-based / Solvent"] },
+  { label: "Models", values: ["Orient Jet C-Series", "Orient Jet L&P Series", "Standard · Super · X-Cel · X-Press · XLC", "Narrow · Mid · Wide Web"] },
+  { label: "Finishing", values: ["In-Line Sheeter · Folder", "In-Line Sheeter · Folder", "Folders · Stackers", "Die-cutting · Lamination · Slitting"] },
 ];
 
 type ChatMsg = { role: "user" | "assistant"; content: string };
