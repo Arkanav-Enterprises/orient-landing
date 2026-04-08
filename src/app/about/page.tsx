@@ -36,7 +36,7 @@ const plants = [
 ];
 
 const leaders: { name: string; title: string; img?: string }[] = [
-  { name: "Mr. Pradeep A. Unny", title: "CEO" },
+  { name: "Mr. Pradeep A. Unny", title: "CEO", img: "/images/team-pradeep.jpg" },
   { name: "Mr. Rishab Kohli", title: "Director", img: "/images/team-rishab.jpg" },
   { name: "Mr. Naveen Chahal", title: "Director", img: "/images/team-naveen.jpg" },
   { name: "Mr. Sachin Pahuja", title: "COO", img: "/images/team-sachin.jpg" },
