@@ -6,13 +6,13 @@ export default function OrientXLCPage() {
       name="Orient XLC"
       category="Web Offset Printing — Compact"
       description="Compact alternative to traditional web-offset, designed for space-efficient high-quality production."
-      speed="Up to 30,000 cph"
+      speed="Up to 32,000 cph"
       features={[
         "Compact tower: 3,065mm height, 1,390mm width",
         "Contactless brushmist dampening",
       ]}
       specs={[
-        { label: "Speed", value: "30,000 cph" },
+        { label: "Speed", value: "32,000 cph" },
         { label: "Tower Height", value: "3,065mm" },
         { label: "Tower Width", value: "1,390mm" },
       ]}
