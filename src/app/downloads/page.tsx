@@ -11,9 +11,7 @@ const catalogs = [
   { label: "Folders", file: "Folders_.pdf" },
   { label: "Orient Jet Digital Machine", file: "OrientJet.pdf" },
   { label: "X-Press Flex", file: "xpress-flex-brochure28-1-25.pdf" },
-  { label: "X-Press Fold", file: "ORIENT-X-PRESS-FOLDp28-1-25.pdf" },
-  { label: "X-Press Cut", file: "ORIENT-X-PRESS-CUT-p28-1-25.pdf" },
-  { label: "Spare Parts Catalog", file: "SPARE-PARTS_new.pdf" },
+{ label: "Spare Parts Catalog", file: "SPARE-PARTS_new.pdf" },
   { label: "AMC Service Catalogue", file: "AMC-Catalogue_new.pdf" },
   { label: "Group Company Profile", file: "Orient-print-&-pack-profile28-1-25.pdf" },
 ];

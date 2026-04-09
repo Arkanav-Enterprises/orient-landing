@@ -54,7 +54,7 @@ const footerColumns = [
         { label: "Domestic", href: "/assets/pdf/domestic.pdf" },
         { label: "International", href: "/assets/pdf/International.pdf" },
       ] },
-      { label: "Operations & Maintenance Manual", href: "/downloads" },
+      { label: "Operations & Maintenance Manual", href: "/manuals" },
       { label: "Privacy Policy", href: "/privacy" },
     ],
   },

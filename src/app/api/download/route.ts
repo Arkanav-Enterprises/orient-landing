@@ -9,8 +9,6 @@ const ALLOWED_FILES = new Set([
   "Folders_.pdf",
   "OrientJet.pdf",
   "xpress-flex-brochure28-1-25.pdf",
-  "ORIENT-X-PRESS-FOLDp28-1-25.pdf",
-  "ORIENT-X-PRESS-CUT-p28-1-25.pdf",
   "SPARE-PARTS_new.pdf",
   "AMC-Catalogue_new.pdf",
   "Orient-print-&-pack-profile28-1-25.pdf",
