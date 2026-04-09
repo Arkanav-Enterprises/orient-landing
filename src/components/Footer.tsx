@@ -64,24 +64,12 @@ export default function Footer() {
   return (
     <footer style={{ marginTop: 80, background: "#000" }}>
       <div className="container-site" style={{ paddingTop: 80, paddingBottom: 64 }}>
-        {/* Top: logo + newsletter */}
-        <div className="flex flex-col md:flex-row md:justify-between gap-12 mb-20">
-          <div>
-            <div className="flex items-center mb-3">
-              <Image src="/images/orient-logo.png" alt="Orient" width={140} height={44} className="object-contain brightness-0 invert" />
-            </div>
-            <p className="text-[14px] font-medium text-white/30">Est. 1946 — The Printers House</p>
+        {/* Top: logo */}
+        <div className="mb-20">
+          <div className="flex items-center mb-3">
+            <Image src="/images/orient-logo.png" alt="Orient" width={140} height={44} className="object-contain brightness-0 invert" />
           </div>
-
-          <div style={{ maxWidth: 440 }}>
-            <p className="text-[18px] font-medium text-white/70 mb-4">Stay Updated — Subscribe to Our Newsletter.</p>
-            <form className="relative" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Your Email" className="w-full h-[48px] px-5 pr-16 bg-white/10 border border-white/15 rounded-[6px] text-[15px] font-medium text-white placeholder:text-white/30 outline-none focus:border-white/30 transition-colors" />
-              <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-white flex items-center justify-center" aria-label="Subscribe">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="#1C1B1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              </button>
-            </form>
-          </div>
+          <p className="text-[14px] font-medium text-white/30">Est. 1946 — The Printers House</p>
         </div>
 
         {/* Link columns */}
