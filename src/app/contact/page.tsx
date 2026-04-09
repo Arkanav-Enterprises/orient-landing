@@ -78,28 +78,62 @@ function ContactCard({ title, children }: { title?: string; children: React.Reac
 }
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const fd = new FormData(e.currentTarget);
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: fd.get("name"),
+        email: fd.get("email"),
+        phone: fd.get("phone"),
+        interest: fd.get("interest"),
+        message: fd.get("message"),
+      }),
+    });
+
+    setStatus(res.ok ? "sent" : "error");
+  }
+
   return (
     <PageShell title="Contact Us" subtitle="We'd love to hear from you. Reach out to our team.">
       {/* Top: form + HQ */}
       <div className="flex flex-col lg:flex-row gap-16 mb-20">
         <div className="w-full max-w-lg">
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="text" placeholder="Your Name" className="input-field" />
-              <input type="email" placeholder="Email Address" className="input-field" />
+          {status === "sent" ? (
+            <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+              <p className="text-[18px] font-medium text-green-800 mb-2">Thank you!</p>
+              <p className="text-[15px] text-green-700">We&apos;ve received your message and will get back to you shortly.</p>
             </div>
-            <input type="tel" placeholder="Phone Number" className="input-field" />
-            <select className="input-field appearance-none text-near-black/40">
-              <option value="">Select Interest</option>
-              <option>New Press Enquiry</option>
-              <option>Add-on for Existing Press</option>
-              <option>AMC & Servicing</option>
-              <option>Spare Parts</option>
-              <option>Other</option>
-            </select>
-            <textarea placeholder="Your Message" className="input-field" style={{ height: 140, paddingTop: 16, resize: "none" }} />
-            <button type="submit" className="btn btn-cream text-[16px] w-full justify-center">Send Message</button>
-          </form>
+          ) : (
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input name="name" type="text" placeholder="Your Name" className="input-field" required />
+                <input name="email" type="email" placeholder="Email Address" className="input-field" required />
+              </div>
+              <input name="phone" type="tel" placeholder="Phone Number" className="input-field" />
+              <select name="interest" className="input-field appearance-none text-near-black/40" required>
+                <option value="">Select Interest</option>
+                <option value="New Press Enquiry">New Press Enquiry</option>
+                <option value="Add-on for Existing Press">Add-on for Existing Press</option>
+                <option value="AMC & Servicing">AMC &amp; Servicing</option>
+                <option value="Spare Parts">Spare Parts</option>
+                <option value="Other">Other</option>
+              </select>
+              <textarea name="message" placeholder="Your Message" className="input-field" style={{ height: 140, paddingTop: 16, resize: "none" }} />
+              <button type="submit" disabled={status === "sending"} className="btn btn-cream text-[16px] w-full justify-center">
+                {status === "sending" ? "Sending…" : "Send Message"}
+              </button>
+              {status === "error" && (
+                <p className="text-[14px] text-red-600">Something went wrong. Please try again or email us directly.</p>
+              )}
+            </form>
+          )}
         </div>
 
         <div className="lg:w-[40%] space-y-5">

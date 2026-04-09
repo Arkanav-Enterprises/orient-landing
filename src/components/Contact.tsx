@@ -1,11 +1,32 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const fd = new FormData(e.currentTarget);
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: fd.get("name"),
+        company: fd.get("company"),
+        email: fd.get("email"),
+        interest: fd.get("interest"),
+      }),
+    });
+
+    setStatus(res.ok ? "sent" : "error");
+  }
 
   return (
     <section id="contacts" ref={ref} style={{ marginBottom: 10 }}>
@@ -26,33 +47,43 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Left — form */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label className="text-sm text-near-black/40 mb-2 block">Name</label>
-                  <input type="text" placeholder="Your Name" className="input-field" />
+              {status === "sent" ? (
+                <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+                  <p className="text-[18px] font-medium text-green-800 mb-2">Thank you!</p>
+                  <p className="text-[15px] text-green-700">We&apos;ve received your enquiry and will get back to you shortly.</p>
                 </div>
-                <div>
-                  <label className="text-sm text-near-black/40 mb-2 block">Company</label>
-                  <input type="text" placeholder="Company Name" className="input-field" />
-                </div>
-                <div>
-                  <label className="text-sm text-near-black/40 mb-2 block">Email</label>
-                  <input type="email" placeholder="you@company.com" className="input-field" />
-                </div>
-                <div>
-                  <label className="text-sm text-near-black/40 mb-2 block">Interest</label>
-                  <select className="input-field appearance-none text-near-black/40">
-                    <option value="">Select Your Interest</option>
-                    <option value="new-press">New Press Enquiry</option>
-                    <option value="existing-press">Add-on for Existing Press</option>
-                    <option value="amc">AMC & Servicing</option>
-                    <option value="spare-parts">Spare Parts</option>
-                  </select>
-                </div>
-                <button type="submit" className="btn btn-cream text-sm h-11 px-8 rounded-xl mt-2">
-                  Send Enquiry
-                </button>
-              </form>
+              ) : (
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div>
+                    <label className="text-sm text-near-black/40 mb-2 block">Name</label>
+                    <input name="name" type="text" placeholder="Your Name" className="input-field" required />
+                  </div>
+                  <div>
+                    <label className="text-sm text-near-black/40 mb-2 block">Company</label>
+                    <input name="company" type="text" placeholder="Company Name" className="input-field" />
+                  </div>
+                  <div>
+                    <label className="text-sm text-near-black/40 mb-2 block">Email</label>
+                    <input name="email" type="email" placeholder="you@company.com" className="input-field" required />
+                  </div>
+                  <div>
+                    <label className="text-sm text-near-black/40 mb-2 block">Interest</label>
+                    <select name="interest" className="input-field appearance-none text-near-black/40" required>
+                      <option value="">Select Your Interest</option>
+                      <option value="New Press Enquiry">New Press Enquiry</option>
+                      <option value="Add-on for Existing Press">Add-on for Existing Press</option>
+                      <option value="AMC & Servicing">AMC &amp; Servicing</option>
+                      <option value="Spare Parts">Spare Parts</option>
+                    </select>
+                  </div>
+                  <button type="submit" disabled={status === "sending"} className="btn btn-cream text-sm h-11 px-8 rounded-xl mt-2">
+                    {status === "sending" ? "Sending…" : "Send Enquiry"}
+                  </button>
+                  {status === "error" && (
+                    <p className="text-[14px] text-red-600">Something went wrong. Please try again or email us directly.</p>
+                  )}
+                </form>
+              )}
             </motion.div>
 
             {/* Right — info cards */}
