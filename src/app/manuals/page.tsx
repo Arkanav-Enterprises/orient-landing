@@ -1,12 +1,10 @@
 import PageShell from "@/components/PageShell";
 
-const BASE = "https://www.tphorient.com/assets/pdf";
-
 const manuals = [
-  { label: "Orient Jet C Series Manual", file: "Orient_Jet_C_Series_Manual- C IJT.pdf", desc: "Digital inkjet duplex press — installation, operation & maintenance" },
-  { label: "Orient Jet L&P Series Manual", file: "Orient_Jet_LP_Series_Manual-L&P-IJT.pdf", desc: "Label & packaging inkjet press — installation, operation & maintenance" },
-  { label: "Web Offset Printing Machine", file: "orient_manual-web.pdf", desc: "Web offset press range — installation, operation & maintenance" },
-  { label: "Orient X-Press Flex Series", file: "Orient_XPress_Flex_Manual-Flexo.pdf", desc: "Flexographic press range — installation, operation & maintenance" },
+  { label: "Orient Jet C Series Manual", file: "Orient_Jet_C_Series_Manual.pdf", desc: "Digital inkjet duplex press — installation, operation & maintenance" },
+  { label: "Orient Jet L&P Series Manual", file: "Orient_Jet_LP_Series_Manual.pdf", desc: "Label & packaging inkjet press — installation, operation & maintenance" },
+  { label: "Web Offset Printing Machine", file: "Orient_Web_Offset_Manual.pdf", desc: "Web offset press range — installation, operation & maintenance" },
+  { label: "Orient X-Press Flex Series", file: "Orient_XPress_Flex_Manual.pdf", desc: "Flexographic press range — installation, operation & maintenance" },
 ];
 
 export default function ManualsPage() {
@@ -16,7 +14,7 @@ export default function ManualsPage() {
         {manuals.map((m) => (
           <a
             key={m.file}
-            href={`${BASE}/${encodeURIComponent(m.file)}`}
+            href={`/assets/pdf/${m.file}`}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col gap-4 p-6 bg-black/[0.02] border border-black/[0.06] rounded-xl hover:bg-black/[0.04] hover:border-black/[0.12] transition-colors"
