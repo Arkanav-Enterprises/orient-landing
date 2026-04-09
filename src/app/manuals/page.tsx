@@ -1,6 +1,6 @@
 import PageShell from "@/components/PageShell";
 
-const BASE = "https://www.tphorient.com/pdf";
+const BASE = "https://www.tphorient.com/assets/pdf";
 
 const manuals = [
   { label: "Orient Jet C Series Manual", file: "Orient_Jet_C_Series_Manual- C IJT.pdf", desc: "Digital inkjet duplex press — installation, operation & maintenance" },
