@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Orient | Imprinting Excellence Worldwide Since 1946",
     description:
       "From offset to inkjet, books to labels and everything packaging — Orient is your one-stop technology and equipment provider.",
-    images: [{ url: "/images/orient-logo.png", width: 1200, height: 630, alt: "Orient — The Printers House" }],
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Orient printing press — Imprinting Excellence Worldwide Since 1946" }],
   },
   twitter: {
     card: "summary_large_image",
