@@ -15,7 +15,7 @@ const machines = [
 const specs = [
   { label: "Type", values: ["Digital Inkjet (Duplex)", "Digital Inkjet (Simplex)", "Web Offset", "Flexographic"] },
   { label: "Application", values: ["Book, Commercial, Newspaper", "Labels, Flexible Packaging", "Newspaper, Book, Commercial", "Labels, Films, Flexible Packaging"] },
-  { label: "Print Head / Plate", values: ["Kyocera RC / Katana / Epson D / I / S", "Kyocera Katana / Epson D", "CTP Plates", "Photopolymer Plates"] },
+  { label: "Print Head / Plate", values: ["Kyocera", "Kyocera", "CTP Plates", "Photopolymer Plates"] },
   { label: "Resolution", values: ["600 / 1200 dpi", "600 / 1200 dpi", "Industry standard offset", "Up to 4800 dpi screening"] },
   { label: "Print Speed", values: ["Up to 100 m/min", "Up to 80 m/min", "Up to 50,000 cph (X-Press)", "Up to 250 m/min"] },
   { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4, expandable", "4 colours both sides", "Up to 10 colours"] },

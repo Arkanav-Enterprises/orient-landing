@@ -50,8 +50,12 @@ const footerColumns = [
       { label: "News & Events", href: "/news" },
       { label: "Downloads", href: "/downloads" },
       { label: "Contact Us", href: "/contact" },
+      { label: "General Terms & Conditions", href: "#", children: [
+        { label: "Domestic", href: "/assets/pdf/domestic.pdf" },
+        { label: "International", href: "/assets/pdf/International.pdf" },
+      ] },
+      { label: "Operations & Maintenance Manual", href: "/downloads" },
       { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms & Conditions", href: "/terms" },
     ],
   },
 ];
@@ -87,10 +91,29 @@ export default function Footer() {
               <h4 className="text-[14px] font-semibold text-white/50 uppercase tracking-wider mb-5">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-[15px] font-medium text-white/35 hover:text-white/70 transition-colors">
-                      {link.label}
-                    </Link>
+                  <li key={link.label}>
+                    {link.href === "#" ? (
+                      <span className="text-[15px] font-medium text-white/35">{link.label}</span>
+                    ) : link.href.startsWith("http") ? (
+                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-white/35 hover:text-white/70 transition-colors">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className="text-[15px] font-medium text-white/35 hover:text-white/70 transition-colors">
+                        {link.label}
+                      </Link>
+                    )}
+                    {"children" in link && (link as any).children && (
+                      <ul className="mt-2 space-y-2 pl-3">
+                        {(link as any).children.map((child: { label: string; href: string }) => (
+                          <li key={child.label}>
+                            <a href={child.href} target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium text-white/25 hover:text-white/50 transition-colors">
+                              {child.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>

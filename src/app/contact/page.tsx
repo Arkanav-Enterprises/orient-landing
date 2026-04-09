@@ -26,8 +26,8 @@ const branches: { state: string; offices: { city: string; address: string; email
 ];
 
 const spareParts = {
-  domestic: { email: "sanjiban@tphorient.com", mobile: "+91 98102 72015" },
-  export: { email: "sgrover@tphorient.com", mobile: "+91 88514 61086" },
+  domestic: { email: "netrapal@tphorient.com", mobile: "+91 98107 33931" },
+  export: { email: "netrapal@tphorient.com", mobile: "+91 98107 33931" },
 };
 
 const promo = { email: "amarjeet@tphorient.com" };
