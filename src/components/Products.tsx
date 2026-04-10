@@ -111,7 +111,7 @@ export default function Products() {
                   {/* Dropdown */}
                   {openIndex === i && (
                     <div
-                      className="mt-2 rounded-xl border border-black/10 bg-white overflow-hidden"
+                      className="absolute left-0 right-0 mt-2 rounded-xl border border-black/10 bg-white overflow-hidden z-20"
                       style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}
                     >
                       {product.machines.map((machine, j) => (
