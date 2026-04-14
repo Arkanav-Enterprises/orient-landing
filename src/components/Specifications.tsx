@@ -31,6 +31,18 @@ export default function Specifications() {
     if (window.innerWidth < 768) setIsChatMode(true);
   }, []);
 
+  // Flip to chat view when the user lands on / navigates to the #orient-ai
+  // anchor (nav link in the header). Covers both initial load with the hash
+  // and same-page clicks.
+  useEffect(() => {
+    const maybeOpenChat = () => {
+      if (window.location.hash === "#orient-ai") setIsChatMode(true);
+    };
+    maybeOpenChat();
+    window.addEventListener("hashchange", maybeOpenChat);
+    return () => window.removeEventListener("hashchange", maybeOpenChat);
+  }, []);
+
   // Chat state
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>([]);
