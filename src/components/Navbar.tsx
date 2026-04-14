@@ -49,10 +49,10 @@ const productColumns = [
   {
     title: "Offset Presses",
     links: [
-      { label: "Orient Super", href: "/products/orient-super", img: "/images/prod-super-1.jpg" },
-      { label: "Orient X-Cel", href: "/products/orient-x-cel", img: "/images/prod-xcel-1.jpg" },
-      { label: "Orient X-Press", href: "/products/orient-x-press", img: "/images/prod-xpress-1.jpg" },
-      { label: "Orient XLC", href: "/products/orient-xlc", img: "/images/prod-xlc-1.jpg" },
+      { label: "Orient Super", href: "/products/orient-super", img: "/images/web-offset-hero-dark.jpg" },
+      { label: "Orient X-Cel", href: "/products/orient-x-cel", img: "/images/web-offset-hero-dark.jpg" },
+      { label: "Orient X-Press", href: "/products/orient-x-press", img: "/images/web-offset-hero-dark.jpg" },
+      { label: "Orient XLC", href: "/products/orient-xlc", img: "/images/web-offset-hero-dark.jpg" },
       { label: "Folders", href: "/products/folders", img: "/images/prod-folders-1.jpg" },
     ],
   },
