@@ -36,10 +36,8 @@ const footerColumns = [
     ],
   },
   {
-    title: "Packaging & Services",
+    title: "Services",
     links: [
-      { label: "Orient X-Press Fold", href: "/products/x-press-fold" },
-      { label: "Orient X-Press Cut", href: "/products/x-press-cut" },
       { label: "Spare Parts & Consumables", href: "/services/spare-parts" },
       { label: "AMC Servicing", href: "/services/amc" },
     ],
