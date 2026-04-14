@@ -9,12 +9,12 @@ import { MACHINES as machines, SPECS } from "@/lib/machine-specs";
 type ChatMsg = { role: "user" | "assistant"; content: string };
 
 const chatSuggestions = [
+  "What is the max print width?",
+  "C-Series vs L&P Series differences?",
   "How do I fix registration on my web offset machine?",
-  "Compare Orient Super vs Orient X-Cel",
-  "Which press suits labels and flexible packaging?",
-  "C-Series vs L&P Series — what's the difference?",
-  "What finishing options are available?",
-  "Can I run a hybrid digital + flexo line?",
+  "Tell me about the ink system",
+  "What media weights are supported?",
+  "Is duplex printing available?",
 ];
 
 export default function Specifications() {
