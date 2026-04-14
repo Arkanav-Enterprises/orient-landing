@@ -15,7 +15,7 @@ const benefits = [
     title: "Proven Track Record",
     stat: "20,000+ Units",
     description: "Nearly eight decades of continuous manufacturing have made Orient the world's most prolific supplier in its field.",
-    img: "/images/web-offset-hero-dark.jpg",
+    img: "/images/web-offset-hero-showroom.jpg",
   },
   {
     title: "Complete Support",
