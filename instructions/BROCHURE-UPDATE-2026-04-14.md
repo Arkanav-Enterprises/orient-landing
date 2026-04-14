@@ -81,11 +81,75 @@ The on-site AI (homepage chat widget + per-product page widgets) now uses a sing
 
 ---
 
-## 4. Where these changes live in this repo (for reference)
+## 4. Product Detail Page (PDP) enrichment from the new brochures
+
+Each per-machine PDP previously had a minimal spec block (2–4 rows) and a short feature bullet list from the old brochures. The new brochures carry full technical specification tables, so every PDP has been expanded to match. The company Claude project instructions / wiki entries for each machine should be brought up to the same level of detail so internal answers don't lag behind the public site.
+
+### Orient Super (`/products/orient-super`)
+- Description now states the three module options (Mono Unit / 3-Colour Satellite / 4 High Tower) and the multi-web configuration options (4 colours one web both sides, 2 colours two webs both sides, 1 colour three webs both sides).
+- Features list expanded with: hard chromium plated cylinders, lever-type swing-down ink fountain, slit or spring-type plate lock-up, motorized side register, brushmist dampening, plus the optional upgrades (narrow gap blanket, stainless steel cylinders, centralized water + chiller, auto grease lubrication, AC drive).
+- Specs now include Paper Width (660–889 mm), Max Reel Diameter (1,070 mm / 42"), Plate Width (890 mm), Plate Thickness (0.28 / 0.30 mm), Blanket Thickness w/ packing (2.1 mm), Paper Grammage (38–100 gsm), Available Cut-offs (508 · 533 · 546 · 560 · 578 · 630 mm).
+
+### Orient X-Cel (`/products/orient-x-cel`)
+- Description now explicitly positions X-Cel as "20% faster than Orient Super" (per brochure copy).
+- Features list expanded with: hardened and ground bushes in frame, dynamically balanced cylinders, motorized circumferential register on loading side, PU-covered ink vibrator rollers with narrow gap blanket lock-up, plus optional upgrades.
+- Specs mirror Super's structure: Paper Width 660–889 mm, Max Reel 1,070 mm, Plate Width 890 mm, Plate Thickness 0.28 / 0.30 mm, Blanket Thickness 2.1 mm, Paper Grammage 38–100 gsm, Available Cut-offs 508–630 mm.
+
+### Orient X-Press (`/products/orient-x-press`)
+- Description expanded to call out Siemens PLC, colour touchscreen console, and ink/water balance through the screen.
+- Features list rewritten: solid stainless steel cylinders preloaded in nickel double-row taper roller bearings, hardened and ground bushes, motorized ink fountain rollers, slit-type plate lock-up with quick-positioning pins (half-plate possible), narrow gap blanket lock-up, motorized side and circumferential register, brushmist dampening, pneumatic on/off for main impression / ink feed / ink form / damper, Siemens PLC + touchscreen console, centralized water with chiller, reverse inching.
+- Specs expanded: Paper Width **700–915 mm** (note: different from Super/X-Cel), Plate Width **915 mm**, Available Cut-offs **533 · 546 · 578 mm** (only three cut-offs for X-Press), Console = Siemens Colour Touchscreen.
+- Configurations corrected from "Full Tower · Double Width" to **Mono Unit · 3-Colour Satellite · 4 High Tower** (matching Super and X-Cel — the X-Press is single-width single-circumference per brochure).
+
+### Orient XLC (`/products/orient-xlc`)
+- Description states 578 mm cut-off up front and tower height under 3.1 m.
+- Features list expanded with: web-wrap contact between blankets (prevents fluttering), contactless brushmist dampening (variable speed), motorized ink fountain roller, one extra rider roller per side, slit-type plate lock-up, narrow gap blanket cylinders, hardened & ground cylinder bores.
+- Specs now include the full XLC single cut-off table: Paper Width 660–889 mm, Max Reel 1,070 mm, Plate Width 889 mm, Plate Length (Slit) 609 mm, Plate Thickness 0.28 mm, Blanket Width 889 mm, Blanket Length (Narrow Gap) 651 mm, Printing Length (Narrow Gap) 563 mm, Paper Grammage 38–100 gsm, Tower Height 3,065 mm, Tower Width 1,390 mm.
+
+### Orient Jet C-Series (`/products/orient-jet-c`)
+Previously nearly empty. Now a complete spec sheet:
+- Description: production-grade aqueous inkjet for book, commercial, newspaper, and **security** printing — mono or 4-colour CMYK, simplex or duplex, with in-line finishing.
+- Speed banner: **Up to 100 m/min @ 600 dpi · 80 m/min @ 1200 dpi**.
+- Features include Kyocera RC Piezo DOD heads (~25,000-hour life, engineered exclusively for Orient), IR + hot-air drying, Orient Jet aqueous inks (open system, no proprietary lock-in), full VDP, web cleaner/anti-static/servo tension/web-break sensor, hybrid-readiness with X-Press Flex, Harlequin RIP.
+- Specs: Printing Technology, Colour Configuration, Resolution, Print Speed (both modes), Machine Width (330–1,200 mm), Imaging Width (324–1,180 mm), Substrate Types, Substrate Weight (40–250 gsm), Ink, Print Heads, Drying, Max Roll Diameter (1,200 mm), Finishing (in-line sheeter / folder / rewinder / perforation / perfect binding), Environment (40–60% RH, dust-free).
+- Optional speed variants mentioned: 1200 × 900 dpi @ 120 m/min, 1200 × 600 dpi @ 150 m/min.
+
+### Orient Jet L&P Series (`/products/orient-jet-lp`)
+Previously nearly empty **and factually incorrect** (described "paper, plastics, metals" as substrates). Now corrected and expanded:
+- Description: UV inkjet digital press for labels and flexible packaging, up to 8 colours with UV LED curing, designed to integrate with X-Press Flex for hybrid digital + flexo production.
+- Speed banner: **Up to 75 m/min**.
+- Features: custom Piezo DOD UV print heads, up to 8 colour stations (White + CMYK + optional orange, violet, green, clear, double white), UV LED curing, Orient Jet UV inks, hybrid-readiness (inline flexo priming, coating, cold foil, die-cutting, lamination, slitting, rewinding), full VDP, corona treater / web cleaner / anti-static / servo tension / chiller roll / splice table / web aligner.
+- Specs: Printing Technology (UV Inkjet), Colour Configuration (up to 8 · White + CMYK + spot), Resolution (600 / 1200 dpi), Print Speed, Curing (UV LED), Machine Width (330–880 mm), Imaging Width (324–864 mm), Substrate Types (self-adhesive labels, paper, vinyl, BOPP, PET, PE, PP, metallized films, clear films, filmic, specialty), Ink (Orient Jet UV), Print Heads, Roll Diameter (800 mm), Core Size (76 mm / 3" on air shaft), Hybrid Capability, Environment.
+
+### X-Press Flex Narrow & Mid Web (`/products/x-press-flex-narrow-mid`)
+- Description now covers: Orient X-Gear design, custom cylinder assembly, UV LED / hot-air / IR curing, ink compatibility (UV LED / water-based / solvent), and hybrid-readiness with Orient Jet.
+- **Comparison table corrected**: previously listed Narrow as 330–650 mm and Mid as 650–1,000 mm. Brochure says Narrow **max 450 mm**, Mid **max 650 mm** (with other sizes configurable).
+- Comparison rows now: Max Web Width, Printing Repeat (177.8–609.6 mm), Die-Cutting Repeat (304.8–609.6 mm), Max Mechanical Speed (180 m/min), Ink Curing (UV LED · Hot Air · IR), Applicable Ink (UV LED / water-based / solvent), Typical Applications.
+- Speed banner added: **Up to 180 m/min**.
+
+### X-Press Flex Wide Web (`/products/x-press-flex-wide`)
+- Description corrected: web width **up to 1,100 mm** (not 1,000–1,500 mm as previously listed).
+- Speed banner added: **Up to 220 m/min** (was absent; old site said "up to 250 m/min" in the homepage table, which was also an overstatement).
+- Features: max 1,100 mm web width, sleeve technology with ≤50% wastage reduction, speed up to 220 m/min, ink curing UV LED / IR / hot air, ink compatibility UV LED / water-based / solvent, chill water 20–22 °C, hybrid-readiness.
+- Specs: Max Web Width, Printing Repeat (350–850 mm), Max Mechanical Speed, Ink Curing, Applicable Ink, Chill Water (20–22 °C), Wastage Reduction, Typical Sectors.
+
+### Folders (`/products/folders`)
+- Features list corrected to match brochure lineup and web counts:
+  - Jaw 1:2 Standard: 4 webs, 16,000 cph
+  - Jaw 1:2 Super: **6–8 webs** (was listed as 8), 30,000 cph
+  - Jaw 2:2 Heavy Duty: 8 webs, 36,000 cph
+  - Tucker: 10 webs, 50,000 cph
+  - X-Press 1:2:2: 12 webs, 50,000 cph
+- Features now include: dynamically-balanced RTF/cutting/jaw cylinders, pneumatic RTF trolley tyres + air formers (Heavy Duty and up), optional 1/4 page folder, cross perforator, slitter on nipping rollers, upper former, fly-wheel delivery, cut-off compensator.
+
+---
+
+## 5. Where these changes live in this repo (for reference)
 
 - `src/lib/machine-specs.ts` — single source of truth for the 4-family comparison table.
 - `src/components/Specifications.tsx` — imports from `machine-specs.ts` and renders the homepage table.
 - `src/app/api/chat/route.ts` — imports from `machine-specs.ts` via `specsAsMarkdown()` and injects per-family spec blocks into the LLM system prompt. Prose context (print-head variants, per-model offset detail, behavioural rules) is maintained directly in this file.
+- `src/app/products/<machine>/page.tsx` — per-machine product detail pages (PDPs). Each one now carries its brochure-sourced spec table and feature list directly (no shared data source, because per-model specs differ too much to usefully centralize).
 - `public/assets/pdf/` — the ten brochures above.
 
-When a brochure changes in the future, update `machine-specs.ts` first, then swap the PDF in `public/assets/pdf/`, then update this note.
+When a brochure changes in the future: update `machine-specs.ts` (for the family-level comparison row), update the matching PDP (for per-model detail), swap the PDF in `public/assets/pdf/`, then extend this note.

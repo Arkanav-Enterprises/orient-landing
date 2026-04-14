@@ -5,29 +5,33 @@ export default function XPressFlexNarrowMidPage() {
     <ProductPage
       name="X-Press Flex Narrow & Mid Web"
       category="Flexographic Printing"
-      description="Narrow and mid web flexo presses for labels, flexible packaging, shrink sleeves, pouches, and mono cartons — with proprietary Orient X-Gear design and custom cylinder assembly for precise registration."
+      description="Narrow and mid web flexo presses for labels, flexible packaging, shrink sleeves, pouches, and mono cartons. Proprietary Orient X-Gear design with custom cylinder assembly for registration, UV LED / hot-air / IR curing, and ink compatibility across UV LED, water-based, and solvent systems."
+      speed="Up to 180 m/min"
       features={[
         "Proprietary Orient X-Gear design",
-        "Custom cylinder assembly for registration",
-        "Optional sleeve technology",
-        "Labels, flexible packaging, paper packaging",
-        "Film labels, shrink sleeves, pouches, mono cartons",
+        "Custom cylinder assembly for precise registration",
+        "Optional sleeve technology (narrow web)",
+        "UV LED · Hot Air · IR curing",
+        "Ink compatibility: UV LED, water-based, solvent",
+        "Labels, film labels, shrink sleeves, pouches, flexible packaging, mono cartons",
+        "Hybrid-ready with Orient Jet for inline digital + flexo production",
       ]}
       specs={[]}
       specComparison={{
         columns: ["Narrow Web", "Mid Web"],
         rows: [
-          { label: "Web Width", values: ["330–650 mm", "650–1000 mm"] },
+          { label: "Max Web Width", values: ["450 mm", "650 mm"] },
+          { label: "Printing Repeat", values: ["177.8 – 609.6 mm", "177.8 – 609.6 mm"] },
+          { label: "Die-Cutting Repeat", values: ["304.8 – 609.6 mm", "304.8 – 609.6 mm"] },
+          { label: "Max Mechanical Speed", values: ["180 m/min", "180 m/min"] },
+          { label: "Ink Curing", values: ["UV LED · Hot Air · IR", "UV LED · Hot Air · IR"] },
+          { label: "Applicable Ink", values: ["UV LED · Water-based · Solvent", "UV LED · Water-based · Solvent"] },
           {
-            label: "Applications",
+            label: "Typical Applications",
             values: [
-              "Labels, flexible packaging, paper packaging",
-              "Film labels, shrink sleeves, pouches, mono cartons",
+              "Labels, paper packaging, flexible packaging",
+              "Film labels, shrink sleeves, film pouches, flexible packaging",
             ],
-          },
-          {
-            label: "Key Advantage",
-            values: ["X-Gear precision, optional sleeves", "Custom cylinder assembly"],
           },
         ],
       }}

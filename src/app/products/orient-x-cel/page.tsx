@@ -5,20 +5,27 @@ export default function OrientXCelPage() {
     <ProductPage
       name="Orient X-Cel"
       category="Web Offset Printing"
-      description="High-performance web offset press with infra-red web detection and pneumatic controls for demanding production environments."
+      description="Single-width, single-circumference web-offset press running up to 36,000 copies per hour — 20% faster than the Orient Super. Hardened and ground bushes, motorized circumferential register, and brushmist dampening for demanding commercial and newspaper production."
       speed="Up to 36,000 cph"
       features={[
-        "Infra-red web detector",
-        "Brushmist dampening",
-        "Pneumatic controls",
-        "Motorized registration",
-        "Optional auto grease lubrication",
-        "Optional reel changer",
+        "Hardened and ground bushes in frame for plate and blanket cylinders",
+        "Dynamically-balanced hard chromium plated cylinders",
+        "Motorized circumferential register on loading side, on the run",
+        "Motorized side register for both plate cylinders",
+        "PU-covered ink vibrator rollers with narrow gap blanket lock-up",
+        "Infra-red web-break detector",
+        "Variable-speed motorized brushmist dampening",
+        "Optional: heavy-duty compensator, pillar clutch on either side, auto grease lubrication, centralized water with chiller, solid stainless-steel cylinders, T-Bar blanket lock-up, AC drive",
       ]}
       specs={[
         { label: "Speed", value: "36,000 cph" },
-        { label: "Web Detection", value: "Infra-red" },
-        { label: "Dampening", value: "Brushmist" },
+        { label: "Paper Width", value: "660 – 889 mm" },
+        { label: "Max Reel Diameter", value: "1,070 mm (42\")" },
+        { label: "Plate Width", value: "890 mm" },
+        { label: "Plate Thickness", value: "0.28 / 0.30 mm" },
+        { label: "Blanket Thickness (w/ packing)", value: "2.1 mm" },
+        { label: "Paper Grammage (Uncoated)", value: "38 – 100 gsm" },
+        { label: "Available Cut-offs", value: "508 · 533 · 546 · 560 · 578 · 630 mm" },
       ]}
       configurations={["Mono Unit", "3-Colour Satellite", "4 High Tower"]}
       images={[
