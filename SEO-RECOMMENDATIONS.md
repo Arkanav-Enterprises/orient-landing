@@ -47,7 +47,7 @@ Description: "Orient Super web offset press — 30,000 cph, 4 colours both sides
 **Target keywords per product:**
 - Orient Super → "web offset printing press", "30000 cph press", "book printing machine"
 - Orient X-Cel → "high speed web offset press", "36000 cph press", "newspaper printing machine"
-- Orient Jet C Series → "digital inkjet printing press", "duplex inkjet press", "Kyocera print head press"
+- Orient Jet C Series → "digital inkjet printing press", "duplex inkjet press", "aqueous inkjet press"
 - X-Press Flex → "flexographic printing machine", "flexo press India", "label printing machine"
 
 #### 1.2 Add `/manuals` to Sitemap

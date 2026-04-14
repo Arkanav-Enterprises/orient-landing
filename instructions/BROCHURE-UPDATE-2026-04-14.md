@@ -1,6 +1,8 @@
 # Brochure Update — 2026-04-14
 
-Handoff note for the wiki manager. These are the spec corrections pulled from the updated brochure set (10 PDFs delivered via WeTransfer on 2026-04-14). Both the on-site comparison table and the on-site AI chat have been updated to match; please mirror the same corrections into the company Claude project instructions / internal wiki so every Claude surface stays aligned with the printed brochures.
+Handoff note for the wiki manager. These are the spec corrections pulled from the updated brochure set (10 PDFs delivered via WeTransfer on 2026-04-14, plus a revised Jet C-Series brochure delivered later the same day). Both the on-site comparison table and the on-site AI chat have been updated to match; please mirror the same corrections into the company Claude project instructions / internal wiki so every Claude surface stays aligned with the printed brochures.
+
+> **Important branding change (2026-04-14, same-day revision):** the revised Jet C-Series brochure drops **all Kyocera branding** from print-head callouts. Orient's print heads are to be described as "custom high-end Piezo DOD inkjet print heads, engineered and manufactured exclusively for Orient" — **no third-party manufacturer should be named** in any customer-facing content or LLM context. This applies to both the Jet C-Series and the Jet L&P Series (the L&P brochure already used the no-brand phrasing, but the wiki previously mentioned Kyocera Katana variants — remove those too). See Section 6 for the full change list.
 
 ---
 
@@ -110,7 +112,7 @@ Each per-machine PDP previously had a minimal spec block (2–4 rows) and a shor
 Previously nearly empty. Now a complete spec sheet:
 - Description: production-grade aqueous inkjet for book, commercial, newspaper, and **security** printing — mono or 4-colour CMYK, simplex or duplex, with in-line finishing.
 - Speed banner: **Up to 100 m/min @ 600 dpi · 80 m/min @ 1200 dpi**.
-- Features include Kyocera RC Piezo DOD heads (~25,000-hour life, engineered exclusively for Orient), IR + hot-air drying, Orient Jet aqueous inks (open system, no proprietary lock-in), full VDP, web cleaner/anti-static/servo tension/web-break sensor, hybrid-readiness with X-Press Flex, Harlequin RIP.
+- Features include custom high-end Piezo DOD print heads (long-lasting service life, engineered and manufactured exclusively for Orient), IR + hot-air drying, Orient Jet aqueous inks (open system, no proprietary lock-in), full VDP, web cleaner/anti-static/servo tension/web-break sensor, hybrid-readiness with X-Press Flex, Harlequin RIP.
 - Specs: Printing Technology, Colour Configuration, Resolution, Print Speed (both modes), Machine Width (330–1,200 mm), Imaging Width (324–1,180 mm), Substrate Types, Substrate Weight (40–250 gsm), Ink, Print Heads, Drying, Max Roll Diameter (1,200 mm), Finishing (in-line sheeter / folder / rewinder / perforation / perfect binding), Environment (40–60% RH, dust-free).
 - Optional speed variants mentioned: 1200 × 900 dpi @ 120 m/min, 1200 × 600 dpi @ 150 m/min.
 
@@ -153,3 +155,31 @@ Previously nearly empty **and factually incorrect** (described "paper, plastics,
 - `public/assets/pdf/` — the ten brochures above.
 
 When a brochure changes in the future: update `machine-specs.ts` (for the family-level comparison row), update the matching PDP (for per-model detail), swap the PDF in `public/assets/pdf/`, then extend this note.
+
+---
+
+## 6. Jet C-Series revised brochure — print-head branding change (2026-04-14, same-day revision)
+
+A revised Jet C-Series brochure arrived shortly after the initial set and changes the marketing copy around print heads. Spec table itself is **unchanged**. The changes:
+
+| Location in brochure | Previous wording | New wording |
+|---|---|---|
+| Tech callout (cover area) | "Kyocera RC / Industrial Piezo / Custom Print Heads" | "Industrial Piezo DOD / Custom Print Heads" (Kyocera removed) |
+| Print Heads body copy | "Custom high-end Kyocera RC piezo print heads, specially engineered and manufactured exclusively for Orient" | "Custom high-end piezo inkjet print heads, specially engineered and manufactured exclusively for Orient" |
+| Service life callout | "~25,000-Hour Life" | "Long Lasting Life" (the specific hour count has been removed) |
+| Ink callout | "Aqueous Bulk" | "Aqueous" |
+
+**Instruction for all Claude surfaces (site chat + company Claude projects + wiki):**
+
+- Never attribute Orient Jet print heads to Kyocera, Epson, or any other third-party manufacturer. The correct line is: **"custom high-end Piezo DOD inkjet print heads, engineered and manufactured exclusively for Orient."**
+- Do not cite a specific service-life hour count (the "~25,000 hours" figure has been withdrawn in favour of "long-lasting"). If a customer asks for a number, redirect to sales.
+- Apply the same rule to the Jet L&P Series (UV inkjet). The L&P brochure also describes heads as custom Piezo DOD with no third-party branding. Any prior internal docs naming "Kyocera Katana" or similar variants for L&P are out of date and should be purged.
+
+**Changes applied in this repo for the Jet C-Series revision:**
+
+- `public/assets/pdf/orient-jet-c-series.pdf` — brochure file swapped for the revised version.
+- `src/lib/machine-specs.ts` — "Print Head / Plate" row for both Jet C and Jet L&P changed from `Kyocera (Piezo DOD)` to `Custom Piezo DOD`.
+- `src/app/api/chat/route.ts` — Kyocera/Epson head-variant lines removed from both the C-Series and L&P sections of the system prompt; replaced with the no-third-party phrasing above.
+- `src/app/products/orient-jet-c/page.tsx` — description, feature bullet, and "Print Heads" spec row rewritten; the "~25,000-hour" life reference removed in favour of "long-lasting."
+- `HANDOFF.md` — internal doc note updated.
+- `SEO-RECOMMENDATIONS.md` — the targeted keyword "Kyocera print head press" removed from the Jet C-Series list and replaced with "aqueous inkjet press."

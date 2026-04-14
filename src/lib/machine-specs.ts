@@ -45,7 +45,7 @@ export const SPECS: readonly SpecRow[] = [
   },
   {
     label: "Print Head / Plate",
-    values: ["Kyocera (Piezo DOD)", "Kyocera (Piezo DOD)", "CTP Plates", "Photopolymer Plates"],
+    values: ["Custom Piezo DOD", "Custom Piezo DOD", "CTP Plates", "Photopolymer Plates"],
   },
   {
     label: "Resolution",

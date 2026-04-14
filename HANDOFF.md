@@ -94,7 +94,7 @@ Requires **Node.js 20+** and an `ANTHROPIC_API_KEY` env var for the Orient AI ch
 ### Orient AI Chat — Important Notes
 
 - **Flagship offset models:** Orient Super and Orient X-Cel are positioned as flagships in the system prompt. X-Press is only mentioned if asked by name or about max speed.
-- **Print heads:** Spec table shows "Kyocera" for C-Series and L&P (simplified from detailed model names).
+- **Print heads:** Spec table shows "Custom Piezo DOD" for both C-Series and L&P. Do not attribute print heads to any third-party manufacturer — they are engineered exclusively for Orient.
 - **Product-scoped mode:** When accessed from a product page, the AI is restricted to only answer about that specific product.
 
 ---

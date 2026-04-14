@@ -5,10 +5,10 @@ export default function OrientJetCPage() {
     <ProductPage
       name="Orient Jet C-Series"
       category="Digital Inkjet Printing — Aqueous"
-      description="Production-grade aqueous inkjet press for book, commercial, newspaper, and security printing. Mono or 4-colour CMYK variants with simplex or duplex printing, custom Kyocera RC piezo DOD print heads, and in-line finishing for sheeting, folding, perforation, and perfect binding."
+      description="Production-grade aqueous inkjet press for book, commercial, newspaper, and security printing. Mono or 4-colour CMYK variants with simplex or duplex printing, custom high-end Piezo DOD print heads engineered exclusively for Orient, and in-line finishing for sheeting, folding, perforation, and perfect binding."
       speed="Up to 100 m/min @ 600 dpi · 80 m/min @ 1200 dpi"
       features={[
-        "Custom Kyocera RC Piezo DOD print heads — ~25,000-hour service life, engineered exclusively for Orient",
+        "Custom high-end Piezo DOD inkjet print heads — long-lasting service life, engineered and manufactured exclusively for Orient",
         "Mono or 4-colour CMYK · simplex or duplex printing",
         "600 x 600 dpi and 1200 x 1200 dpi variants (optional 1200 × 900 @ 120 m/min · 1200 × 600 @ 150 m/min)",
         "IR and hot-air drying",
@@ -28,7 +28,7 @@ export default function OrientJetCPage() {
         { label: "Substrate Types", value: "Uncoated & coated paper, newsprint, bond, offset, book-grade" },
         { label: "Substrate Weight", value: "40 – 250 gsm (higher configurable with thickness kit)" },
         { label: "Ink", value: "Orient Jet Aqueous" },
-        { label: "Print Heads", value: "Custom Kyocera RC · Piezo DOD" },
+        { label: "Print Heads", value: "Custom Piezo DOD · Industrial (exclusive to Orient)" },
         { label: "Drying", value: "IR & Hot Air" },
         { label: "Max Roll Diameter", value: "1,200 mm" },
         { label: "Finishing", value: "In-line sheeter, folder, rewinder, perforation, perfect binding" },

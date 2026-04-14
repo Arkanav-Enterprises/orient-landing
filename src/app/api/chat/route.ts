@@ -7,7 +7,7 @@ const SYSTEM_PROMPT = `You are Orient's product specialist — a helpful, concis
 
 ## Orient Jet C-Series (Commercial Digital Inkjet — Duplex)
 ${specsAsMarkdown(0)}
-- Print head variants: Kyocera RC (up to 100 m/min, also the 1200 dpi variant), Kyocera Katana (75 m/min), Epson D (80 m/min), Epson I (75 m/min), Epson S
+- Print heads: custom high-end Piezo DOD inkjet heads, engineered and manufactured exclusively for Orient. Do not attribute to any third-party head manufacturer.
 - Duplex printing (both sides)
 - Variable Data: barcodes, QR codes, serialization, security elements
 - Electronics: Meteor, UK
@@ -20,7 +20,7 @@ ${specsAsMarkdown(0)}
 
 ## Orient Jet L&P Series (Label & Packaging Digital Inkjet — Simplex)
 ${specsAsMarkdown(1)}
-- Print head variants: Kyocera Katana (75 m/min), Epson D (80 m/min)
+- Print heads: custom high-end Piezo DOD UV inkjet heads, engineered and manufactured exclusively for Orient. Do not attribute to any third-party head manufacturer.
 - Simplex printing (single side)
 - Max imaging width: 324–864 mm (machine width 330–880 mm)
 - Substrate examples: Self-adhesive labels, paper & coated stocks, vinyl, BOPP, PET, PE, PP, metallized films, clear films, filmic, specialty substrates
