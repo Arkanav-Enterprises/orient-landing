@@ -66,7 +66,7 @@ export const SPECS: readonly SpecRow[] = [
       "Mono or 4-Colour CMYK",
       "Up to 8 · White + CMYK + Orange / Violet / Green / Clear / Double White",
       "4 colours both sides",
-      "Up to 10 colours",
+      "Up to 12 colours",
     ],
   },
   {
