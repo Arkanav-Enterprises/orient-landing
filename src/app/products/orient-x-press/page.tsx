@@ -23,7 +23,8 @@ export default function OrientXPressPage() {
       ]}
       configurations={["Full Tower", "Double Width"]}
       images={[
-        "/images/prod-xpress-1.jpg",
+        "/images/web-offset-hero-dark.jpg",
+        "/images/web-offset-hero-showroom.jpg",
         "/images/prod-xpress-2.jpg",
         "/images/prod-xpress-3.jpg",
         "/images/prod-xpress-4.jpg",

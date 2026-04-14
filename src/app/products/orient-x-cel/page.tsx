@@ -22,7 +22,8 @@ export default function OrientXCelPage() {
       ]}
       configurations={["Mono Unit", "3-Colour Satellite", "4 High Tower"]}
       images={[
-        "/images/prod-xcel-1.jpg",
+        "/images/web-offset-hero-dark.jpg",
+        "/images/web-offset-hero-showroom.jpg",
         "/images/prod-xcel-2.jpg",
         "/images/prod-xcel-3.jpg",
         "/images/prod-xcel-4.jpg",

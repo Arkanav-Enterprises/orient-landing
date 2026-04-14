@@ -17,7 +17,8 @@ export default function OrientXLCPage() {
         { label: "Tower Width", value: "1,390mm" },
       ]}
       images={[
-        "/images/prod-xlc-1.jpg",
+        "/images/web-offset-hero-dark.jpg",
+        "/images/web-offset-hero-showroom.jpg",
         "/images/prod-xlc-2.jpg",
         "/images/prod-xlc-3.jpg",
         "/images/prod-xlc-4.jpg",
