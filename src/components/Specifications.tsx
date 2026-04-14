@@ -4,26 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-
-const machines = [
-  { label: "Orient Jet C-Series", subtitle: "Commercial Digital Inkjet", img: "/images/spec-jet-c.jpg" },
-  { label: "Orient Jet L&P Series", subtitle: "Label & Packaging Inkjet", img: "/images/spec-jet-lp.jpg" },
-  { label: "Orient Offset", subtitle: "Web Offset Press Range", img: "/images/spec-offset.jpg" },
-  { label: "Orient X-Press Flex", subtitle: "Flexographic Press Range", img: "/images/spec-flex.jpg" },
-] as const;
-
-const specs = [
-  { label: "Type", values: ["Digital Inkjet (Duplex)", "Digital Inkjet (Simplex)", "Web Offset", "Flexographic"] },
-  { label: "Application", values: ["Book, Commercial, Newspaper", "Labels, Flexible Packaging", "Newspaper, Book, Commercial", "Labels, Films, Flexible Packaging"] },
-  { label: "Print Head / Plate", values: ["Kyocera", "Kyocera", "CTP Plates", "Photopolymer Plates"] },
-  { label: "Resolution", values: ["600 / 1200 dpi", "600 / 1200 dpi", "Industry standard offset", "Up to 4800 dpi screening"] },
-  { label: "Print Speed", values: ["Up to 100 m/min", "Up to 80 m/min", "Up to 50,000 cph (X-Press)", "Up to 250 m/min"] },
-  { label: "Colours", values: ["Up to 4 (CMYK)", "Up to 4, expandable", "4 colours both sides", "Up to 10 colours"] },
-  { label: "Media Support", values: ["Coated & Uncoated, 40–240 g/m²", "Coated & Uncoated, 40–240 g/m²", "Newsprint to coated stock", "Films, foils, paper, board"] },
-  { label: "Ink System", values: ["Orientjet IDS · Aqueous-based", "Orientjet IDS · Aqueous-based", "Conventional offset inks", "UV / Water-based / Solvent"] },
-  { label: "Models", values: ["Orient Jet C-Series", "Orient Jet L&P Series", "Standard · Super · X-Cel · X-Press · XLC", "Narrow · Mid · Wide Web"] },
-  { label: "Finishing", values: ["In-Line Sheeter · Folder", "In-Line Sheeter · Folder", "Folders · Stackers", "Die-cutting · Lamination · Slitting"] },
-];
+import { MACHINES as machines, SPECS } from "@/lib/machine-specs";
 
 type ChatMsg = { role: "user" | "assistant"; content: string };
 
@@ -189,7 +170,7 @@ export default function Specifications() {
               /* Specs: table + image */
               <div className="flex gap-6 h-full">
                 <div className="flex-1 min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  {specs.map((row, i) => (
+                  {SPECS.filter((row) => row.values[activeMachine]).map((row, i) => (
                     <div key={row.label} className={`flex min-w-[480px] ${i % 2 === 0 ? "bg-black/[0.02]" : ""}`}>
                       <div className="w-[120px] md:w-[200px] shrink-0 px-3 md:px-5 py-4 border-r border-black/[0.06]">
                         <span className="text-[13px] text-near-black/40">{row.label}</span>
