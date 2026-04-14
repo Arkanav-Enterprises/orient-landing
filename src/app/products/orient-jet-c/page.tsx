@@ -40,6 +40,7 @@ export default function OrientJetCPage() {
         "/images/prod-jet-c-3.jpg",
         "/images/prod-jet-c-4.jpg",
         "/images/prod-jet-c-5.jpg",
+        "/images/prod-jet-c-6.jpg",
       ]}
       bannerVideo="/videos/jet-c-banner.mp4"
       bannerImage="/images/prod-jet-c-banner.jpg"
