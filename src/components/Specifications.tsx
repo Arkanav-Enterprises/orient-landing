@@ -9,12 +9,12 @@ import { MACHINES as machines, SPECS } from "@/lib/machine-specs";
 type ChatMsg = { role: "user" | "assistant"; content: string };
 
 const chatSuggestions = [
-  "What is the max print width?",
+  "How do I fix registration issues on my web offset press?",
+  "Best machine for short run book printing?",
   "C-Series vs L&P Series differences?",
-  "How do I fix registration on my web offset machine?",
-  "Tell me about the ink system",
-  "What media weights are supported?",
-  "Is duplex printing available?",
+  "What machine options do you have for label printing?",
+  "Who do I contact to enquire about a machine order?",
+  "What's the difference between coated and uncoated stock?",
 ];
 
 export default function Specifications() {
