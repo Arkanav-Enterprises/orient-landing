@@ -66,7 +66,7 @@ export default function ChatWidget() {
         const copy = [...prev];
         copy[copy.length - 1] = {
           role: "assistant",
-          content: "Sorry, I'm unable to respond right now. Please try again.",
+          content: "I'm sorry, I'm unable to answer you at the moment. Please contact our sales team at tphho@tphorient.com.",
         };
         return copy;
       });

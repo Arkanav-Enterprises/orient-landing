@@ -65,7 +65,7 @@ export default function Specifications() {
         setChatMessages((prev) => { const copy = [...prev]; copy[copy.length - 1] = { role: "assistant", content: t }; return copy; });
       }
     } catch {
-      setChatMessages((prev) => { const copy = [...prev]; copy[copy.length - 1] = { role: "assistant", content: "Sorry, I'm unable to respond right now." }; return copy; });
+      setChatMessages((prev) => { const copy = [...prev]; copy[copy.length - 1] = { role: "assistant", content: "I'm sorry, I'm unable to answer you at the moment. Please contact our sales team at tphho@tphorient.com." }; return copy; });
     }
     setChatStreaming(false);
   }

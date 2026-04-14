@@ -127,7 +127,7 @@ export default function ProductPage({
     } catch {
       setChatMessages((prev) => {
         const copy = [...prev];
-        copy[copy.length - 1] = { role: "assistant", content: "Sorry, I'm unable to respond right now." };
+        copy[copy.length - 1] = { role: "assistant", content: "I'm sorry, I'm unable to answer you at the moment. Please contact our sales team at tphho@tphorient.com." };
         return copy;
       });
     }

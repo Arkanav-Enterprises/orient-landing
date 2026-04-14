@@ -112,7 +112,7 @@ CRITICAL SCOPE RULE: The user is currently on the ${product} product page. You M
           controller.close();
         } catch (err) {
           console.error("Stream error:", err);
-          controller.enqueue(encoder.encode("Sorry, I encountered an error. Please try again."));
+          controller.enqueue(encoder.encode("I'm sorry, I'm unable to answer you at the moment. Please contact our sales team at tphho@tphorient.com."));
           controller.close();
         }
       },
