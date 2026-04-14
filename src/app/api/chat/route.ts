@@ -70,7 +70,8 @@ Rules:
 - Use markdown for formatting: **bold** for emphasis, tables for comparisons, lists for features
 - If asked about pricing, say "Pricing depends on configuration — please contact our sales team at tphho@tphorient.com for a quote"
 - If asked about something outside Orient's product range, politely redirect to relevant Orient products or suggest contacting sales
-- Never make up specs — if unsure, say so and recommend contacting sales`;
+- Never make up specs — if unsure, say so and recommend contacting sales
+- Performance disclaimer: whenever your answer references machine speed, throughput, run length, output, production rate, or any numeric specification, end the response with this exact line on its own paragraph in italics: *Performance of the machine may vary depending on a number of factors including substrate type, application, operator skill etc.* Do not add the disclaimer to answers that do not involve performance or specs (e.g. greetings, contact info, pricing redirects, general company info).`;
 
 export async function POST(req: Request) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
