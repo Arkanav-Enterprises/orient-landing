@@ -4,23 +4,20 @@ import { useState } from "react";
 import PageShell from "@/components/PageShell";
 
 const catalogs = [
-  { label: "Orient Super", file: "Orient-Super_.pdf" },
-  { label: "Orient X-Cel", file: "X-CEL-28-1-25.pdf" },
-  { label: "Orient X-Press", file: "X-PRESS_.pdf" },
-  { label: "Orient XLC", file: "ORIENT-XLC.pdf" },
-  { label: "Folders", file: "Folders_.pdf" },
-  { label: "Orient Jet Digital Machine", file: "OrientJet.pdf" },
-  { label: "X-Press Flex", file: "xpress-flex-brochure28-1-25.pdf" },
-{ label: "Spare Parts Catalog", file: "SPARE-PARTS_new.pdf" },
-  { label: "AMC Service Catalogue", file: "AMC-Catalogue_new.pdf" },
-  { label: "Group Company Profile", file: "Orient-print-&-pack-profile28-1-25.pdf" },
+  { label: "Orient Super", file: "orient-super.pdf" },
+  { label: "Orient X-Cel", file: "xcel.pdf" },
+  { label: "Orient X-Press", file: "xpress.pdf" },
+  { label: "Orient XLC", file: "xlc.pdf" },
+  { label: "X-Press Flex", file: "xpress-flex.pdf" },
+  { label: "Orient Jet C Series", file: "orient-jet-c-series.pdf" },
+  { label: "Orient Jet L&P Series", file: "orient-jet-lp-series.pdf" },
+  { label: "Folders", file: "folders.pdf" },
+  { label: "After Sales Services", file: "after-sales-services.pdf" },
+  { label: "Group Company Profile", file: "orient-printpack-profile.pdf" },
 ];
 
-const BASE = "https://www.tphorient.com/assets/pdf";
-
-function previewUrl(file: string) {
-  const raw = `${BASE}/${encodeURIComponent(file)}`;
-  return `https://docs.google.com/gview?url=${encodeURIComponent(raw)}&embedded=true`;
+function assetUrl(file: string) {
+  return `/assets/pdf/${file}`;
 }
 
 export default function DownloadsPage() {
@@ -54,7 +51,7 @@ export default function DownloadsPage() {
           <div className="relative bg-[#f5f5f4] rounded-xl overflow-hidden border border-black/[0.06]" style={{ height: "calc(100vh - 260px)", minHeight: 500 }}>
             {/* Floating download button */}
             <a
-              href={`/api/download?file=${encodeURIComponent(catalogs[active].file)}`}
+              href={assetUrl(catalogs[active].file)}
               download={catalogs[active].file}
               className="absolute top-3 right-16 z-10 w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-sm border border-black/10 rounded-lg hover:bg-white shadow-sm transition-colors"
               title="Download PDF"
@@ -65,7 +62,7 @@ export default function DownloadsPage() {
             </a>
             <iframe
               key={catalogs[active].file}
-              src={previewUrl(catalogs[active].file)}
+              src={assetUrl(catalogs[active].file)}
               width="100%"
               height="100%"
               style={{ border: 0 }}
