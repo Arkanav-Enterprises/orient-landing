@@ -188,6 +188,7 @@ export default function Navbar() {
 
             <Link href="/news" className="text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">News & Events</Link>
             <Link href="/downloads" className="text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">Downloads</Link>
+            <Link href="/#orient-ai" className="text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">Orient AI</Link>
             <Link href="/contact" className="text-[15px] font-medium text-near-black/60 hover:text-near-black transition-colors px-4 py-2">Contact</Link>
           </nav>
 
@@ -241,6 +242,7 @@ export default function Navbar() {
               <div className="pt-4 space-y-3">
                 <Link href="/news" onClick={() => setMobileOpen(false)} className="block text-[16px] font-medium text-near-black py-2">News & Events</Link>
                 <Link href="/downloads" onClick={() => setMobileOpen(false)} className="block text-[16px] font-medium text-near-black py-2">Downloads</Link>
+                <Link href="/#orient-ai" onClick={() => setMobileOpen(false)} className="block text-[16px] font-medium text-near-black py-2">Orient AI</Link>
                 <Link href="/contact" onClick={() => setMobileOpen(false)} className="block text-[16px] font-medium text-near-black py-2">Contact</Link>
               </div>
             </div>

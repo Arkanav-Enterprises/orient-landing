@@ -71,7 +71,7 @@ export default function Specifications() {
   }
 
   return (
-    <section id="orient-ai" ref={ref} style={{ marginTop: 160, marginBottom: 160 }}>
+    <section id="orient-ai" ref={ref} style={{ marginTop: 160, marginBottom: 160, scrollMarginTop: 100 }}>
       <div className="container-site">
         {/* Header: title left, machine dropdown right */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
