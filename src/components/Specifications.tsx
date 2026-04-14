@@ -192,6 +192,9 @@ export default function Specifications() {
                       </div>
                     </div>
                   ))}
+                  <p className="text-[12px] text-near-black/40 italic px-3 md:px-5 py-3 min-w-[480px]">
+                    Performance of the machine may vary depending on a number of factors including substrate type, application, operator skill etc.
+                  </p>
                 </div>
                 <div className="hidden xl:block w-[45%] shrink-0 relative">
                   <img

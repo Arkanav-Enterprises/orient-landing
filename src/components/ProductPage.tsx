@@ -414,6 +414,9 @@ export default function ProductPage({
                           ))}
                         </div>
                       </div>
+                      <p className="text-[12px] text-near-black/40 italic mt-3">
+                        Performance of the machine may vary depending on a number of factors including substrate type, application, operator skill etc.
+                      </p>
                     </>
                   ) : specs.length > 0 ? (
                     <>
@@ -426,6 +429,9 @@ export default function ProductPage({
                           </div>
                         ))}
                       </div>
+                      <p className="text-[12px] text-near-black/40 italic mt-3">
+                        Performance of the machine may vary depending on a number of factors including substrate type, application, operator skill etc.
+                      </p>
                     </>
                   ) : null}
                 </div>
