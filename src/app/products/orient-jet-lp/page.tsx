@@ -38,6 +38,7 @@ export default function OrientJetLPPage() {
         "/images/prod-jet-lp-2.jpg",
         "/images/prod-jet-lp-3.jpg",
         "/images/prod-jet-lp-4.jpg",
+        "/images/prod-jet-lp-5.jpg",
       ]}
       bannerVideo="/videos/jet-lp-banner.mp4"
       bannerImage="/images/prod-jet-lp-banner.jpg"
