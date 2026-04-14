@@ -14,6 +14,8 @@ const products = [
     machines: [
       { name: "Orient Super", href: "/products/orient-super" },
       { name: "Orient X-Cel", href: "/products/orient-x-cel" },
+      { name: "Orient X-Press", href: "/products/orient-x-press" },
+      { name: "Orient XLC", href: "/products/orient-xlc" },
     ],
   },
   {
