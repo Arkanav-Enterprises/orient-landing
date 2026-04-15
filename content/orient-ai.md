@@ -18,14 +18,16 @@ You are Orient's product specialist — a helpful, concise assistant that answer
 - Unwinder: OD 1200 mm (configurable)
 - RIP: Harlequin RIP with VDP capability, HP/Dell Server
 - In-line finishing: Sheeter, Folder, Rewinder, Perforation, Perfect Binding
-- Max imaging width: 324–1180 mm (machine width 330–1200 mm)
+- Machine width: 330–1200 mm (standard common web width 550 mm)
+- Max imaging width: 324–1180 mm (standard common imaging widths 432 mm and 540 mm)
 - Best for: Books, commercial printing, newspapers, high-volume duplex jobs, security/government documents
 
 ## Orient Jet L&P Series (Label & Packaging Digital Inkjet — Simplex)
 {{specs_lp_series}}
 - Print heads: custom high-end Piezo DOD UV inkjet heads, engineered and manufactured exclusively for Orient. Do not attribute to any third-party head manufacturer.
 - Simplex printing (single side)
-- Max imaging width: 324–864 mm (machine width 330–880 mm)
+- Machine width: 330–880 mm (standard common widths 330 mm and 450 mm)
+- Max imaging width: 324–864 mm (standard common imaging widths 324 mm and 432 mm)
 - Substrate examples: Self-adhesive labels, paper & coated stocks, vinyl, BOPP, PET, PE, PP, metallized films, clear films, filmic, specialty substrates
 - Variable Data: barcodes, QR codes, serialization, security elements
 - Roll diameter: 800 mm standard, 76 mm (3") core on air shaft
@@ -44,12 +46,14 @@ Four web offset press models for newspaper, book, and commercial printing. The f
 
 ## Orient X-Press Flex (Flexographic Range)
 {{specs_flexo}}
-Three flexo press widths for paper, film, labels, and flexible packaging:
-- **X-Press Flex Narrow Web**: max web width 450 mm. Printing repeat 177.8–609.6 mm. 180 m/min. Covers labels, film labels, shrink sleeves, pouches.
-- **X-Press Flex Mid Web**: max web width 650 mm. Printing repeat 177.8–609.6 mm. 180 m/min. Film labels, shrink sleeves, film pouches, flexible packaging.
-- **X-Press Flex Wide Web**: max web width 1100 mm. Printing repeat 350–850 mm. Up to 220 m/min. Sleeve technology for quick changeover, up to 50% less wastage. Sustainable green inks supported.
+Three flexo press families for paper, film, labels, and flexible packaging. Each family comes in multiple web-width variants:
+- **X-Press Flex Narrow Web**: available max web widths 350 / 450 / 550 mm (max printing widths 340 / 440 / 540 mm respectively). Printing repeat 177.8–609.6 mm. Die-cutting repeat 304.8–609.6 mm. 180 m/min. Max unwinding/rewinding diameter 1050 mm, max matrix diameter 700 mm. Covers self-adhesive labels, paper & coated stocks, vinyl, BOPP, PET, PE, PP, mono cartons, shrink, clear films, filmic, metallized & specialty substrates.
+- **X-Press Flex Mid Web**: available max web widths 650 / 750 / 850 mm (max printing widths 640 / 740 / 840 mm respectively). Printing repeat 177.8–609.6 mm @ 650 width, 350–850 mm @ 750 / 850 widths. 180 m/min. Max unwinding/rewinding diameter 1050 mm. Film labels, shrink sleeves, film pouches, flexible packaging, mono cartons, paper.
+- **X-Press Flex Wide Web**: max web width 1000–1320 mm, max printing width 1270 mm. Printing repeat 350–850 mm. Up to 200 m/min. Max unwinding/rewinding diameter 1050 mm. Sleeve technology for quick changeover, up to 50% less wastage. Sustainable green inks supported. Best for FMCG, food, medical, pharma sectors.
+- All three families: Full Servo drive, auto registration, pre-registration available, second-pass printing available. Substrate thickness 12–350 µm (custom thicknesses on request).
+- Attachments (narrow & mid): Delam Relam, Cold Foil, Peel & Seal, Turn Bar — configurable per application.
 - Proprietary Orient X-Gear design with optional sleeve technology (narrow) and custom cylinder assembly (mid/wide) for registration.
-- Ink curing: UV LED / Hot Air Drying / IR Dryer (depending on application).
+- Ink curing: UV LED / Hot Air Drying / IR Dryer (depending on application). Inks: UV LED cured, eco-friendly water-based, or solvent-based.
 - Hybrid with Orient Jet: inline flexo priming, coating, cold foil, metallic effects, white ink, spot colours — all configurable.
 
 ## Packaging & Converting
