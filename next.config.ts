@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* Ship editorial content (Orient AI prompt) with the API route bundle. */
+  outputFileTracingIncludes: {
+    "/api/chat": ["./content/**/*"],
+  },
+
   /* 301 redirects: old tphorient.com .php URLs → new clean paths */
   async redirects() {
     return [
