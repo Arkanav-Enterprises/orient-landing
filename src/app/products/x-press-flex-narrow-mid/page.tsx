@@ -7,6 +7,7 @@ export default function XPressFlexNarrowMidPage() {
       category="Flexographic Printing"
       description="Narrow and mid web flexo presses for labels, flexible packaging, shrink sleeves, pouches, and mono cartons. Proprietary Orient X-Gear design with custom cylinder assembly for registration, UV LED / hot-air / IR curing, and ink compatibility across UV LED, water-based, and solvent systems."
       speed="Up to 180 m/min"
+      speedNote="Higher speeds configurable depending on specification and application — please ask your sales rep."
       features={[
         "Proprietary Orient X-Gear design",
         "Custom cylinder assembly for precise registration",
@@ -40,7 +41,13 @@ export default function XPressFlexNarrowMidPage() {
           { label: "Max Rewinding Diameter", values: ["1,050 mm", "1,050 mm"] },
           { label: "Max Matrix Diameter", values: ["700 mm", "—"] },
           { label: "Driving Mode", values: ["Full Servo", "Full Servo"] },
-          { label: "Max Mechanical Speed", values: ["180 m/min", "180 m/min"] },
+          {
+            label: "Max Mechanical Speed",
+            values: [
+              "180 m/min (higher speeds configurable depending on specification and application — please ask your sales rep)",
+              "180 m/min (higher speeds configurable depending on specification and application — please ask your sales rep)",
+            ],
+          },
           { label: "Ink Curing", values: ["UV LED · Hot Air · IR", "UV LED · Hot Air · IR"] },
           { label: "Applicable Ink", values: ["UV LED · Water-based · Solvent", "UV LED · Water-based · Solvent"] },
           { label: "Substrate Thickness", values: ["12 – 350 µm", "12 – 350 µm"] },

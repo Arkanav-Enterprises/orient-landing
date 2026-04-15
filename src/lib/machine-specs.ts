@@ -49,12 +49,12 @@ export const SPECS: readonly SpecRow[] = [
   },
   {
     label: "Resolution",
-    values: ["600 / 1200 dpi", "600 / 1200 dpi", "Industry standard offset", "Up to 4800 dpi screening"],
+    values: ["600 × 600 / 1200 × 1200 dpi", "600 × 600 / 1200 × 1200 dpi", "Industry standard offset", "Up to 4800 dpi screening"],
   },
   {
     label: "Print Speed",
     values: [
-      "Up to 100 m/min @ 600 dpi · 80 m/min @ 1200 × 1200 dpi · Optional 120 m/min @ 1200 × 900 dpi · 150 m/min @ 1200 × 600 dpi",
+      "Up to 100 m/min @ 600 × 600 dpi · 80 m/min @ 1200 × 1200 dpi · Optional 120 m/min @ 1200 × 900 dpi · 150 m/min @ 1200 × 600 dpi",
       "Up to 75 m/min",
       "Up to 50,000 cph (X-Press)",
       "180 m/min (Narrow/Mid) · 200 m/min (Wide)",

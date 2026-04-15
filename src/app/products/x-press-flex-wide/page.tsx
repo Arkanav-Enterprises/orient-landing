@@ -7,6 +7,7 @@ export default function XPressFlexWidePage() {
       category="Flexographic Printing"
       description="Wide web flexo press running up to 200 m/min on web widths of 1,000 – 1,320 mm. Sleeve technology for quick changeover with up to 50% less wastage, ink curing across UV LED / IR / hot air, and sustainable green ink compatibility for FMCG, food, medical, and pharma packaging."
       speed="Up to 200 m/min"
+      speedNote="Higher speeds configurable depending on specification and application — please ask your sales rep."
       features={[
         "Max web width 1,000 – 1,320 mm · max printing width 1,270 mm",
         "Sleeve technology for quick changeover — up to 50% less wastage",
@@ -25,7 +26,7 @@ export default function XPressFlexWidePage() {
         { label: "Max Unwinding Diameter", value: "1,050 mm" },
         { label: "Max Rewinding Diameter", value: "1,050 mm" },
         { label: "Driving Mode", value: "Full Servo" },
-        { label: "Max Mechanical Speed", value: "Up to 200 m/min" },
+        { label: "Max Mechanical Speed", value: "Up to 200 m/min (higher speeds configurable depending on specification and application — please ask your sales rep)" },
         { label: "Ink Curing", value: "IR · Hot Air · UV / LED (application-dependent)" },
         { label: "Applicable Ink", value: "UV LED · Water-based · Solvent" },
         { label: "Substrate", value: "Paper, film, board (wide gamut — contact sales for specific application)" },

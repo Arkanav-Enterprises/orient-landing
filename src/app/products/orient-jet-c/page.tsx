@@ -6,11 +6,11 @@ export default function OrientJetCPage() {
       name="Orient Jet C-Series"
       category="Digital Inkjet Printing — Aqueous"
       description="Production-grade aqueous inkjet press for book, commercial, newspaper, and security printing. Mono or 4-colour CMYK variants with simplex or duplex printing, custom high-end Piezo DOD print heads engineered exclusively for Orient, and in-line finishing for sheeting, folding, perforation, and perfect binding."
-      speed="Up to 100 m/min @ 600 dpi · 80 m/min @ 1200 dpi"
+      speed="Up to 100 m/min @ 600 × 600 dpi · 80 m/min @ 1200 × 1200 dpi"
       features={[
         "Custom high-end Piezo DOD inkjet print heads — long-lasting service life, engineered and manufactured exclusively for Orient",
         "Mono or 4-colour CMYK · simplex or duplex printing",
-        "600 x 600 dpi and 1200 x 1200 dpi variants (optional 1200 × 900 @ 120 m/min · 1200 × 600 @ 150 m/min)",
+        "600 × 600 dpi and 1200 × 1200 dpi variants (optional 1200 × 900 @ 120 m/min · 1200 × 600 @ 150 m/min)",
         "IR and hot-air drying",
         "Orient Jet aqueous ink — open system, no proprietary lock-in",
         "Full VDP: barcodes, QR codes, serialization, security elements",
@@ -22,7 +22,7 @@ export default function OrientJetCPage() {
         { label: "Printing Technology", value: "Aqueous Inkjet Digital" },
         { label: "Colour Configuration", value: "Mono or 4-Colour CMYK · Simplex / Duplex" },
         { label: "Resolution", value: "600 × 600 dpi or 1200 × 1200 dpi" },
-        { label: "Print Speed", value: "Up to 100 m/min @ 600 dpi · 80 m/min @ 1200 dpi" },
+        { label: "Print Speed", value: "Up to 100 m/min @ 600 × 600 dpi · 80 m/min @ 1200 × 1200 dpi" },
         { label: "Machine Width", value: "330 – 1,200 mm (standard common web width 550 mm)" },
         { label: "Imaging Width", value: "324 – 1,180 mm (standard common imaging widths 432 mm and 540 mm)" },
         { label: "Substrate Types", value: "Uncoated & coated paper, newsprint, bond, offset, book-grade" },

@@ -22,6 +22,7 @@ export default function ProductPage({
   category,
   description,
   speed,
+  speedNote,
   features,
   specs,
   specComparison,
@@ -40,6 +41,7 @@ export default function ProductPage({
   category: string;
   description: string;
   speed?: string;
+  speedNote?: string;
   features: string[];
   specs: ProductSpec[];
   specComparison?: SpecComparison;
@@ -357,6 +359,9 @@ export default function ProductPage({
                     <div className="mb-8 p-6 bg-[#f5f5f4] rounded-[6px]">
                       <span className="text-[14px] font-medium text-near-black/40 block mb-1">Maximum Speed</span>
                       <span className="text-[36px] font-medium text-near-black">{speed}</span>
+                      {speedNote && (
+                        <span className="block mt-2 text-[13px] text-near-black/45 italic">{speedNote}</span>
+                      )}
                     </div>
                   )}
 
