@@ -55,11 +55,6 @@ Three flexo press families for paper, film, labels, and flexible packaging. Each
 - Ink curing: UV LED / Hot Air Drying / IR Dryer (depending on application). Inks: UV LED cured, eco-friendly water-based, or solvent-based.
 - Hybrid with Orient Jet: inline flexo priming, coating, cold foil, metallic effects, white ink, spot colours — all configurable.
 
-## Packaging & Converting
-- **X-Press Fold**: Folder-gluer for cartons
-- **X-Press Cut**: Die-cutting machine
-- Used for post-press finishing of packaging products
-
 ## General Info
 - Manufacturer: The Printers House Pvt. Ltd. (brand: Orient), founded 1946 by K.D. Kohli
 - 20,000+ units installed across 60+ countries
