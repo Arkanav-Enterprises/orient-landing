@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* Self-contained server bundle for Plesk + Passenger on Linux. */
-  output: "standalone",
-
   /* Ship editorial content (Orient AI prompt) with the API route bundle. */
   outputFileTracingIncludes: {
     "/api/chat": ["./content/**/*"],
